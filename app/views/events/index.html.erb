@@ -1,0 +1,102 @@
+# encoding: UTF-8
+
+<div class="page-header">
+  <h1><%= t(".events")%></h1>
+</div>
+
+
+<div class="row">
+  <div class="col-md-1 col-md-offset-8" align="right">
+	  <% if can? :create, Event %>
+		  			<p><%= link_to(new_event_path) do %>
+            		<button type="button" class="btn btn-success btn-sm">
+						<span class="glyphicon glyphicon-plus"></span>
+					</button>
+				<% end %></p>
+				<% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-9">
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover table-condensed">
+        <tr>
+          
+          <th><%= t(".date") %></th>
+          <th><%= t(".title") %></th>
+          <th><%= t(".location") %></th>
+          <% if can? :attend, Event %>
+          	<th></th>
+          <% end %>
+          <th></th>
+          <% if can? :manage, Event %>
+          	<th></th>
+          <% end %>
+        </tr>
+
+        <% @events.each do |event| %>
+          <tr>
+            <td><%= l event.date, format: :long %><% unless event.time.nil? %>
+            - <%= l event.time, format: :time %>
+           <% end %></td>
+            <td><%= event.title %></td>
+            <td><%= event.location %></td>
+            <% if can? :attend, Event %>
+            	<td class="twobuttons">
+            	<% if get_event_user_status(event.id) == 1 %>
+            		<%= link_to(event_user_path(:id => event.id, :status => 0), :method => :put, data: {confirm: t(".alerts.dont_you_want_to_attend")}) do %>
+            		<button type="button" class="btn btn-success btn-sm">
+						<span class="glyphicon glyphicon-ok-sign"></span>
+					</button>
+				<% end %>
+            	<% elsif get_event_user_status(event.id) == 0 %>
+            	<%= link_to(event_user_path(:id => event.id, :status => 1), :method => :put, data: {confirm: t(".alerts.do_you_want_to_attend")}) do %>
+            		<button type="button" class="btn btn-danger btn-sm">
+						<span class="glyphicon glyphicon-ok-circle"></span>
+					</button>
+				<% end %>
+				<% else %>
+				<%= link_to(event_user_path(:id => event.id, :status => 1), :method => :put, data: {confirm: t(".alerts.do_you_want_to_attend")}) do %>
+            		<button type="button" class="btn btn-success btn-sm">
+						<span class="glyphicon glyphicon-ok-sign"></span>
+					</button>
+				<% end %>
+				<%= link_to(event_user_path(:id => event.id, :status => 0), :method => :put, data: {confirm: t(".alerts.dont_you_want_to_attend")}) do %>
+            		<button type="button" class="btn btn-danger btn-sm">
+						<span class="glyphicon glyphicon-ok-circle"></span>
+					</button>
+				<% end %>
+			</td>
+			<% end %>
+            <% end %>
+            <td class="button">
+            	<%= link_to( event) do %>
+            		<button type="button" class="btn btn-info btn-sm">
+						<span class="glyphicon glyphicon-info-sign"></span>
+					</button>
+				<% end %>
+			</td>
+            <% if can? :update, Event %>
+            	<td class="button">
+            	<%= link_to(edit_event_path(event)) do %>
+            		<button type="button" class="btn btn-warning btn-sm">
+						<span class="glyphicon glyphicon-wrench"></span>
+					</button>
+				<% end %>
+			</td>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+
+    <div class="col-md-offset-4"><%#= paginate @projects %></div>
+  </div>
+
+  <div class="col-md-3">
+    <%#= render "search_bar" %>
+  </div>
+
+</div>

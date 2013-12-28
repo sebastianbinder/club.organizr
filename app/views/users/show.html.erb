@@ -1,0 +1,49 @@
+# encoding: UTF-8
+
+<div class="page-header">
+  <h1><%= t("gen.user") %> "<%= @user.firstname %> <%= @user.lastname %>"</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-9">
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover table-condensed">
+        <tr>
+          <th><%= t("users.login") %></th>
+          <td><%= @user.login %></td>
+        </tr>
+
+        <tr>
+          <th><%= t("users.firstname") %></th>
+          <td><%= @user.firstname %></td>
+        </tr>
+        <tr>
+          <th><%= t("users.lastname") %></th>
+          <td><%= @user.lastname %></td>
+        </tr>
+        <tr>
+          <th><%= t("users.email") %></th>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th><%= t("users.phone_number") %></th>
+          <td><%= @user.phone_number %></td>
+        </tr>
+        <tr>
+          <th><%= t("users.address") %></th>
+          <td><%= @user.street %> <%= @user.street_number %><br>
+            <%= @user.zipcode %><%= " " if @user.city.present? %><%= @user.city %><br>
+            <%= @user.country %></td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="col-md-1">
+    <div class="btn-group-vertical">
+    </div>
+  </div>
+
+</div>

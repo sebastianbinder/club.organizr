@@ -1,0 +1,107 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+.container {
+	margin-top: 60px;
+}
+
+.translation_missing {
+	color: red;
+	font-style: italic;
+}
+
+
+
+
+.table>tbody>tr>th.button, .table>tbody>tr>td.button {
+	width: 45px;
+	text-align: center;
+}
+
+.table>tbody>tr>th.twobuttons, .table>tbody>tr>td.twobuttons {
+	width: 90px;
+	text-align: center;
+}
+
+.table>tbody>tr>th, .table>tbody>tr>td {
+	vertical-align: middle;
+}
+
+/*###################################
+
+        css for screens > 768px
+
+###################################*/
+
+@media (min-width: 768px) {
+
+    .navbar-right .btn-group {
+        margin-top: 8px;
+        margin-right: 15px;
+    }
+
+    .navbar-form .btn-group {
+        margin-top: 0px;
+        margin-right: 0px;
+    }
+
+    .nav .btn-group .caret {
+        border-top-color: #fff;
+    }
+    .nav > li > a {
+        padding: 15px 5px;
+    }
+
+    .navbar-form .form-group.hidden-xs, .navbar-right .btn.hidden-xs {
+        display: inline-block !important;
+    }
+
+    h1, .h1 {
+        font-size: 36px;
+    }
+    div.navbar-collapse.collapse {
+	    margin: 0 20px;
+    }
+
+
+}
+
+/*###################################
+
+        css for screens > 814px
+
+###################################*/
+
+@media (min-width: 814px) {
+
+    .nav > li > a {
+        padding: 15px 10px;
+    }
+
+}
+
+/*###################################
+
+        css for screens > 860px
+
+###################################*/
+
+@media (min-width: 860px) {
+
+    .nav > li > a {
+        padding: 15px 15px;
+    }
+
+}

@@ -1,0 +1,52 @@
+<% if @event.errors.any? %>
+  <div class="alert alert-danger">
+    <strong><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</strong>
+	<ul>
+    <% @event.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_for @event do |f| %>
+
+<div class="row">
+  <div class="col-md-9">
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover table-condensed">
+        <tr>
+          <th><%= f.label :title, t(".title"), :class => "col-lg-2 control-label" %></th>
+          <td><%= f.text_field :title, :class => "form-control" %></td>
+        </tr>
+        <tr>
+          <th> <%= f.label :date, t(".date"), :class => "col-lg-2 control-label" %></th>
+          <td><%= f.date_field :date, :class => "form-control" %></td>
+        </tr>
+        <tr>
+          <th> <%= f.label :time, t(".time"), :class => "col-lg-2 control-label" %></th>
+          <td> <%= f.time_field :time, :class => "form-control" %></td>
+        </tr>
+        <tr>
+          <th> <%= f.label :location, t(".location"), :class => "col-lg-2 control-label" %></th>
+          <td> <%= f.text_field :location, :class => "form-control" %></td>
+        </tr>
+        <tr>
+          <th> <%= f.label :details, t(".details"), :class => "col-lg-2 control-label" %></th>
+          <td> <%= f.text_area :details, :class => "form-control" %></td>
+        </tr>
+        <tr>
+          <td colspan="2"><%= f.submit t(".save"), :class => "btn btn-success" %></td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="col-md-1">
+    <div class="btn-group-vertical">
+    </div>
+  </div>
+
+</div>
+<% end %>
