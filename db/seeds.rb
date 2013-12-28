@@ -12,7 +12,7 @@ User.create(
   password: "test12345",
   firstname: "Sebastian",
   lastname: "Binder",
-  email: "info@sebastianbinder.com",
+  email: "admin@sebastianbinder.com",
   phone_number: "+49 89 421992",
   street: "Zehntfeldstraße",
   street_number: "163",
@@ -22,10 +22,38 @@ User.create(
   roles_mask: 1
 )
 
+User.create(
+  password: "test12345",
+  firstname: "Sebastian",
+  lastname: "Binder",
+  email: "organizer@sebastianbinder.com",
+  phone_number: "+49 89 421992",
+  street: "Zehntfeldstraße",
+  street_number: "163",
+  zipcode: "81825",
+  city: "München",
+  country: "Deutschland",
+  roles_mask: 4
+)
+
+User.create(
+  password: "test12345",
+  firstname: "Sebastian",
+  lastname: "Binder",
+  email: "member@sebastianbinder.com",
+  phone_number: "+49 89 421992",
+  street: "Zehntfeldstraße",
+  street_number: "163",
+  zipcode: "81825",
+  city: "München",
+  country: "Deutschland",
+  roles_mask: 8
+)
+
 20.times do
   Event.create(
     date: rand(1...90).days.from_now,
-    time: "",
+    time: "19:00:00",
     title: "Probe",
     location: "St. Augustinus",
     details: ""

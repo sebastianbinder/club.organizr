@@ -1,0 +1,58 @@
+# encoding: UTF-8
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+de:
+  users:
+    index:
+      users: Benutzer
+      email: E-Mail
+      firstname: Vorname
+      lastname: Nachname
+    show:
+      user: Benutzer
+      firstname: Vorname
+      lastname: Nachname
+      email: E-Mail
+      phone_number: Telefon
+      address: Adresse
+    edit:
+      header: '"%{firstname} %{lastname}" bearbeiten'
+    new:
+      header: Neuen Benutzer anlegen
+    form:
+      email: E-Mail
+      firstname: Vorname
+      lastname: Nachname
+      phone_number: Telefon
+      street: Straße
+      street_number: Hausnummer
+      zipcode: Postleitzahl
+      city: Stadt
+      country: Land
+      roles: Benutzerrolle
+      save: Benutzer speichern!
+      cancel: Abbrechen
+      destroy: Löschen
+      alerts:
+        cancel_edit: Möchten Sie das Ändern dieses Benutzers wirklich abbrechen?
+        cancel_new: Möchten Sie das Erstellen dieses Benutzers wirklich abbrechen?
+        destroy: Möchten Sie diesen Benutzer wirklich löschen? Dieser Vorgang kann nicht rückgängig gemacht werden!

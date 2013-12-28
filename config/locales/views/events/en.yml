@@ -51,3 +51,9 @@ en:
       location: Location
       details: Details
       save: Save this event!
+      cancel: Cancel
+      destroy: Delete
+      alerts:
+        cancel_edit: Do you really want to cancel editing this event?
+        cancel_new: Do you really want to cancel creatig this new event?
+        destroy: Do you really want to delete this event? You cannot undo this!

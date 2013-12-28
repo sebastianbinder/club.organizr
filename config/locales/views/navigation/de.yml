@@ -20,19 +20,19 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+de:
   layouts:
     navigation:
-      events: Events
-      users: Users
+      events: Termine
+      users: Benutzer
     usercontrol:
-      language: Language
+      language: Sprache
       lang:
         english: English
         german: Deutsch
-      my_profile: My Profile
+      my_profile: Mein Profil
       logout: Logout
-      login: Login
+      login: Anmelden
       desc:
-        email: Login with your email...
-        password: ... and your password!
+        email: E-Mail...
+        password: ... und Ihr Passwort!
