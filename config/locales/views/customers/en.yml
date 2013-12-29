@@ -21,19 +21,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  layouts:
-    navigation:
-      customers: My Groups
-      events: Events
-      members: Members
-    usercontrol:
-      language: Language
-      lang:
-        english: English
-        german: Deutsch
-      my_profile: My Profile
-      logout: Logout
-      login: Login
-      desc:
-        email: Login with your email...
-        password: ... and your password!
+  customers:
+    index:
+      header: Groups
+      name: Name

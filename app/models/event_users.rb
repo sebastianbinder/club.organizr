@@ -1,5 +1,2 @@
 class EventUsers < ActiveRecord::Base
- 
- 
- 
- end
+end
