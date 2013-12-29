@@ -8,45 +8,48 @@
 User.delete_all
 Event.delete_all
 
+case Rails.env
+when "development"
+
 User.create(
   password: "test12345",
-  firstname: "Sebastian",
-  lastname: "Binder",
-  email: "admin@sebastianbinder.com",
-  phone_number: "+49 89 421992",
-  street: "Zehntfeldstraße",
-  street_number: "163",
-  zipcode: "81825",
-  city: "München",
-  country: "Deutschland",
+  firstname: "Taylor",
+  lastname: "Class",
+  email: "tclass@sebastianbinder.com",
+  phone_number: "+1-647-3746",
+  street: "Brooklyn Street",
+  street_number: "1460",
+  zipcode: "10024",
+  city: "Manhattan",
+  country: "NY, USA",
   roles_mask: 1
 )
 
 User.create(
   password: "test12345",
-  firstname: "Sebastian",
-  lastname: "Binder",
-  email: "organizer@sebastianbinder.com",
-  phone_number: "+49 89 421992",
-  street: "Zehntfeldstraße",
-  street_number: "163",
-  zipcode: "81825",
-  city: "München",
-  country: "Deutschland",
+  firstname: "Wynona",
+  lastname: "Browning",
+  email: "wbrowning@sebastianbinder.com",
+  phone_number: "+1-647-3746",
+  street: "Brooklyn Street",
+  street_number: "1460",
+  zipcode: "10024",
+  city: "Manhattan",
+  country: "NY, USA",
   roles_mask: 4
 )
 
 User.create(
   password: "test12345",
-  firstname: "Sebastian",
-  lastname: "Binder",
-  email: "member@sebastianbinder.com",
-  phone_number: "+49 89 421992",
-  street: "Zehntfeldstraße",
-  street_number: "163",
-  zipcode: "81825",
-  city: "München",
-  country: "Deutschland",
+  firstname: "Thomas",
+  lastname: "Sloan",
+  email: "tsloan@sebastianbinder.com",
+  phone_number: "+1-647-3746",
+  street: "Brooklyn Street",
+  street_number: "1460",
+  zipcode: "10024",
+  city: "Manhattan",
+  country: "NY, USA",
   roles_mask: 8
 )
 
@@ -54,8 +57,26 @@ User.create(
   Event.create(
     date: rand(1...90).days.from_now,
     time: "19:00:00",
-    title: "Probe",
-    location: "St. Augustinus",
+    title: "Event",
+    location: "Everywhere",
     details: ""
   )
+end
+
+when "production"
+
+User.create(
+  password: "admin",
+  firstname: "Adminis",
+  lastname: "trator",
+  email: "admin@organizeme",
+  phone_number: "",
+  street: "",
+  street_number: "",
+  zipcode: "",
+  city: "",
+  country: "",
+  roles_mask: 1
+)
+
 end
