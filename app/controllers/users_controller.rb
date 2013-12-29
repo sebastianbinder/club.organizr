@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 		
 	before_filter :authenticate_user!
-
+	#load_and_authorize_resource
 	
 	def index
 		@users = User.all
@@ -52,6 +52,6 @@ class UsersController < ApplicationController
 		
 	private
 		def post_params
-				params.require(:user).permit(:firstname, :lastname, :email, :phone_number, :street, :street_number, :zipcode, :city, :country, :password, :password_confirmation, {:roles => []})
+			params.require(:user).permit(:firstname, :lastname, :email, :phone_number, :street, :street_number, :zipcode, :city, :country, :password, :password_confirmation, {:roles => []})
 		end
 end

@@ -15,4 +15,11 @@ def default_url_options(options={})
   { :locale => I18n.locale }
    end
 
+
+ # rescue_from CanCan::AccessDenied do |exception|
+ #   redirect_to :back, :alert => exception.message
+#  end
+
+
+  
 end

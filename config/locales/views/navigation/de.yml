@@ -23,8 +23,9 @@
 de:
   layouts:
     navigation:
+      customers: Meine Gruppen
       events: Termine
-      users: Benutzer
+      members: Benutzer
     usercontrol:
       language: Sprache
       lang:

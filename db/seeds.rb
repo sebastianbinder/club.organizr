@@ -7,16 +7,17 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.delete_all
 Event.delete_all
-
-case Rails.env
-when "development"
+EventUsers.delete_all
+Customer.delete_all
+CustomerUsers.delete_all
 
 customer1 = Customer.create(
   name: "MyClub",
   street: "Brooklyn Street",
   street_number: "1460",
   zipcode: "10024",
-  city: "Manhattan"
+  city: "Manhattan",
+  country: "NY, USA"
 )
 
 user1 = User.create(
@@ -87,22 +88,4 @@ CustomerUsers.create(
     customer_id: customer1.id
 
   )
-end
-
-when "production"
-
-User.create(
-  password: "admin",
-  firstname: "Adminis",
-  lastname: "trator",
-  email: "admin@organizeme",
-  phone_number: "",
-  street: "",
-  street_number: "",
-  zipcode: "",
-  city: "",
-  country: "",
-  roles_mask: 1
-)
-
 end

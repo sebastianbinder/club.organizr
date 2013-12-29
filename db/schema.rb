@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20131229133624) do
     t.string   "street_number"
     t.string   "zipcode"
     t.string   "city"
+    t.string   "country"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

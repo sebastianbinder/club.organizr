@@ -1,73 +1,75 @@
 <div class="page-header">
-  <h1><%= @event.title %></h1>
+	<h1><%= @event.title %></h1>
 </div>
 
 <div class="row">
-  <div class="col-md-9">
+	<div class="col-md-9">
+		<div class="table-responsive">
+			<table class="table table-bordered table-hover table-condensed">
+				<tr>
+					<th><%= t(".title") %>:</th>
+					<td><%= @event.title %></td>
+				</tr>
+				<tr>
+					<th><%= t(".date") %>:</th>
+					<td><%= l @event.date, format: :default %></td>
+				</tr>
+				<% unless @event.time.nil? %>
+					<tr>
+						<th><%= t(".time") %>:</th>
+						<td><%= l @event.time, format: :time %></td>
+					</tr>
+				<% end %>
+				<% unless @event.location.empty? %>
+					<tr>
+						<th><%= t(".location") %>:</th>
+						<td><%= @event.location %></td>
+					</tr>
+				<% end %>
+				<% unless @event.details.empty? %>
+					<tr>
+						<th><%= t(".details") %>:</th>
+						<td><%= @event.details %></td>
+					</tr>
+				<% end %>
+				<tr>
+					<th><%= t(".accepted") %>:</th>
+					<td>
+						<% if @event_users_accepted.empty? %>
+							<i><%= t(".alerts.noone_accepted_so_far") %></i>
+						<% else %>
+							<% @event_users_accepted.each do |event_user| %>
+								<% event_user_details = User.find(event_user.user_id) %>
+								<%= event_user_details.firstname %> <%= event_user_details.lastname %>
+								<% if (current_user.is? :admin) || (current_user.is? :customer) || (current_user.is? :organizer) %>
+									<i>(<%= l event_user.updated_at, format: :long %>)</i>
+								<% end %>
+							<% end %>
+						<% end %>
+					</td>
+				</tr>
+				<tr>
+					<th><%= t(".denied") %>:</th>
+					<td>
+						<% if @event_users_denied.empty? %>
+							<i><%= t(".alerts.noone_denied_so_far") %></i>
+						<% else %>
+							<% @event_users_denied.each do |event_user| %>
+								<% event_user_details = User.find(event_user.user_id) %>
+								<%= event_user_details.firstname %> <%= event_user_details.lastname %>
+								<% if (current_user.is? :admin) || (current_user.is? :customer) || (current_user.is? :organizer) %>
+									<i>(<%= l event_user.updated_at, format: :long %>)</i>
+								<% end %>
+							<% end %>
+						<% end %>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
 
-    <div class="table-responsive">
-      <table class="table table-bordered table-hover table-condensed">
-        <tr>
-          <th><%= t(".title") %>:</th>
-          <td><%= @event.title %></td>
-        </tr>
-
-        <tr>
-          <th><%= t(".date") %>:</th>
-          <td><%= l @event.date, format: :default %></td>
-        </tr>
-        <% unless @event.time.nil? %>
-        <tr>
-          <th><%= t(".time") %>:</th>
-          <td><%= l @event.time, format: :time %></td>
-        </tr>
-        <% end %>
-        <% unless @event.location.empty? %>
-        <tr>
-          <th><%= t(".location") %>:</th>
-          <td><%= @event.location %></td>
-        </tr>
-        <% end %>
-        <% unless @event.details.empty? %>
-        <tr>
-          <th><%= t(".details") %>:</th>
-          <td><%= @event.details %></td>
-        </tr>
-        <% end %>
-        <tr>
-          <th><%= t(".accepted") %>:</th>
-          <td>
-          <% if @event_users_accepted.empty? %>
-          	<i><%= t(".alerts.noone_accepted_so_far") %></i>
-          	<% else %>
-			  <% @event_users_accepted.each do |event_user| %>
-				  <% event_user_details = User.find(event_user.user_id) %>
-				  <%= event_user_details.firstname %> <%= event_user_details.lastname %><% if (current_user.is? :admin) || (current_user.is? :customer) || (current_user.is? :organizer) %> <i>(<%= l event_user.updated_at, format: :long %>)</i><% end %>
-			 <% end %>
-			 <% end %>
-		  </td>
-        </tr>
-        <tr>
-          <th><%= t(".denied") %>:</th>
-          <td>
-          	<% if @event_users_denied.empty? %>
-          	<i><%= t(".alerts.noone_denied_so_far") %></i>
-          	<% else %>
-			  <% @event_users_denied.each do |event_user| %>
-				  <% event_user_details = User.find(event_user.user_id) %>
-				  <%= event_user_details.firstname %> <%= event_user_details.lastname %><% if (current_user.is? :admin) || (current_user.is? :customer) || (current_user.is? :organizer) %> <i>(<%= l event_user.updated_at, format: :long %>)</i><% end %>
-			 <% end %>
-			 <% end %>
-		  </td>
-        </tr> 
-      </table>
-    </div>
-
-  </div>
-
-  <div class="col-md-1">
-    <div class="btn-group-vertical">
-    </div>
-  </div>
+	<div class="col-md-1">
+		<div class="btn-group-vertical"></div>
+	</div>
 
 </div>
