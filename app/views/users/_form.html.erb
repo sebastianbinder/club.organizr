@@ -17,7 +17,7 @@
     <div class="table-responsive">
       <table class="table table-bordered table-hover table-condensed">
          <tr>
-          <th><%= f.label :email, t("users.email"), :class => "col-lg-2 control-label" %></th>
+          <th><%= f.label :email, t(".email"), :class => "col-lg-2 control-label" %></th>
           <td>
           	<div class="input-group">
             	<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
@@ -30,39 +30,40 @@
           <td><%= f.password_field :password, :class => "form-control" %><%= f.password_field :password_confirmation, :class => "form-control" %></td>
         </tr> -->
         <tr>
-          <th> <%= f.label :firstname, t("users.firstname"), :class => "col-lg-2 control-label" %></th>
+          <th> <%= f.label :firstname, t(".firstname"), :class => "col-lg-2 control-label" %></th>
           <td><%= f.text_field :firstname, :class => "form-control" %></td>
         </tr>
         <tr>
-          <th> <%= f.label :lastname, t("users.lastname"), :class => "col-lg-2 control-label" %></th>
+          <th> <%= f.label :lastname, t(".lastname"), :class => "col-lg-2 control-label" %></th>
           <td> <%= f.text_field :lastname, :class => "form-control" %></td>
         </tr>
         <tr>
-          <th> <%= f.label :phone_number, t("users.phone_number"), :class => "col-lg-2 control-label" %></th>
+          <th> <%= f.label :phone_number, t(".phone_number"), :class => "col-lg-2 control-label" %></th>
           <td> <%= f.text_field :phone_number, :class => "form-control" %></td>
         </tr>
         <tr>
-          <th> <%= f.label :street, t("users.street"), :class => "col-lg-2 control-label" %></th>
+          <th> <%= f.label :street, t(".street"), :class => "col-lg-2 control-label" %></th>
           <td> <%= f.text_field :street, :class => "form-control" %></td>
         </tr>
         <tr>
-          <th> <%= f.label :street_number, t("users.lastname"), :class => "col-lg-2 control-label" %></th>
+          <th> <%= f.label :street_number, t(".street_number"), :class => "col-lg-2 control-label" %></th>
           <td> <%= f.text_field :street_number, :class => "form-control" %></td>
         </tr>
         <tr>
-          <th> <%= f.label :zipcode, t("users.zipcode"), :class => "col-lg-2 control-label" %></th>
+          <th> <%= f.label :zipcode, t(".zipcode"), :class => "col-lg-2 control-label" %></th>
           <td> <%= f.text_field :zipcode, :class => "form-control" %></td>
         </tr>
         <tr>
-          <th> <%= f.label :city, t("users.city"), :class => "col-lg-2 control-label" %></th>
+          <th> <%= f.label :city, t(".city"), :class => "col-lg-2 control-label" %></th>
           <td> <%= f.text_field :city, :class => "form-control" %></td>
         </tr>
         <tr>
-          <th> <%= f.label :country, t("users.country"), :class => "col-lg-2 control-label" %></th>
+          <th> <%= f.label :country, t(".country"), :class => "col-lg-2 control-label" %></th>
           <td> <%= f.text_field :country, :class => "form-control" %></td>
         </tr>
         <tr>
-        	<td colspan="2">
+        	<th> <%= f.label :roles, t(".roles"), :class => "col-lg-2 control-label" %></th>
+        	<td>
         	<% for role in User::ROLES %>
   <%= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), {:name => "user[roles][]"}%>
   <%= label_tag "user_roles_#{role}", role.humanize %>&nbsp;&nbsp;&nbsp;
@@ -71,7 +72,16 @@
         	</td>
         </tr>
         <tr>
-          <td colspan="2"><%= f.submit t("actions.save"), :class => "btn btn-success" %></td>
+          <td colspan="2">
+          <%= f.submit t(".save"), :class => "btn btn-success" %>
+          <% if params[:action] == "new" %>
+          <%= link_to t(".cancel"), events_path, data: { confirm: t(".alerts.cancel_new") }, :class => "btn btn-danger" %>
+          <% end %>
+          <% if params[:action] == "edit" %>
+          <%= link_to t(".cancel"), user_path, data: { confirm: t(".alerts.cancel_edit") }, :class => "btn btn-danger" %>
+          <%= link_to t(".destroy"), @user, method: :delete, data: { confirm: t(".alerts.destroy") }, :class => "btn btn-danger" %>
+          <% end %>
+          </td>
         </tr>
       </table>
       

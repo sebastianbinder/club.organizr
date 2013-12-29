@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 <div class="page-header">
-  <h1><%= t("gen.users")%></h1>
+  <h1><%= t(".users")%></h1>
 </div>
 
 
@@ -25,9 +25,9 @@
     <div class="table-responsive">
       <table class="table table-bordered table-hover table-condensed">
         <tr>
-          <th><%= t("users.email") %></th>
-          <th><%= t("users.firstname") %></th>
-          <th><%= t("users.lastname") %></th>
+          <th><%= t(".email") %></th>
+          <th><%= t(".firstname") %></th>
+          <th><%= t(".lastname") %></th>
           <% if can? :read, User %>
           <th></th>
           <% end %>

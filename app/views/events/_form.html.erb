@@ -36,7 +36,16 @@
           <td> <%= f.text_area :details, :class => "form-control" %></td>
         </tr>
         <tr>
-          <td colspan="2"><%= f.submit t(".save"), :class => "btn btn-success" %></td>
+          <td colspan="2">
+          <%= f.submit t(".save"), :class => "btn btn-success" %>
+          <% if params[:action] == "new" %>
+          <%= link_to t(".cancel"), events_path, data: { confirm: t(".alerts.cancel_new") }, :class => "btn btn-danger" %>
+          <% end %>
+          <% if params[:action] == "edit" %>
+          <%= link_to t(".cancel"), event_path, data: { confirm: t(".alerts.cancel_edit") }, :class => "btn btn-danger" %>
+          <%= link_to t(".destroy"), @event, method: :delete, data: { confirm: t(".alerts.destroy") }, :class => "btn btn-danger" %>
+          <% end %>
+          </td>
         </tr>
       </table>
     </div>

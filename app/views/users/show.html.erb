@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 <div class="page-header">
-  <h1><%= t("gen.user") %> "<%= @user.firstname %> <%= @user.lastname %>"</h1>
+  <h1><%= t(".user") %> "<%= @user.firstname %> <%= @user.lastname %>"</h1>
 </div>
 
 <div class="row">
@@ -10,28 +10,23 @@
     <div class="table-responsive">
       <table class="table table-bordered table-hover table-condensed">
         <tr>
-          <th><%= t("users.login") %></th>
-          <td><%= @user.login %></td>
-        </tr>
-
-        <tr>
-          <th><%= t("users.firstname") %></th>
+          <th><%= t(".firstname") %></th>
           <td><%= @user.firstname %></td>
         </tr>
         <tr>
-          <th><%= t("users.lastname") %></th>
+          <th><%= t(".lastname") %></th>
           <td><%= @user.lastname %></td>
         </tr>
         <tr>
-          <th><%= t("users.email") %></th>
+          <th><%= t(".email") %></th>
           <td><%= @user.email %></td>
         </tr>
         <tr>
-          <th><%= t("users.phone_number") %></th>
+          <th><%= t(".phone_number") %></th>
           <td><%= @user.phone_number %></td>
         </tr>
         <tr>
-          <th><%= t("users.address") %></th>
+          <th><%= t(".address") %></th>
           <td><%= @user.street %> <%= @user.street_number %><br>
             <%= @user.zipcode %><%= " " if @user.city.present? %><%= @user.city %><br>
             <%= @user.country %></td>

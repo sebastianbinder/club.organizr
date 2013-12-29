@@ -1,0 +1,59 @@
+# encoding: UTF-8
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+de:
+  events:
+    index:
+      events: Termine
+      date: Datum
+      title: Titel
+      location: Ort      
+      alerts:
+        dont_you_want_to_attend: Schade, Sie wollen wirklich für diese Veranstaltung absagen?
+        do_you_want_to_attend: Möchten Sie wirklich für diese Veranstaltung zusagen?
+    show:
+      title: Titel
+      date: Datum
+      time: Uhrzeit
+      location: Ort
+      accepted: Anwesend
+      denied: Entschuldigt
+      alerts:
+        noone_accepted_so_far: Noch ziemlich wenig los hier...
+        noone_denied_so_far: Wirklich? Keine Absagen bisher?
+    edit:
+      header: '"%{title}" bearbeiten'
+    new:
+      header: Neuen Termin anlegen
+    form:
+      title: Titel
+      date: Datum
+      time: Uhrzeit
+      location: Ort
+      details: Details
+      save: Termin speichern!
+      cancel: Abbrechen
+      destroy: Löschen
+      alerts:
+        cancel_edit: Möchten Sie das Ändern dieses Termins wirklich abbrechen?
+        cancel_new: Möchten Sie das Erstellen dieses Termins wirklich abbrechen?
+        destroy: Möchten Sie diesen Termin wirklich löschen? Dieser Vorgang kann nicht rückgängig gemacht werden!

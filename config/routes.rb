@@ -1,6 +1,6 @@
 OrganizeMe::Application.routes.draw do
 
-  devise_for :users
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -56,6 +56,7 @@ OrganizeMe::Application.routes.draw do
   #     resources :products
   #   end
   	scope "(:locale)", :locale => /en|de/ do
+  devise_for :users
    root :to => "events#index"
    get "/", :controller => "events", :action => "index"
    resources :events
