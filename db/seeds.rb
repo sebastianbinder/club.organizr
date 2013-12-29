@@ -11,7 +11,15 @@ Event.delete_all
 case Rails.env
 when "development"
 
-User.create(
+customer1 = Customer.create(
+  name: "MyClub",
+  street: "Brooklyn Street",
+  street_number: "1460",
+  zipcode: "10024",
+  city: "Manhattan"
+)
+
+user1 = User.create(
   password: "test12345",
   firstname: "Taylor",
   lastname: "Class",
@@ -21,11 +29,10 @@ User.create(
   street_number: "1460",
   zipcode: "10024",
   city: "Manhattan",
-  country: "NY, USA",
-  roles_mask: 1
+  country: "NY, USA"
 )
 
-User.create(
+user2 = User.create(
   password: "test12345",
   firstname: "Wynona",
   lastname: "Browning",
@@ -35,11 +42,10 @@ User.create(
   street_number: "1460",
   zipcode: "10024",
   city: "Manhattan",
-  country: "NY, USA",
-  roles_mask: 4
+  country: "NY, USA"
 )
 
-User.create(
+user3 = User.create(
   password: "test12345",
   firstname: "Thomas",
   lastname: "Sloan",
@@ -49,7 +55,25 @@ User.create(
   street_number: "1460",
   zipcode: "10024",
   city: "Manhattan",
-  country: "NY, USA",
+  country: "NY, USA"
+)
+
+
+CustomerUsers.create(
+  user_id: user1.id,
+  customer_id: customer1.id,
+  roles_mask: 1
+)
+
+CustomerUsers.create(
+  user_id: user2.id,
+  customer_id: customer1.id,
+  roles_mask: 4
+)
+
+CustomerUsers.create(
+  user_id: user3.id,
+  customer_id: customer1.id,
   roles_mask: 8
 )
 
@@ -59,7 +83,9 @@ User.create(
     time: "19:00:00",
     title: "Event",
     location: "Everywhere",
-    details: ""
+    details: "",
+    customer_id: customer1.id
+
   )
 end
 
