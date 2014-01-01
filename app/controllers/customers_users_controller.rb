@@ -14,7 +14,7 @@ class CustomersUsersController < ApplicationController
 	
 	def new
 		@customer = Customer.find(params[:customer_id])
-		@customers_user = CustomersUser.new
+		@customers_user = CustomersUser.new(:customer_id => params[:customer_id])
 	end
 	
 	def create
