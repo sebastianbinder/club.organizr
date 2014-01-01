@@ -41,7 +41,7 @@ class Ability
 	    
 			if user.role? :member
 				can :update, EventsUser
-				can :read, CustomerUser
+				can :read, CustomersUser
 			end	
 	    
 			if user.role? :organizer
