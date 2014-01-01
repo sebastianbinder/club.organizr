@@ -16,10 +16,13 @@ def default_url_options(options={})
    end
 
 
- # rescue_from CanCan::AccessDenied do |exception|
- #   redirect_to :back, :alert => exception.message
-#  end
+ rescue_from CanCan::AccessDenied do |exception|
+   redirect_to :back, :alert => exception.message
+ end
 
+private
 
-  
+  def current_ability
+    @current_ability ||= Ability.new(current_user, params)
+  end  
 end

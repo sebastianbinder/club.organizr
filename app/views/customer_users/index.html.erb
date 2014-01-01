@@ -1,0 +1,66 @@
+<div class="page-header">
+	<h1><%= t(".users")%></h1>
+</div>
+
+<div class="row">
+	<div class="col-md-1 col-md-offset-8" align="right">
+		<% if can? :create, User %>
+			<p><%= link_to(new_user_path) do %>
+				<button type="button" class="btn btn-success btn-sm">
+					<span class="glyphicon glyphicon-plus"></span>
+				</button>
+			<% end %></p>
+		<% end %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-9">
+		<div class="table-responsive">
+			<table class="table table-bordered table-hover table-condensed">
+				<tr>
+					<th><%= t(".email") %></th>
+					<th><%= t(".firstname") %></th>
+					<th><%= t(".lastname") %></th>
+					<% if can? :read, CustomerUser %>
+						<th></th>
+					<% end %>
+					<% if can? :update, CustomerUser %>
+						<th></th>
+					<% end %>
+				</tr>
+				<% @customer_users.each do |user| %>
+					<tr>
+						<td><%= user.user.email %></td>
+						<td><%= user.user.firstname %></td>
+						<td><%= user.user.lastname %></td>
+						<% if can? :read, CustomerUser %>
+							<td class="button">
+								<%= link_to(customer_customer_user_path(:id => user.id )) do %>
+									<button type="button" class="btn btn-info btn-sm">
+										<span class="glyphicon glyphicon-info-sign"></span>
+									</button>
+								<% end %>
+							</td>
+						<% end %>
+						<% if can? :update, CustomerUser %>
+							<td class="button">
+								<%= link_to(edit_customer_customer_user_path(:id => user.id )) do %>
+									<button type="button" class="btn btn-warning btn-sm">
+										<span class="glyphicon glyphicon-wrench"></span>
+									</button>
+								<% end %>
+							</td>
+						<% end %>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+
+		<div class="col-md-offset-4"></div>
+
+	</div>
+
+	<div class="col-md-3"></div>
+
+</div>

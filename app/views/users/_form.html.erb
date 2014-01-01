@@ -66,11 +66,7 @@
 					<tr>
 						<th> <%= f.label :roles, t(".roles"), :class => "col-lg-2 control-label" %></th>
 						<td>
-							<% for role in User::ROLES %>
-								<%= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), {:name => "user[roles][]"}%>
-								<%= label_tag "user_roles_#{role}", role.humanize %>&nbsp;&nbsp;&nbsp;
-							<% end %>
-							<%= hidden_field_tag "user[roles][]", "" %>
+							<%#= f.collection_select :role, User::ROLES, :to_s, :humanize %>
 						</td>
 					</tr>
 					<tr>

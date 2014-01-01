@@ -7,9 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.delete_all
 Event.delete_all
-EventUsers.delete_all
+EventUser.delete_all
 Customer.delete_all
-CustomerUsers.delete_all
+CustomerUser.delete_all
 
 customer1 = Customer.create(
   name: "MyClub",
@@ -60,22 +60,22 @@ user3 = User.create(
 )
 
 
-CustomerUsers.create(
+CustomerUser.create(
   user_id: user1.id,
-  customer_id: customer1.id,
-  roles_mask: 1
+  customer_id: 0,
+  role: "admin"
 )
 
-CustomerUsers.create(
+CustomerUser.create(
   user_id: user2.id,
   customer_id: customer1.id,
-  roles_mask: 4
+  role: "customer"
 )
 
-CustomerUsers.create(
+CustomerUser.create(
   user_id: user3.id,
   customer_id: customer1.id,
-  roles_mask: 8
+  role: "member"
 )
 
 20.times do

@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131229133624) do
+ActiveRecord::Schema.define(version: 20131231145940) do
 
   create_table "customer_users", force: true do |t|
     t.integer  "user_id"
     t.integer  "customer_id"
-    t.integer  "roles_mask"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "role"
   end
 
   create_table "customers", force: true do |t|

@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
 	before_filter :authenticate_user!
-	#load_and_authorize_resource
+	load_and_authorize_resource
 	
 	def index
 		@events = Event.where(:customer_id => params[:customer_id])	
@@ -27,8 +27,8 @@ class EventsController < ApplicationController
 		
 	def show
 		@event = Event.find(params[:id])
-		@event_users_accepted = EventUsers.where(:event_id => params[:id], :status => 1)
-		@event_users_denied = EventUsers.where(:event_id => params[:id], :status => 0)
+		@event_users_accepted = EventUser.where(:event_id => params[:id], :status => 1)
+		@event_users_denied = EventUser.where(:event_id => params[:id], :status => 0)
 		
 	end
 		
