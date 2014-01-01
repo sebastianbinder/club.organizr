@@ -1,0 +1,52 @@
+<% if @customers_user.errors.any? %>
+	<div class="alert alert-danger">
+		<strong><%= pluralize(@customers_user.errors.count, "error") %> prohibited this user from being saved:</strong>
+		<ul>
+			<% @customers_user.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+
+<%= form_for [@customer, @customers_user] do |f| %>
+	<div class="row">
+		<div class="col-md-9">
+			<div class="table-responsive">
+				<table class="table table-bordered table-hover table-condensed">
+				<tr>
+						<th> <%= f.label :user_id, t(".user_id"), :class => "col-lg-2 control-label" %></th>
+						<td> <%= f.text_field :user_id, :class => "form-control" %></td>
+					</tr>
+					<tr>
+						<th> <%= f.label :roles, t(".roles"), :class => "col-lg-2 control-label" %></th>
+						<td>
+							<%= f.collection_select :role, CustomersUser::ROLES, :to_s, :humanize %>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<%= f.hidden_field :customer_id, :class => "form-control" %>
+							<div class="btn-group">
+							<%= f.submit t(".save"), :class => "btn btn-success" %>
+							<% if params[:action] == "new" %>
+								<%= link_to t(".cancel"), customer_customers_users_path, data: { confirm: t(".alerts.cancel_new") }, :class => "btn btn-danger" %>
+							</div>
+							<% end %>
+							<% if params[:action] == "edit" %>
+								<%= link_to t(".cancel"), customer_customers_user_path, data: { confirm: t(".alerts.cancel_edit") }, :class => "btn btn-danger" %>
+								</div>
+								<%= link_to t(".destroy"), customer_customers_user_path(params[:customer_id], @customers_user), method: :delete, data: { confirm: t(".alerts.destroy") }, :class => "btn btn-danger right" %>
+							<% end %>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<div class="col-md-1">
+			<div class="btn-group-vertical"></div>
+		</div>
+
+	</div>
+<% end %>

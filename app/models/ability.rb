@@ -1,29 +1,62 @@
 class Ability
 	include CanCan::Ability
 
-	def initialize(user)
-    	user ||= User.new # guest user (not logged in)
-    
-	    if user.is? :admin
-	    	can :manage, :all
-	    	
-	    elsif user.is? :customer
-	    	can :manage, Event
-	    	can :manage, User
-	    	
-	    elsif user.is? :organizer
-	    	can :manage, Event
-	    	can :update, EventUsers, :user_id => user.id
-			can :read, User
+	def initialize(current_user, params)
+	
+		user = CustomersUser.where(:user_id => current_user.id).first
+		
+		if user.nil?
+			user = CustomersUser.new
+			can :index, Customer
+		end
+				
+		if user.role? :admin
+			can :manage, :all
+		
+		else
 			
-	    elsif user.is? :member
-	    	can :read, Event
-	    	can :update, EventUsers, :user_id => user.id
-	    	can :update, User, :id => user.id
-	    	can :read, User
-	    	
-	    elsif user.is? :viewer
+			if params[:customer_id].nil?
+
+				user = CustomersUser.where(:user_id => current_user.id).first
+				if user.nil?
+					user = CustomersUser.new
+				end	
+			else
+			
+				user = CustomersUser.where(:user_id => current_user.id, :customer_id => params[:customer_id]).first
+				if user.nil?
+					user = CustomersUser.new
+				end
+			end
 	    
-	    end
+			
+				    	    	
+			if user.role? :viewer
+				can :index, Customer
+				can :enter, Customer
+				can :read, Event
+	    		can :show, User, :id => current_user.id
+				can :update, User, :id => current_user.id
+			end	
+	    
+			if user.role? :member
+				can :update, EventsUser
+				can :read, CustomersUser
+			end	
+	    
+			if user.role? :organizer
+	    		can :manage, Event
+				can :update, EventsUser
+				can :manage, CustomersUser
+				can :see_date, EventsUser
+			end	
+		
+			if user.role? :customer
+
+			end
+			
+			
+	    
+		end    
 	end
 end

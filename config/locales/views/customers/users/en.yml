@@ -21,14 +21,14 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  users:
+  customers_users:
     index:
-      users: Users
+      users: Members
       email: E-Mail
       firstname: Firstname
       lastname: Lastname
     show:
-      user: User
+      user: Member
       firstname: Firstname
       lastname: Lastname
       email: E-Mail
@@ -36,10 +36,11 @@ en:
       address: Address
       edit: Edit Details
     edit:
-      header: Edit "%{firstname} %{lastname}"
+      header: Edit Details
     new:
-      header: Create new user
+      header: Authorize New Member
     form:
+      user_id: User-ID
       email: E-Mail
       firstname: Firstname
       lastname: Lastname
@@ -50,10 +51,10 @@ en:
       city: City
       country: Country
       roles: Roles
-      save: Save this user!
+      save: Save
       cancel: Cancel
-      destroy: Delete
+      destroy: Remove from group
       alerts:
         cancel_edit: Do you really want to cancel editing this user?
-        cancel_new: Do you really want to cancel creating this new user?
-        destroy: Do you really want to delete this user? You cannot undo this!
+        cancel_new: Do you really want to cancel authorizing this new user?
+        destroy: Do you really want to remove this user from your group?

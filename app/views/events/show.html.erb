@@ -41,7 +41,7 @@
 							<% @event_users_accepted.each do |event_user| %>
 								<% event_user_details = User.find(event_user.user_id) %>
 								<%= event_user_details.firstname %> <%= event_user_details.lastname %>
-								<% if (current_user.is? :admin) || (current_user.is? :customer) || (current_user.is? :organizer) %>
+								<% if can? :see_date, EventsUser %>
 									<i>(<%= l event_user.updated_at, format: :long %>)</i>
 								<% end %>
 							<% end %>
@@ -57,7 +57,7 @@
 							<% @event_users_denied.each do |event_user| %>
 								<% event_user_details = User.find(event_user.user_id) %>
 								<%= event_user_details.firstname %> <%= event_user_details.lastname %>
-								<% if (current_user.is? :admin) || (current_user.is? :customer) || (current_user.is? :organizer) %>
+								<% if can? :see_date, EventsUser %>
 									<i>(<%= l event_user.updated_at, format: :long %>)</i>
 								<% end %>
 							<% end %>
@@ -69,7 +69,17 @@
 	</div>
 
 	<div class="col-md-1">
-		<div class="btn-group-vertical"></div>
+		<div class="btn-group-vertical">
+			<% if can? :update, Event %>
+							<td class="button">
+								<%= link_to(edit_customer_event_path) do %>
+									<button type="button" class="btn btn-warning">
+										<span class="glyphicon glyphicon-wrench"></span> <%= t(".edit") %>
+									</button>
+								<% end %>
+							</td>
+						<% end %>
+		</div>
 	</div>
 
 </div>

@@ -21,14 +21,14 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 de:
-  users:
+  customers_users:
     index:
-      users: Benutzer
+      users: Mitglieder
       email: E-Mail
       firstname: Vorname
       lastname: Nachname
     show:
-      user: Benutzer
+      user: Mitglied
       firstname: Vorname
       lastname: Nachname
       email: E-Mail
@@ -36,10 +36,11 @@ de:
       address: Adresse
       edit: Details bearbeiten
     edit:
-      header: '"%{firstname} %{lastname}" bearbeiten'
+      header: 'Details bearbeiten'
     new:
-      header: Neuen Benutzer anlegen
+      header: Neues Mitglied hinzufügen
     form:
+      user_id: Benutzer-ID
       email: E-Mail
       firstname: Vorname
       lastname: Nachname
@@ -52,8 +53,8 @@ de:
       roles: Benutzerrolle
       save: Benutzer speichern!
       cancel: Abbrechen
-      destroy: Löschen
+      destroy: Aus Gruppe entfernen
       alerts:
         cancel_edit: Möchten Sie das Ändern dieses Benutzers wirklich abbrechen?
-        cancel_new: Möchten Sie das Erstellen dieses Benutzers wirklich abbrechen?
-        destroy: Möchten Sie diesen Benutzer wirklich löschen? Dieser Vorgang kann nicht rückgängig gemacht werden!
+        cancel_new: Möchten Sie das Autorisieren dieses Benutzers wirklich abbrechen?
+        destroy: Möchten Sie diesen Benutzer wirklich aus Ihrer Gruppe entfernen?

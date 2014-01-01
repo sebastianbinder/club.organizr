@@ -39,6 +39,10 @@
 	vertical-align: middle;
 }
 
+.btn.right {
+	float: right;
+}
+
 /*###################################
 
         css for screens > 768px

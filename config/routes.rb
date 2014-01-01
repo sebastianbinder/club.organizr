@@ -59,7 +59,8 @@ OrganizeMe::Application.routes.draw do
 	  root :to => "customers#index"
 	  resources :customers do
 		  resources :events
-		  resources :event_users
+		  resources :customers_users
+		  resources :events_users
 	  end
 	  resources :users
   end

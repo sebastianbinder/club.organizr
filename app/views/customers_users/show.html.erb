@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h1><%= t(".user") %> "<%= @user.firstname %> <%= @user.lastname %>"</h1>
+	<h1><%= t(".user") %> "<%= @customers_user.user.firstname %> <%= @customers_user.user.lastname %>"</h1>
 </div>
 
 <div class="row">
@@ -8,25 +8,25 @@
 			<table class="table table-bordered table-hover table-condensed">
 				<tr>
 					<th><%= t(".firstname") %></th>
-					<td><%= @user.firstname %></td>
+					<td><%= @customers_user.user.firstname %></td>
 				</tr>
 				<tr>
 					<th><%= t(".lastname") %></th>
-					<td><%= @user.lastname %></td>
+					<td><%= @customers_user.user.lastname %></td>
 				</tr>
 				<tr>
 					<th><%= t(".email") %></th>
-					<td><%= @user.email %></td>
+					<td><%= @customers_user.user.email %></td>
 				</tr>
 				<tr>
 					<th><%= t(".phone_number") %></th>
-					<td><%= @user.phone_number %></td>
+					<td><%= @customers_user.user.phone_number %></td>
 				</tr>
 				<tr>
 					<th><%= t(".address") %></th>
-					<td><%= @user.street %> <%= @user.street_number %><br>
-					<%= @user.zipcode %><%= @user.city %><br>
-					<%= @user.country %></td>
+					<td><%= @customers_user.user.street %> <%= @customers_user.user.street_number %><br>
+					<%= @customers_user.user.zipcode %><%= @customers_user.user.city %><br>
+					<%= @customers_user.user.country %></td>
 				</tr>
 			</table>
 		</div>
@@ -34,9 +34,9 @@
 
 	<div class="col-md-1">
 		<div class="btn-group-vertical">
-			<% if can? :update, User %>
+			<% if can? :update, CustomersUser %>
 							<td class="button">
-								<%= link_to(edit_user_path) do %>
+								<%= link_to(edit_customer_customers_user_path) do %>
 									<button type="button" class="btn btn-warning">
 										<span class="glyphicon glyphicon-wrench"></span> <%= t(".edit") %>
 									</button>

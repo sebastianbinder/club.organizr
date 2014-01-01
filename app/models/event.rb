@@ -1,5 +1,8 @@
 class Event < ActiveRecord::Base
-	has_and_belongs_to_many :users
+	belongs_to :customer
+	
+	has_many :events_users
+	has_many :users, through: :events_users
 	
 	validates :title, :presence => true
 	validates :date, :presence => true

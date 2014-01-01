@@ -9,17 +9,19 @@
 	</div>
 <% end %>
 
-<%= form_for @event, url: customer_event_path(params[:customer_id], @event) do |f| %>
+<%= form_for [@customer, @event] do |f| %>
+
+
 	<div class="row">
 		<div class="col-md-9">
 			<div class="table-responsive">
 				<table class="table table-bordered table-hover table-condensed">
 					<tr>
-						<th><%= f.label :title, t(".title"), :class => "col-lg-2 control-label" %></th>
+						<th><%= f.label :title, t(".title") + "*", :class => "col-lg-2 control-label" %></th>
 						<td><%= f.text_field :title, :class => "form-control" %></td>
 					</tr>
 					<tr>
-						<th> <%= f.label :date, t(".date"), :class => "col-lg-2 control-label" %></th>
+						<th> <%= f.label :date, t(".date") + "*", :class => "col-lg-2 control-label" %></th>
 						<td><%= f.date_field :date, :class => "form-control" %></td>
 					</tr>
 					<tr>
@@ -36,13 +38,19 @@
 					</tr>
 					<tr>
 						<td colspan="2">
+						<%= f.hidden_field :customer_id, :class => "form-control" %>
+						<div class="btn-group">
+							
 							<%= f.submit t(".save"), :class => "btn btn-success" %>
 							<% if params[:action] == "new" %>
 								<%= link_to t(".cancel"), customer_events_path, data: { confirm: t(".alerts.cancel_new") }, :class => "btn btn-danger" %>
+								</div>
 							<% end %>
 							<% if params[:action] == "edit" %>
 								<%= link_to t(".cancel"), customer_event_path, data: { confirm: t(".alerts.cancel_edit") }, :class => "btn btn-danger" %>
-								<%#= link_to t(".destroy"), customer_event_path, method: :delete, data: { confirm: t(".alerts.destroy") }, :class => "btn btn-danger" %>
+								</div>
+								<%= link_to t(".destroy"), customer_event_path, method: :delete, data: { confirm: t(".alerts.destroy") }, :class => "btn btn-danger right" %>
+								
 							<% end %>
 						</td>
 					</tr>
