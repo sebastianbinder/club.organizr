@@ -22,7 +22,7 @@
 					<th><%= t(".date") %></th>
 					<th><%= t(".title") %></th>
 					<th><%= t(".location") %></th>
-					<% if can? :update, EventUser %>
+					<% if can? :update, EventsUser %>
 						<th></th>
 					<% end %>
 					<th></th>
@@ -40,27 +40,27 @@
 						</td>
 						<td><%= event.title %></td>
 						<td><%= event.location %></td>
-						<% if can? :update, EventUser %>
+						<% if can? :update, EventsUser %>
 							<td class="twobuttons">
 								<% if get_event_user_status(event.id) == 1 %>
-									<%= link_to(customer_event_user_path(:id => event.id, :status => 0), :method => :put, data: {confirm: t(".alerts.dont_you_want_to_attend")}) do %>
+									<%= link_to(customer_events_user_path(:id => event.id, :status => 0), :method => :put, data: {confirm: t(".alerts.dont_you_want_to_attend")}) do %>
 										<button type="button" class="btn btn-success btn-sm">
 											<span class="glyphicon glyphicon-ok-sign"></span>
 										</button>
 									<% end %>
 								<% elsif get_event_user_status(event.id) == 0 %>
-									<%= link_to(customer_event_user_path(:id => event.id, :status => 1), :method => :put, data: {confirm: t(".alerts.do_you_want_to_attend")}) do %>
+									<%= link_to(customer_events_user_path(:id => event.id, :status => 1), :method => :put, data: {confirm: t(".alerts.do_you_want_to_attend")}) do %>
 										<button type="button" class="btn btn-danger btn-sm">
 											<span class="glyphicon glyphicon-ok-circle"></span>
 										</button>
 									<% end %>
 								<% else %>
-									<%= link_to(customer_event_user_path(:id => event.id, :status => 1), :method => :put, data: {confirm: t(".alerts.do_you_want_to_attend")}) do %>
+									<%= link_to(customer_events_user_path(:id => event.id, :status => 1), :method => :put, data: {confirm: t(".alerts.do_you_want_to_attend")}) do %>
 										<button type="button" class="btn btn-success btn-sm">
 											<span class="glyphicon glyphicon-ok-sign"></span>
 										</button>
 									<% end %>
-									<%= link_to(customer_event_user_path(:id => event.id, :status => 0), :method => :put, data: {confirm: t(".alerts.dont_you_want_to_attend")}) do %>
+									<%= link_to(customer_events_user_path(:id => event.id, :status => 0), :method => :put, data: {confirm: t(".alerts.dont_you_want_to_attend")}) do %>
 										<button type="button" class="btn btn-danger btn-sm">
 											<span class="glyphicon glyphicon-ok-circle"></span>
 										</button>

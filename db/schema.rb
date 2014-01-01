@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20131231145940) do
 
-  create_table "customer_users", force: true do |t|
+  create_table "customers_users", force: true do |t|
     t.integer  "user_id"
     t.integer  "customer_id"
     t.datetime "created_at"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20131231145940) do
     t.datetime "updated_at"
   end
 
-  create_table "event_users", force: true do |t|
+  create_table "events_users", force: true do |t|
     t.integer  "event_id"
     t.integer  "user_id"
     t.integer  "status"

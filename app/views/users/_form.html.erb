@@ -64,21 +64,21 @@
 						<td> <%= f.text_field :country, :class => "form-control" %></td>
 					</tr>
 					<tr>
-						<th> <%= f.label :roles, t(".roles"), :class => "col-lg-2 control-label" %></th>
-						<td>
-							<%#= f.collection_select :role, User::ROLES, :to_s, :humanize %>
-						</td>
-					</tr>
-					<tr>
 						<td colspan="2">
+						<div class="btn-group">
+           
+         
 							<%= f.submit t(".save"), :class => "btn btn-success" %>
 							<% if params[:action] == "new" %>
 								<%= link_to t(".cancel"), events_path, data: { confirm: t(".alerts.cancel_new") }, :class => "btn btn-danger" %>
+								</div>
 							<% end %>
 							<% if params[:action] == "edit" %>
 								<%= link_to t(".cancel"), user_path, data: { confirm: t(".alerts.cancel_edit") }, :class => "btn btn-danger" %>
-								<%= link_to t(".destroy"), @user, method: :delete, data: { confirm: t(".alerts.destroy") }, :class => "btn btn-danger" %>
+								</div>
+								<%= link_to t(".destroy"), @user, method: :delete, data: { confirm: t(".alerts.destroy") }, :class => "btn btn-danger right" %>
 							<% end %>
+							 
 						</td>
 					</tr>
 				</table>

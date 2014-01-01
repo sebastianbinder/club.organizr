@@ -7,12 +7,21 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.delete_all
 Event.delete_all
-EventUser.delete_all
+EventsUser.delete_all
 Customer.delete_all
-CustomerUser.delete_all
+CustomersUser.delete_all
 
 customer1 = Customer.create(
   name: "MyClub",
+  street: "Brooklyn Street",
+  street_number: "1460",
+  zipcode: "10024",
+  city: "Manhattan",
+  country: "NY, USA"
+)
+
+customer2 = Customer.create(
+  name: "MySecondClub",
   street: "Brooklyn Street",
   street_number: "1460",
   zipcode: "10024",
@@ -60,21 +69,27 @@ user3 = User.create(
 )
 
 
-CustomerUser.create(
+CustomersUser.create(
   user_id: user1.id,
   customer_id: 0,
   role: "admin"
 )
 
-CustomerUser.create(
+CustomersUser.create(
   user_id: user2.id,
   customer_id: customer1.id,
   role: "customer"
 )
 
-CustomerUser.create(
+CustomersUser.create(
   user_id: user3.id,
   customer_id: customer1.id,
+  role: "viewer"
+)
+
+CustomersUser.create(
+  user_id: user2.id,
+  customer_id: customer2.id,
   role: "member"
 )
 

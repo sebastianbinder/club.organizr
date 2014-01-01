@@ -34,6 +34,7 @@ en:
       email: E-Mail
       phone_number: Phone Number
       address: Address
+      edit: Edit Details
     edit:
       header: Edit "%{firstname} %{lastname}"
     new:

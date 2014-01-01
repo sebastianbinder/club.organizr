@@ -1,5 +1,5 @@
 class RenameTableEventsUsers < ActiveRecord::Migration
   def change
-  	rename_table :events_users, :event_users
+ 	rename_table :customer_users, :customers_users
   end
 end

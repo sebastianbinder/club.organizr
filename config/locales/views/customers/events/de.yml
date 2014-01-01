@@ -37,6 +37,7 @@ de:
       location: Ort
       accepted: Anwesend
       denied: Entschuldigt
+      edit: Details bearbeiten
       alerts:
         noone_accepted_so_far: Noch ziemlich wenig los hier...
         noone_denied_so_far: Wirklich? Keine Absagen bisher?
