@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  
+
 before_filter :set_locale
 
 before_filter :set_post_params
@@ -28,10 +28,6 @@ def default_url_options(options={})
  rescue_from CanCan::AccessDenied do |exception|
    redirect_to :back, :alert => exception.message
  end
- 
- 
- 
- 
 
 private
 

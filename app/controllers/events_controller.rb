@@ -4,14 +4,17 @@ class EventsController < ApplicationController
 	load_and_authorize_resource
 	
 	def index
+		@customer = Customer.find(params[:customer_id])
 		@events = Event.where(:customer_id => params[:customer_id])	
 	end
 	
 	def new
+		@customer = Customer.find(params[:customer_id])
 		@event = Event.new(:customer_id => params[:customer_id])
 	end
 	
-	def create	
+	def create
+		@customer = Customer.find(params[:customer_id])
 		@event = Event.new(event_params) 
 		if @event.save
 			redirect_to customer_events_path(params[:customer_id])
@@ -22,10 +25,12 @@ class EventsController < ApplicationController
 	
 	
 	def edit
+		@customer = Customer.find(params[:customer_id])
 		@event = Event.find(params[:id])
 	end
 		
 	def show
+		@customer = Customer.find(params[:customer_id])
 		@event = Event.find(params[:id])
 		@event_users_accepted = EventsUser.where(:event_id => params[:id], :status => 1)
 		@event_users_denied = EventsUser.where(:event_id => params[:id], :status => 0)
@@ -40,6 +45,7 @@ class EventsController < ApplicationController
 	end
 	
 	def update
+		@customer = Customer.find(params[:customer_id])
 		@event = Event.find(params[:id])
  
 		if @event.update(event_params)

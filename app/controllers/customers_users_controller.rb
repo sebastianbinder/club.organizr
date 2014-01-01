@@ -5,16 +5,20 @@ class CustomersUsersController < ApplicationController
 	before_filter :authenticate_user!
 	load_and_authorize_resource
 	
+	
+	
 	def index
 		@customers_users = CustomersUser.where(:customer_id => params[:customer_id])
 	end
 	
 	
 	def new
-		@customers_user = CustomersUser.new(:customer_id => params[:customer_id])
+		@customer = Customer.find(params[:customer_id])
+		@customers_user = CustomersUser.new
 	end
 	
-	def create	
+	def create
+		@customer = Customer.find(params[:customer_id])
 		@customers_user = CustomersUser.new(customers_user_params) 
 		if @customers_user.save
 			redirect_to customer_customers_users_path(params[:customer_id])
@@ -25,6 +29,7 @@ class CustomersUsersController < ApplicationController
 	
 	
 	def edit
+		@customer = Customer.find(params[:customer_id])
 		@customers_user = CustomersUser.find(params[:id])
 	end
 	
@@ -42,7 +47,7 @@ class CustomersUsersController < ApplicationController
 	end
 
 	def update
-	
+		@customer = Customer.find(params[:customer_id])
 		@customers_user = CustomersUser.find(params[:id])
 		if @customers_user.update(customers_user_params)
 			redirect_to customer_customers_user_path
