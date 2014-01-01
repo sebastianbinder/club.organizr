@@ -36,9 +36,9 @@ en:
       address: Address
       edit: Edit Details
     edit:
-      header: Edit "%{firstname} %{lastname}"
+      header: Edit Details
     new:
-      header: Authorize new member
+      header: Authorize New Member
     form:
       user_id: User-ID
       email: E-Mail

@@ -1,4 +1,15 @@
-<%= form_for @customers_user, url: @form_url do |f| %>
+<% if @customers_user.errors.any? %>
+	<div class="alert alert-danger">
+		<strong><%= pluralize(@customers_user.errors.count, "error") %> prohibited this user from being saved:</strong>
+		<ul>
+			<% @customers_user.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+
+<%= form_for [$customer, @customers_user] do |f| %>
 	<div class="row">
 		<div class="col-md-9">
 			<div class="table-responsive">

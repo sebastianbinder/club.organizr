@@ -4,11 +4,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
          
-  has_many :customer_users
-  has_many :customers, through: :customer_users
+  has_many :customers_users
+  has_many :customers, through: :customers_users
   
+  has_many :events_users
+  has_many :events, through: :events_users
   
-  has_and_belongs_to_many :events
 
   validates :firstname, :presence => true
   

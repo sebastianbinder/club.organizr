@@ -9,7 +9,6 @@ class EventsController < ApplicationController
 	
 	def new
 		@event = Event.new(:customer_id => params[:customer_id])
-		@form_url = customer_events_path(params[:customer_id])
 	end
 	
 	def create	
@@ -24,7 +23,6 @@ class EventsController < ApplicationController
 	
 	def edit
 		@event = Event.find(params[:id])
-		@form_url = customer_event_path(params[:customer_id], @event)
 	end
 		
 	def show

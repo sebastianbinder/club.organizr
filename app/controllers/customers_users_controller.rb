@@ -12,13 +12,12 @@ class CustomersUsersController < ApplicationController
 	
 	def new
 		@customers_user = CustomersUser.new(:customer_id => params[:customer_id])
-		@form_url = customer_customers_users_path(params[:customer_id])
 	end
 	
 	def create	
 		@customers_user = CustomersUser.new(customers_user_params) 
 		if @customers_user.save
-			redirect_to customer_customers_users_path
+			redirect_to customer_customers_users_path(params[:customer_id])
 		else
 			render 'new'
 		end
@@ -27,7 +26,6 @@ class CustomersUsersController < ApplicationController
 	
 	def edit
 		@customers_user = CustomersUser.find(params[:id])
-		@form_url = customer_customers_user_path(params[:customer_id], @customers_user)
 	end
 	
 	
@@ -42,7 +40,7 @@ class CustomersUsersController < ApplicationController
  
 		redirect_to customer_customers_users_path
 	end
-	
+
 	def update
 	
 		@customers_user = CustomersUser.find(params[:id])
