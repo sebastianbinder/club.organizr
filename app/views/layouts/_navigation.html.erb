@@ -21,5 +21,8 @@
 					</li>
 				<% end %>
 			<% end %>
+			<% if can? :manage, User %>
+			<li><%= link_to(t('.users'), users_path) %></li>
+			<% end %>
 	<% end %>
 </ul>
