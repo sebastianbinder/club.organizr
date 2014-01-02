@@ -21,6 +21,12 @@
 				<tr>
 					<th><%= t(".name") %></th> 
 					<th></th>
+					<% if can? :show, Customer %>
+					<th></th>
+					<% end %>
+					<% if can? :update, Customer %>
+					<th></th>
+					<% end %>
 				</tr>
 				<% $customers.each do |customer| %>		
 					<tr>
@@ -28,10 +34,28 @@
 						<td class="button">
 							<%= link_to(customer_events_path(customer)) do %>
 								<button type="button" class="btn btn-info btn-sm">
+									<span class="glyphicon glyphicon-arrow-right"></span>
+								</button>
+							<% end %>
+						</td>
+						<% if can? :show, Customer %>
+						<td class="button">
+							<%= link_to(customer_path(customer)) do %>
+								<button type="button" class="btn btn-info btn-sm">
 									<span class="glyphicon glyphicon-info-sign"></span>
 								</button>
 							<% end %>
 						</td>
+						<% end %>
+						<% if can? :update, Customer %>
+						<td class="button">
+							<%= link_to(edit_customer_path(customer)) do %>
+								<button type="button" class="btn btn-warning btn-sm">
+									<span class="glyphicon glyphicon-wrench"></span>
+								</button>
+							<% end %>
+						</td>
+						<% end %>
 					</tr>
 				<% end %>
 			</table>

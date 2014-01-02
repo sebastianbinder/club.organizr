@@ -25,7 +25,8 @@ de:
     navigation:
       customers: Meine Gruppen
       events: Termine
-      members: Benutzer
+      members: Mitglieder
+      users: Benutzer      
     usercontrol:
       language: Sprache
       lang:

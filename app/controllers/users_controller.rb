@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 	end
 	
 	def create	
-		@user = User.new(post_params) 
+		@user = User.new(user_params) 
 		if @user.save
 			redirect_to @user
 		else
@@ -41,17 +41,30 @@ class UsersController < ApplicationController
 	def update
 	
 		@user = User.find(params[:id])
-		if @user.update_without_password(post_params)
-			redirect_to @user
+		if needs_password?(@user, user_params)
+			if @user.update(user_params)
+				redirect_to @user
+			else
+				render 'edit'
+			end
 		else
-			render 'edit'
+			if @user.update_without_password(user_params)
+				redirect_to @user
+			else
+				render 'edit'
+			end
 		end
 	end
 
 	
 		
 	private
-		def post_params
+	
+		def needs_password?(user, user_params)
+			!user_params[:password].blank?
+  		end
+	
+		def user_params
 			params.require(:user).permit(:firstname, :lastname, :email, :phone_number, :street, :street_number, :zipcode, :city, :country, :password, :password_confirmation, {:roles => []})
 		end
 end

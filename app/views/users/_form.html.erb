@@ -23,14 +23,12 @@
 							</div>
 						</td>
 					</tr>
-<%
-=begin %>
+
 					<tr>
-						<th> <%= f.label :password, t("users.password"), :class => "col-lg-2 control-label" %></th>
+						<th> <%= f.label :password, t(".password"), :class => "col-lg-2 control-label" %></th>
 						<td><%= f.password_field :password, :class => "form-control" %><%= f.password_field :password_confirmation, :class => "form-control" %></td>
 					</tr>
-<%
-=end %>
+
 					<tr>
 						<th> <%= f.label :firstname, t(".firstname"), :class => "col-lg-2 control-label" %></th>
 						<td><%= f.text_field :firstname, :class => "form-control" %></td>
@@ -70,7 +68,7 @@
          
 							<%= f.submit t(".save"), :class => "btn btn-success" %>
 							<% if params[:action] == "new" %>
-								<%= link_to t(".cancel"), events_path, data: { confirm: t(".alerts.cancel_new") }, :class => "btn btn-danger" %>
+								<%= link_to t(".cancel"), users_path, data: { confirm: t(".alerts.cancel_new") }, :class => "btn btn-danger" %>
 								</div>
 							<% end %>
 							<% if params[:action] == "edit" %>

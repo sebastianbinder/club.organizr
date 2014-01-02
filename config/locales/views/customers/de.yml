@@ -25,3 +25,22 @@ de:
     index:
       header: Gruppen
       name: Name
+    show:
+      header: Kunde
+      name: Name
+      address: Adresse
+      edit: Details bearbeiten
+    form:
+      name: Name
+      street: Straße
+      street_number: Hausnummer
+      zipcode: Postleitzahl
+      city: Stadt
+      country: Land
+      save: Speichern
+      cancel: Abbrechen
+      destroy: Löschen
+      alerts:
+        cancel_edit: Möchten Sie das Ändern dieses Kunden wirklich abbrechen?
+        cancel_new: Möchten Sie das Erstellen dieses Kunden wirklich abbrechen?
+        destroy: Möchten Sie diesen Kunden wirklich löschen? Dieser Vorgang kann nicht rückgängig gemacht werden!

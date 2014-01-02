@@ -41,6 +41,7 @@ de:
       header: Neuen Benutzer anlegen
     form:
       email: E-Mail
+      password: Passwort
       firstname: Vorname
       lastname: Nachname
       phone_number: Telefon

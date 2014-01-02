@@ -26,6 +26,7 @@ en:
       customers: My Groups
       events: Events
       members: Members
+      users: Users
     usercontrol:
       language: Language
       lang:

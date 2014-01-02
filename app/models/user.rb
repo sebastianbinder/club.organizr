@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   
   validates :lastname, :presence => true
   
-
+  validates :password, presence: true, on: :create
+  validates :password, presence: true, allow_blank: true, on: :update
 
 end

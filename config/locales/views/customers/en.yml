@@ -25,3 +25,22 @@ en:
     index:
       header: Groups
       name: Name
+    show:
+      header: Customer
+      name: Name
+      address: Address
+      edit: Edit Details
+    form:
+      name: Name
+      street: Street
+      street_number: Street Number
+      zipcode: Zipcode
+      city: City
+      country: Country
+      save: Save
+      cancel: Cancel
+      destroy: Delete
+      alerts:
+        cancel_edit: Do you really want to cancel editing this customer?
+        cancel_new: Do you really want to cancel creating this new customer?
+        destroy: Do you really want to delete this customer? You cannot undo this!

@@ -21,7 +21,11 @@
 					<tr>
 						<th> <%= f.label :roles, t(".roles"), :class => "col-lg-2 control-label" %></th>
 						<td>
-							<%= f.collection_select :role, CustomersUser::ROLES, :to_s, :humanize %>
+							<% if can? :manage, :all %>
+								<%= f.collection_select :role, CustomersUser::ROLES, :to_s, :humanize %>
+							<% else %>
+								<%= f.collection_select :role, CustomersUser::ROLES_SELECTABLE, :to_s, :humanize %>
+							<% end %>
 						</td>
 					</tr>
 					<tr>
