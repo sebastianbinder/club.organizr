@@ -93,7 +93,8 @@ CustomersUser.create(
     title: "Event",
     location: "Everywhere",
     details: "",
-    customer_id: customer1.id
-
+    customer_id: customer1.id,
+	should_respond: true,
+	status: "taking_place"
   )
 end

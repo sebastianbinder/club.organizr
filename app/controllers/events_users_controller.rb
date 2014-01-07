@@ -4,7 +4,7 @@ class EventsUsersController < ApplicationController
 	load_and_authorize_resource
 	
 	def update
-		@event_user = EventsUser.find_or_create_by(event_id: params[:id], user_id: current_user.id)
+		@event_user = EventsUser.find(params[:id])
 		if @event_user.update("status" => params[:status])
 			redirect_to customer_events_path
 		else

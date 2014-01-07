@@ -35,6 +35,11 @@ de:
       date: Datum
       time: Uhrzeit
       location: Ort
+      details: Details
+      status: Status
+      taking_place: Termin bestätigt und findet statt
+      checking: Terminabfrage läuft
+      cancelled: Termin abgesagt
       accepted: Anwesend
       denied: Entschuldigt
       edit: Details bearbeiten
@@ -51,9 +56,14 @@ de:
       time: Uhrzeit
       location: Ort
       details: Details
+      should_respond: Rückmeldung erwünscht?
       save: Termin speichern!
       cancel: Abbrechen
       destroy: Löschen
+      status: Status
+      taking_place: Termin bestätigt und findet statt
+      checking: Terminabfrage läuft
+      cancelled: Termin abgesagt
       alerts:
         cancel_edit: Möchten Sie das Ändern dieses Termins wirklich abbrechen?
         cancel_new: Möchten Sie das Erstellen dieses Termins wirklich abbrechen?

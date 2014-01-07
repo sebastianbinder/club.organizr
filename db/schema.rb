@@ -11,15 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131231145940) do
-
-  create_table "customers_users", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "customer_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "role"
-  end
+ActiveRecord::Schema.define(version: 20140106153315) do
 
   create_table "customers", force: true do |t|
     t.string   "name"
@@ -32,12 +24,12 @@ ActiveRecord::Schema.define(version: 20131231145940) do
     t.datetime "updated_at"
   end
 
-  create_table "events_users", force: true do |t|
-    t.integer  "event_id"
+  create_table "customers_users", force: true do |t|
     t.integer  "user_id"
-    t.integer  "status"
-    t.datetime "updated_at"
+    t.integer  "customer_id"
     t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "role"
   end
 
   create_table "events", force: true do |t|
@@ -50,6 +42,16 @@ ActiveRecord::Schema.define(version: 20131231145940) do
     t.datetime "updated_at"
     t.integer  "edited_by"
     t.integer  "customer_id"
+    t.boolean  "should_respond", default: false
+    t.string   "status"
+  end
+
+  create_table "events_users", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.integer  "status"
+    t.datetime "updated_at"
+    t.datetime "created_at"
   end
 
   create_table "users", force: true do |t|

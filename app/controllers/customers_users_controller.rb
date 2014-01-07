@@ -8,7 +8,7 @@ class CustomersUsersController < ApplicationController
 	
 	
 	def index
-		@customers_users = CustomersUser.where(:customer_id => params[:customer_id])
+		@customers_users = CustomersUser.where(:customer_id => params[:customer_id]).sort_by &:id
 	end
 	
 	

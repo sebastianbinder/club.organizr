@@ -35,6 +35,11 @@ en:
       date: Date
       time: Time
       location: Location
+      details: Details
+      status: Status
+      taking_place: This event is taking place
+      checking: "Checking on members' availability"
+      cancelled: Event cancelled
       accepted: Accepted
       denied: Denied
       edit: Edit Details
@@ -51,9 +56,14 @@ en:
       time: Time
       location: Location
       details: Details
+      should_respond: "Get Members' Feedback"
       save: Save this event!
       cancel: Cancel
       destroy: Delete
+      status: Status
+      taking_place: This event is taking place
+      checking: "Checking on members' availability"
+      cancelled: Event cancelled
       alerts:
         cancel_edit: Do you really want to cancel editing this event?
         cancel_new: Do you really want to cancel creatig this new event?
