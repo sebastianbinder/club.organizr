@@ -51,6 +51,7 @@ de:
     new:
       header: Neuen Termin anlegen
     form:
+      event: Termin
       title: Titel
       date: Datum
       time: Uhrzeit
@@ -68,3 +69,8 @@ de:
         cancel_edit: Möchten Sie das Ändern dieses Termins wirklich abbrechen?
         cancel_new: Möchten Sie das Erstellen dieses Termins wirklich abbrechen?
         destroy: Möchten Sie diesen Termin wirklich löschen? Dieser Vorgang kann nicht rückgängig gemacht werden!
+  activerecord:
+    attributes:
+      event:
+        title: Titel
+        date: Datum

@@ -51,6 +51,7 @@ en:
     new:
       header: Create new event
     form:
+      event: Event
       title: Title
       date: Date
       time: Time
@@ -68,3 +69,8 @@ en:
         cancel_edit: Do you really want to cancel editing this event?
         cancel_new: Do you really want to cancel creatig this new event?
         destroy: Do you really want to delete this event? You cannot undo this!
+  activerecord:
+    attributes:
+      event:
+        title: Title
+        date: Date

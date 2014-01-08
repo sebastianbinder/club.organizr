@@ -1,6 +1,6 @@
 <% if @user.errors.any? %>
 	<div class="alert alert-danger">
-		<strong><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</strong>
+		<strong><%= t('activerecord.errors.template.header', :count => @user.errors.size, :model => t(".user")) %></strong>
 		<ul>
 			<% @user.errors.full_messages.each do |msg| %>
 				<li><%= msg %></li>
