@@ -8,7 +8,7 @@ class CustomersUsersController < ApplicationController
 	
 	
 	def index
-		@customers_users = CustomersUser.where(:customer_id => params[:customer_id])
+		@customers_users = CustomersUser.where(:customer_id => params[:customer_id]).sort_by &:id
 	end
 	
 	
@@ -19,11 +19,17 @@ class CustomersUsersController < ApplicationController
 	
 	def create
 		@customer = Customer.find(params[:customer_id])
-		@customers_user = CustomersUser.new(customers_user_params) 
-		if @customers_user.save
-			redirect_to customer_customers_users_path(params[:customer_id])
-		else
+		user = User.where(email: params[:mail]).take
+		if user.nil?
+			@customers_user.errors.add(:mail, t(".error.mail_not_found"))
 			render 'new'
+		else
+			@customers_user = CustomersUser.new(user_id: user.id, role: params[:customers_user][:role], customer_id: params[:customer_id]) 
+			if @customers_user.save
+				redirect_to customer_customers_users_path(params[:customer_id])
+			else
+				render 'new'
+			end
 		end
 	end
 	
@@ -60,7 +66,7 @@ class CustomersUsersController < ApplicationController
 		
 	private
 		def customers_user_params
-			params.require(:customers_user).permit(:role, :user_id, :customer_id)
+			params.require(:customers_user).permit(:role, :mail, :customer_id)
 		end
 
 end

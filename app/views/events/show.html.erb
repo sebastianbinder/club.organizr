@@ -32,38 +32,44 @@
 						<td><%= @event.details %></td>
 					</tr>
 				<% end %>
-				<tr>
-					<th><%= t(".accepted") %>:</th>
-					<td>
-						<% if @event_users_accepted.empty? %>
-							<i><%= t(".alerts.noone_accepted_so_far") %></i>
-						<% else %>
-							<% @event_users_accepted.each do |event_user| %>
-								<% event_user_details = User.find(event_user.user_id) %>
-								<%= event_user_details.firstname %> <%= event_user_details.lastname %>
-								<% if can? :see_date, EventsUser %>
-									<i>(<%= l event_user.updated_at, format: :long %>)</i>
+					<tr>
+						<th><%= t(".status") %>:</th>
+						<td><%= t(".#{@event.status}") %></td>
+					</tr>
+				<% if @event.should_respond == true %>
+					<tr>
+						<th><%= t(".accepted") %>:</th>
+						<td>
+							<% if @event_users_accepted.empty? %>
+								<i><%= t(".alerts.noone_accepted_so_far") %></i>
+							<% else %>
+								<% @event_users_accepted.each do |event_user| %>
+									<% event_user_details = User.find(event_user.user_id) %>
+									<%= event_user_details.firstname %> <%= event_user_details.lastname %>
+									<% if can? :see_date, EventsUser %>
+										<i>(<%= l event_user.updated_at, format: :long %>)</i>
+									<% end %>
 								<% end %>
 							<% end %>
-						<% end %>
-					</td>
-				</tr>
-				<tr>
-					<th><%= t(".denied") %>:</th>
-					<td>
-						<% if @event_users_denied.empty? %>
-							<i><%= t(".alerts.noone_denied_so_far") %></i>
-						<% else %>
-							<% @event_users_denied.each do |event_user| %>
-								<% event_user_details = User.find(event_user.user_id) %>
-								<%= event_user_details.firstname %> <%= event_user_details.lastname %>
-								<% if can? :see_date, EventsUser %>
-									<i>(<%= l event_user.updated_at, format: :long %>)</i>
+						</td>
+					</tr>
+					<tr>
+						<th><%= t(".denied") %>:</th>
+						<td>
+							<% if @event_users_denied.empty? %>
+								<i><%= t(".alerts.noone_denied_so_far") %></i>
+							<% else %>
+								<% @event_users_denied.each do |event_user| %>
+									<% event_user_details = User.find(event_user.user_id) %>
+									<%= event_user_details.firstname %> <%= event_user_details.lastname %>
+									<% if can? :see_date, EventsUser %>
+										<i>(<%= l event_user.updated_at, format: :long %>)</i>
+									<% end %>
 								<% end %>
 							<% end %>
-						<% end %>
-					</td>
-				</tr>
+						</td>
+					</tr>
+				<% end %>
 			</table>
 		</div>
 	</div>

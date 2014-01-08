@@ -5,7 +5,8 @@ class EventsController < ApplicationController
 	
 	def index
 		@customer = Customer.find(params[:customer_id])
-		@events = Event.where(:customer_id => params[:customer_id])	
+		@events = Event.where(:customer_id => params[:customer_id]).sort_by &:date
+		
 	end
 	
 	def new
@@ -58,6 +59,6 @@ class EventsController < ApplicationController
 	private
 	
 		def event_params
-			params.require(:event).permit(:title, :date, :time, :location, :details, :customer_id)
+			params.require(:event).permit(:title, :date, :time, :location, :details, :customer_id, :should_respond, :status)
 		end
 end

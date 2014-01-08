@@ -1,6 +1,6 @@
 <% if @customers_user.errors.any? %>
 	<div class="alert alert-danger">
-		<strong><%= pluralize(@customers_user.errors.count, "error") %> prohibited this user from being saved:</strong>
+		<strong><%= t('activerecord.errors.template.header', :count => @customers_user.errors.size, :model => t(".member")) %></strong>
 		<ul>
 			<% @customers_user.errors.full_messages.each do |msg| %>
 				<li><%= msg %></li>
@@ -15,8 +15,16 @@
 			<div class="table-responsive">
 				<table class="table table-bordered table-hover table-condensed">
 				<tr>
-						<th> <%= f.label :user_id, t(".user_id"), :class => "col-lg-2 control-label" %></th>
-						<td> <%= f.text_field :user_id, :class => "form-control" %></td>
+						<th> <%= f.label :mail, t(".email"), :class => "col-lg-2 control-label" %></th>
+						<td>
+							
+							<% if params[:action] == "edit" %>
+								<%= text_field_tag :mail, @customers_user.user.email, :class => "form-control", :disabled => true %>
+							<% else %>
+								<%= text_field_tag :mail, nil, :class => "form-control" %>
+							
+							<% end %>
+							</td>
 					</tr>
 					<tr>
 						<th> <%= f.label :roles, t(".roles"), :class => "col-lg-2 control-label" %></th>

@@ -43,6 +43,10 @@
 	float: right;
 }
 
+.btn.left {
+	float: left;
+}
+
 /*###################################
 
         css for screens > 768px

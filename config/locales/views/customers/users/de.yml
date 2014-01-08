@@ -40,6 +40,7 @@ de:
     new:
       header: Neues Mitglied hinzufügen
     form:
+      member: Mitglied
       user_id: Benutzer-ID
       email: E-Mail
       firstname: Vorname
@@ -58,3 +59,10 @@ de:
         cancel_edit: Möchten Sie das Ändern dieses Benutzers wirklich abbrechen?
         cancel_new: Möchten Sie das Autorisieren dieses Benutzers wirklich abbrechen?
         destroy: Möchten Sie diesen Benutzer wirklich aus Ihrer Gruppe entfernen?
+    create:
+      error:
+        mail_not_found: wurde nicht gefunden
+  activerecord:
+    attributes:
+      customers_user:
+        mail: E-Mail Adresse
