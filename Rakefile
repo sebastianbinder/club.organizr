@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-OrganizeMe::Application.load_tasks
+ClubOrganizr::Application.load_tasks

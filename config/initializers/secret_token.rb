@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-OrganizeMe::Application.config.secret_key_base = '0606375a296c1bdae24ba648190cbd861d27fe5386b0655c1ffa9ab4b37d34818a118bda5150a6273790d0224c11753efa226574f2ae8e03ba709dadae99e378'
+ClubOrganizr::Application.config.secret_key_base = '0606375a296c1bdae24ba648190cbd861d27fe5386b0655c1ffa9ab4b37d34818a118bda5150a6273790d0224c11753efa226574f2ae8e03ba709dadae99e378'
