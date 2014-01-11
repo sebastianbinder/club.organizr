@@ -20,24 +20,10 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-de:
-  layouts:
-    navigation:
-      customers: Meine Gruppen
-      events: Termine
-      members: Mitglieder
-      users: Benutzer      
-    usercontrol:
-      language: Sprache
-      lang:
-        english: English
-        german: Deutsch
-      my_profile: Mein Profil
-      logout: Logout
-      login: Anmelden
-      desc:
-        email: E-Mail...
-        password: ... und Ihr Passwort!
-    footer:
-      imprint: Impressum
-      privacy: Datenschutz
+en:
+  indices:
+    privacy:
+      privacy: Privacy
+    imprint:
+      imprint: Imprint
+      disclaimer: Disclaimer

@@ -63,6 +63,11 @@ ClubOrganizr::Application.routes.draw do
 		  resources :events_users
 	  end
 	  resources :users
+	  resources :indices
+	  get "/index/imprint", :controller => "indices", :action => "imprint"
+	  get "/index/imprint", :controller => "devise/indices", :action => "imprint"
+	  get "/index/privacy", :controller => "indices", :action => "privacy"
+	  get "/index/privacy", :controller => "devise/indices", :action => "privacy"
   end
 
 get '/(:locale)' => "customers#index"

@@ -38,3 +38,6 @@ en:
       desc:
         email: Login with your email...
         password: ... and your password!
+    footer:
+      imprint: Imprint
+      privacy: Privacy
