@@ -57,17 +57,20 @@ ClubOrganizr::Application.routes.draw do
   scope "(:locale)", :locale => /en|de/ do
 	  devise_for :users
 	  root :to => "customers#index"
-	  resources :customers do
-		  resources :events
-		  resources :customers_users
-		  resources :events_users
+	  resources :customers
+		 scope path: "(:customer_id)", :as => "customer" do
+		  resources :events		  
+		  resources :customers_users, :path => "members", only: :index
+		  resources :customers_users, :path => "member", except: :index
+		  resources :events_users, :path => "availability"
+
 	  end
 	  resources :users
-	  resources :indices
 	  get "/index/imprint", :controller => "indices", :action => "imprint"
 	  get "/index/imprint", :controller => "devise/indices", :action => "imprint"
 	  get "/index/privacy", :controller => "indices", :action => "privacy"
 	  get "/index/privacy", :controller => "devise/indices", :action => "privacy"
+
   end
 
 get '/(:locale)' => "customers#index"

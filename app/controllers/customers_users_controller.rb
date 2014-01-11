@@ -3,30 +3,29 @@ class CustomersUsersController < ApplicationController
 
 		
 	before_filter :authenticate_user!
+	before_filter :find_customer
 	load_and_authorize_resource
 	
 	
 	
 	def index
-		@customers_users = CustomersUser.where(:customer_id => params[:customer_id]).sort_by &:id
+		@customers_users = @customer.customers_users
 	end
 	
 	
 	def new
-		@customer = Customer.find(params[:customer_id])
-		@customers_user = CustomersUser.new(:customer_id => params[:customer_id])
+		@customers_user = @customer.customers_users.new
 	end
 	
 	def create
-		@customer = Customer.find(params[:customer_id])
 		user = User.where(email: params[:mail]).take
 		if user.nil?
 			@customers_user.errors.add(:mail, t(".error.mail_not_found"))
 			render 'new'
 		else
-			@customers_user = CustomersUser.new(user_id: user.id, role: params[:customers_user][:role], customer_id: params[:customer_id]) 
+			@customers_user = @customer.customers_users.new(user_id: user.id, role: params[:customers_user][:role]) 
 			if @customers_user.save
-				redirect_to customer_customers_users_path(params[:customer_id])
+				redirect_to customer_customers_users_path(@customer, @customer_user)
 			else
 				render 'new'
 			end
@@ -35,28 +34,27 @@ class CustomersUsersController < ApplicationController
 	
 	
 	def edit
-		@customer = Customer.find(params[:customer_id])
-		@customers_user = CustomersUser.find(params[:id])
+		@customers_user = @customer.customers_users.find(params[:id])
 	end
 	
 	
 	def show
-    	@customers_user = CustomersUser.find(params[:id])
+    	@customers_user = @customer.customers_users.find(params[:id])
 	end
 	
 	
 	def destroy
-		@customers_user = CustomersUser.find(params[:id])
+		@customers_user = @customer.customers_users.find(params[:id])
 		@customers_user.destroy
  
-		redirect_to customer_customers_users_path
+		redirect_to customer_customers_users_path(@customer)
 	end
 
 	def update
 		@customer = Customer.find(params[:customer_id])
 		@customers_user = CustomersUser.find(params[:id])
 		if @customers_user.update(customers_user_params)
-			redirect_to customer_customers_user_path
+			redirect_to customer_customers_user_path(@customer, @customers_user)
 		else
 			render 'edit'
 		end
@@ -65,6 +63,9 @@ class CustomersUsersController < ApplicationController
 	
 		
 	private
+		def find_customer
+			@customer = Customer.find(params[:customer_id])
+		end
 		def customers_user_params
 			params.require(:customers_user).permit(:role, :mail, :customer_id)
 		end

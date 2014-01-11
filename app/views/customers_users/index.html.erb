@@ -5,7 +5,7 @@
 <div class="row">
 	<div class="col-md-1 col-md-offset-8" align="right">
 		<% if can? :create, CustomersUser %>
-			<p><%= link_to(new_customer_customers_user_path) do %>
+			<p><%= link_to(new_customer_customers_user_path(@customer, @customers_user)) do %>
 				<button type="button" class="btn btn-success btn-sm">
 					<span class="glyphicon glyphicon-plus"></span>
 				</button>
@@ -36,7 +36,7 @@
 						<td><%= user.user.lastname %></td>
 						<% if can? :read, CustomersUser %>
 							<td class="button">
-								<%= link_to(customer_customers_user_path(:id => user.id )) do %>
+								<%= link_to(customer_customers_user_path(@customer, user)) do %>
 									<button type="button" class="btn btn-info btn-sm">
 										<span class="glyphicon glyphicon-info-sign"></span>
 									</button>
@@ -45,7 +45,7 @@
 						<% end %>
 						<% if can? :update, CustomersUser %>
 							<td class="button">
-								<%= link_to(edit_customer_customers_user_path(:id => user.id )) do %>
+								<%= link_to(edit_customer_customers_user_path(@customer, user)) do %>
 									<button type="button" class="btn btn-warning btn-sm">
 										<span class="glyphicon glyphicon-wrench"></span>
 									</button>

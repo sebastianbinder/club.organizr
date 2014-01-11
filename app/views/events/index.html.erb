@@ -5,7 +5,7 @@
 <div class="row">
 	<div class="col-md-1 col-md-offset-8" align="right">
 		<% if can? :create, Event %>
-			<p><%= link_to(new_customer_event_path) do %>
+			<p><%= link_to(new_customer_event_path(@customer)) do %>
 				<button type="button" class="btn btn-success btn-sm">
 						<span class="glyphicon glyphicon-plus"></span>
 				</button>

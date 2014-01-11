@@ -44,7 +44,7 @@
 								<i><%= t(".alerts.noone_accepted_so_far") %></i>
 							<% else %>
 								<% @event_users_accepted.each do |event_user| %>
-									<%= link_to customer_customers_user_path(:id => get_customers_user(event_user.user_id, params[:customer_id])) do %>
+									<%= link_to(get_customers_user(event_user.user_id, params[:customer_id])) do %>
 										<button type="button" class="btn btn-info btn-xs">
 											<span class="glyphicon glyphicon-user"></span>
 										</button><% end %>
@@ -88,7 +88,7 @@
 		<div class="btn-group-vertical">
 			<% if can? :update, Event %>
 							<td class="button">
-								<%= link_to(edit_customer_event_path) do %>
+								<%= link_to(edit_customer_event_path(@customer, @event)) do %>
 									<button type="button" class="btn btn-warning">
 										<span class="glyphicon glyphicon-wrench"></span> <%= t(".edit") %>
 									</button>
