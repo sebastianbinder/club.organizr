@@ -20,7 +20,9 @@ module EventsHelper
 		customers_user = CustomersUser.where(customer_id: customer_id, user_id: user.id).take
 		if customers_user.nil?
 			customers_user = CustomersUser.where(user_id: user.id).take
+			return "#"
+		else
+			return customer_customers_user_path(@customer, customers_user)
 		end
-		return customers_user
 	end
 end
