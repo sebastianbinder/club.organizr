@@ -88,7 +88,7 @@
 		<div class="btn-group-vertical">
 			<% if can? :update, Event %>
 							<td class="button">
-								<%= link_to(edit_customer_event_path) do %>
+								<%= link_to(edit_customer_event_path(@customer, @event)) do %>
 									<button type="button" class="btn btn-warning">
 										<span class="glyphicon glyphicon-wrench"></span> <%= t(".edit") %>
 									</button>

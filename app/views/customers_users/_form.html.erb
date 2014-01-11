@@ -42,13 +42,13 @@
 							<div class="btn-group">
 							<%= f.submit t(".save"), :class => "btn btn-success" %>
 							<% if params[:action] == "new" %>
-								<%= link_to t(".cancel"), customer_customers_users_path, data: { confirm: t(".alerts.cancel_new") }, :class => "btn btn-danger" %>
+								<%= link_to t(".cancel"), customer_customers_users_path(@customer), data: { confirm: t(".alerts.cancel_new") }, :class => "btn btn-danger" %>
 							</div>
 							<% end %>
 							<% if params[:action] == "edit" %>
-								<%= link_to t(".cancel"), customer_customers_user_path, data: { confirm: t(".alerts.cancel_edit") }, :class => "btn btn-danger" %>
+								<%= link_to t(".cancel"), customer_customers_user_path(@customer, @customers_user), data: { confirm: t(".alerts.cancel_edit") }, :class => "btn btn-danger" %>
 								</div>
-								<%= link_to t(".destroy"), customer_customers_user_path(params[:customer_id], @customers_user), method: :delete, data: { confirm: t(".alerts.destroy") }, :class => "btn btn-danger right" %>
+								<%= link_to t(".destroy"), customer_customers_user_path(@customer, @customers_user), method: :delete, data: { confirm: t(".alerts.destroy") }, :class => "btn btn-danger right" %>
 							<% end %>
 						</td>
 					</tr>
