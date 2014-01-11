@@ -65,7 +65,7 @@
 								<i><%= t(".alerts.noone_denied_so_far") %></i>
 							<% else %>
 								<% @event_users_denied.each do |event_user| %>
-									<%= link_to customer_customers_user_path(:id => get_customers_user(event_user.user_id, params[:customer_id])) do %>
+									<%= link_to(get_customers_user(event_user.user_id, params[:customer_id])) do %>
 										<button type="button" class="btn btn-info btn-xs">
 											<span class="glyphicon glyphicon-user"></span>
 										</button><% end %>
