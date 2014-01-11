@@ -60,7 +60,8 @@ ClubOrganizr::Application.routes.draw do
 	  resources :customers
 		 scope path: "(:customer_id)", :as => "customer" do
 		  resources :events		  
-		  resources :customers_users, :path => "member"
+		  resources :customers_users, :path => "members", only: :index
+		  resources :customers_users, :path => "member", except: :index
 		  resources :events_users, :path => "availability"
 
 	  end
