@@ -30,6 +30,7 @@ de:
       alerts:
         dont_you_want_to_attend: Schade, Sie wollen wirklich für diese Veranstaltung absagen?
         do_you_want_to_attend: Möchten Sie wirklich für diese Veranstaltung zusagen?
+        do_you_want_to_remove: Möchten Sie wirklich Ihre bisherige Auswahl wieder entfernen?
     show:
       title: Titel
       date: Datum

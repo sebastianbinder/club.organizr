@@ -1,8 +1,8 @@
 user1 = User.create(
   password: "test12345",
-  firstname: "Taylor",
-  lastname: "Class",
-  email: "tclass@sebastianbinder.com",
+  firstname: "Administrator",
+  lastname: "club.organizr",
+  email: "admin@club.organizr.org",
   phone_number: "+1-647-3746",
   street: "Brooklyn Street",
   street_number: "1460",

@@ -1,4 +1,4 @@
-OrganizeMe::Application.configure do
+ClubOrganizr::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -73,7 +73,7 @@ OrganizeMe::Application.configure do
   # }
   config.action_mailer.perform_deliveries = false
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_options = {from: 'organizeme@sebastianbinder.com'}
+  config.action_mailer.default_options = {from: 'ClubOrganizr@sebastianbinder.com'}
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).

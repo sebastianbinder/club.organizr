@@ -30,6 +30,7 @@ en:
       alerts:
         dont_you_want_to_attend: Do you really want to be excused for this event?
         do_you_want_to_attend: Do you really want to indicate that you are coming to this event?
+        do_you_want_to_remove: Do you really want to remove your current selection?
     show:
       title: Title
       date: Date
