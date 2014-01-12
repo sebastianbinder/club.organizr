@@ -6,3 +6,7 @@ de:
     reply_message_email:
       you_have_a_new_reply: Es wurde eine neue Antwort geschrieben
       visit_and_go_to_your_inbox_for_more_info: Für weitere Informationen gehen Sie bitte auf %{link} und sehen Sie in Ihrem Posteingang nach.
+  mailboxer:
+    message_mailer:
+      subject_reply: Sie haben eine neue Nachricht!
+      subject_new: Sie haben eine neue Nachricht!
