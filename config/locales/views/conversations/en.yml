@@ -22,3 +22,19 @@
 
 en:
   conversations:
+    index:
+      header: Messages
+      sender: Receipients
+      subject: Subject
+    new:
+      header: New Message
+    quickform:
+      reply: Reply
+    form:
+      receipient: Receipient
+      subject: Subject
+      message: Message
+      send: Send
+      cancel: Cancel
+      alerts:
+        cancel_new: Do you really want to cancel sending this message?
