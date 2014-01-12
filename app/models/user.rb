@@ -25,4 +25,10 @@ class User < ActiveRecord::Base
    return "#{first_name} #{last_name}"
   end
   
+  # Returns the name of the user
+  def sendmail(object)
+   email
+  end
+
+  
 end

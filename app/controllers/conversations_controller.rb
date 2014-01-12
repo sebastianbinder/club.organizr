@@ -26,7 +26,6 @@ helper_method :mailbox, :conversation
 	else
 		receipient_emails = params[:receipient].gsub(/\s+/, "").split(',')
 	    receipients = User.where(email: receipient_emails).to_a
-	    logger.debug receipients
 		current_user.send_message(receipients, params[:message], params[:subject])
 		redirect_to conversations_path
 	end
