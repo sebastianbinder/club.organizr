@@ -20,25 +20,21 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
-  layouts:
-    navigation:
-      customers: My Groups
-      events: Events
-      members: Members
-      users: Users
-      conversations: Messages
-    usercontrol:
-      language: Language
-      lang:
-        english: English
-        german: Deutsch
-      my_profile: My Profile
-      logout: Logout
-      login: Login
-      desc:
-        email: Login with your email...
-        password: ... and your password!
-    footer:
-      imprint: Imprint
-      privacy: Privacy
+de:
+  conversations:
+    index:
+      header: Nachrichten
+      sender: Beteiligte
+      subject: Betreff
+    new:
+      header: Neue Nachricht
+    quickform:
+      reply: Antworten
+    form:
+      receipient: Empfänger
+      subject: Betreff
+      message: Nachricht
+      send: Senden
+      cancel: Abbrechen
+      alerts:
+        cancel_new: Möchten Sie das Erstellen dieser Nachricht wirklich abbrechen?

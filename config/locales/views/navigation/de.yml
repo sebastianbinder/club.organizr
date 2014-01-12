@@ -26,7 +26,8 @@ de:
       customers: Meine Gruppen
       events: Termine
       members: Mitglieder
-      users: Benutzer      
+      users: Benutzer
+      conversations: Nachrichten   
     usercontrol:
       language: Sprache
       lang:

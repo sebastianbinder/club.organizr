@@ -27,6 +27,8 @@ de:
       email: E-Mail
       firstname: Vorname
       lastname: Nachname
+      to_all_members: an alle Mitglieder
+      to_organizers: an alle Organisatoren
     show:
       user: Mitglied
       firstname: Vorname

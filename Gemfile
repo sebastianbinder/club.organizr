@@ -48,3 +48,4 @@ gem 'capistrano', group: :development
 gem 'cancan'
 gem 'devise'
 gem 'kaminari'
+gem 'mailboxer'

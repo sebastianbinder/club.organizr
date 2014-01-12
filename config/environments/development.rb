@@ -28,4 +28,7 @@ ClubOrganizr::Application.configure do
   config.assets.debug = true
   
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  ActionMailer::Base.delivery_method = :file
+	config.action_mailer.raise_delivery_errors = true
+	config.action_mailer.default :charset => "utf-8"
 end
