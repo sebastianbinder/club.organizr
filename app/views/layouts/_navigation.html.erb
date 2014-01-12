@@ -20,7 +20,9 @@
 						</ul>
 					</li>
 				<% end %>
+				
 			<% end %>
+			<li><%= link_to(t('.conversations'), conversations_path()) %></li>
 			<% if can? :manage, User %>
 			<li><%= link_to(t('.users'), users_path) %></li>
 			<% end %>

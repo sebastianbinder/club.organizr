@@ -1,0 +1,13 @@
+<%= form_tag :action => :reply do%><table class="table table-bordered table-hover table-condensed">				
+
+					<tr>
+						<td> <%= current_user.firstname %></td>
+						<td> <%= text_area_tag :message, nil, :class => "form-control" %></td>
+					<td>
+						<%= submit_tag t(".reply"), :class => "btn btn-success" %>
+						<%#= submit_tag 'Send to all', :class => "btn btn-success", :name => "sendtoall" %>
+						</td>
+					</tr>
+			
+		
+</table><% end %>

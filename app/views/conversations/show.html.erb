@@ -1,0 +1,22 @@
+<div class="page-header">
+	<h1><%= conversation.subject %></h1>
+</div>
+
+<div class="row">
+	<div>
+		<div class="table-responsive">
+			<%= render 'quickform', conversation: conversation %>
+			<table class="table table-bordered table-hover table-condensed">			
+				<%= content_tag_for(:tr, conversation.receipts_for(current_user).reverse) do |receipt| %>
+					<% message = receipt.message %>
+					<td><%= message.sender.firstname %> <%= message.sender.lastname %></td>
+					<td><%= message.body %></td>
+					<td><%= l message.created_at, format: :long %></td>
+				<% end %>
+				
+			</table>
+			
+		</div>
+	</div>
+
+</div>

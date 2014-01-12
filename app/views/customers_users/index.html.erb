@@ -3,19 +3,31 @@
 </div>
 
 <div class="row">
-	<div class="col-md-1 col-md-offset-8" align="right">
+	<div align="right">
+	<p><% if can? :send_message, CustomersUser %>
+	<%= link_to(new_conversation_path(:receipient => all_email_addresses)) do %>
+	<button type="button" class="btn btn-success btn-sm">
+					<span class="glyphicon glyphicon-envelope"></span> <%= t(".to_all_members") %>
+				</button>
+			<% end %>
+	<% end %>
+	<%= link_to(new_conversation_path(:receipient => organizers_email_addresses)) do %>
+	<button type="button" class="btn btn-success btn-sm">
+					<span class="glyphicon glyphicon-envelope"></span> <%= t(".to_organizers") %>
+				</button>
+			<% end %>
 		<% if can? :create, CustomersUser %>
-			<p><%= link_to(new_customer_customers_user_path(@customer, @customers_user)) do %>
+			<%= link_to(new_customer_customers_user_path(@customer)) do %>
 				<button type="button" class="btn btn-success btn-sm">
 					<span class="glyphicon glyphicon-plus"></span>
 				</button>
-			<% end %></p>
-		<% end %>
+			<% end %>
+		<% end %></p>
 	</div>
 </div>
 
 <div class="row">
-	<div class="col-md-9">
+	<div>
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-condensed">
 				<tr>

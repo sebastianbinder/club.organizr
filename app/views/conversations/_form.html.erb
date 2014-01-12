@@ -1,0 +1,56 @@
+<% if @conversation.errors.any? %>
+	<div class="alert alert-danger">
+		<strong><%= t('activerecord.errors.template.header', :count => @conversation.errors.size, :model => t(".event")) %></strong>
+		<ul>
+			<% @conversation.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+<%= form_for @conversation do |f| %>
+	<div class="row">
+		<div class="col-md-9">
+			<div class="table-responsive">
+				<table class="table table-bordered table-hover table-condensed">
+					<tr>
+						<th><%= label_tag :receipient, t(".receipient"), :class => "col-lg-2 control-label" %></th>
+						<td><% if can? :send_message, CustomersUser %>
+						<%= text_field_tag :receipient, nil, :class => "form-control", :value => params[:receipient] %>
+						<% else %>
+						<%= text_field_tag :receipient, nil, :class => "form-control", :value => params[:receipient], :disabled => true %>
+						<% end %>
+						</td>
+					</tr>
+					<tr>
+						<th> <%= label_tag :subject, t(".subject"), :class => "col-lg-2 control-label" %></th>
+						<td> <%= text_field_tag :subject, nil, :class => "form-control", :value => params[:subject] %></td>
+					</tr>
+					<tr>
+						<th> <%= label_tag :message, t(".message"), :class => "col-lg-2 control-label" %></th>
+						<td> <%= text_area_tag :message, nil, :class => "form-control", :value => params[:message] %>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<div class="btn-group">
+           
+         
+							<%= submit_tag t(".send"), :class => "btn btn-success" %>
+							<%= link_to t(".cancel"), conversations_path, data: { confirm: t(".alerts.cancel_new") }, :class => "btn btn-danger" %>
+								</div>
+					
+						
+							 
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<div class="col-md-1">
+			<div class="btn-group-vertical"></div>
+		</div>
+
+	</div>
+<% end %>
