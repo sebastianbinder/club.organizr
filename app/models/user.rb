@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   def sendmail(object)
    email
   end
+  
 
   
 end
