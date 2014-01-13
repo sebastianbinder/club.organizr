@@ -28,6 +28,8 @@ GEM
     arel (4.0.1)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
+    bootstrap-sass (3.0.3.0)
+      sass (~> 3.2)
     builder (3.1.4)
     cancan (1.6.10)
     capistrano (3.0.1)
@@ -137,6 +139,8 @@ GEM
     tins (0.13.1)
     tinymce-rails (4.0.12)
       railties (>= 3.1.1)
+    tinymce-rails-langs (4.20130625)
+      tinymce-rails (~> 4.0)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -153,6 +157,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass
   cancan
   capistrano
   coffee-rails
@@ -167,5 +172,6 @@ DEPENDENCIES
   sdoc
   therubyracer
   tinymce-rails
+  tinymce-rails-langs
   turbolinks
   uglifier
