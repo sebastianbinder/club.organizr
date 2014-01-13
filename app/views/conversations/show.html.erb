@@ -5,16 +5,13 @@
 <div class="row">
 	<div>
 		<div class="table-responsive">
-			<%= render 'quickform', conversation: conversation %>
-			<table class="table table-bordered table-hover table-condensed">			
+			<%= render 'quickform', conversation: conversation %>			
 				<%= content_tag_for(:tr, conversation.receipts_for(current_user).reverse) do |receipt| %>
 					<% message = receipt.message %>
-					<td><%= message.sender.firstname %> <%= message.sender.lastname %></td>
-					<td><%= message.body %></td>
-					<td><%= l message.created_at, format: :long %></td>
+					<h3><%= message.subject %></h3>
+					<h4><%= message.sender.firstname %> <%= message.sender.lastname %> <small>(<%= l message.created_at, format: :long %>)</small></h4>
+					<div style="text-indent:20px;"><%= message.body.html_safe %></div>
 				<% end %>
-				
-			</table>
 			
 		</div>
 	</div>

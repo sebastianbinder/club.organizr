@@ -29,7 +29,7 @@
 				<% unless @event.details.empty? %>
 					<tr>
 						<th><%= t(".details") %>:</th>
-						<td><%= @event.details %></td>
+						<td><%= @event.details.html_safe %></td>
 					</tr>
 				<% end %>
 					<tr>

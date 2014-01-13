@@ -135,6 +135,8 @@ GEM
       atomic
     tilt (1.4.1)
     tins (0.13.1)
+    tinymce-rails (4.0.12)
+      railties (>= 3.1.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -164,5 +166,6 @@ DEPENDENCIES
   sass-rails
   sdoc
   therubyracer
+  tinymce-rails
   turbolinks
   uglifier
