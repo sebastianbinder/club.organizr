@@ -14,7 +14,15 @@
  */
  
 @import "bootstrap";
+@import "bootstrap/theme";
 
+.button_to {
+  display: inline;
+}
+
+.button_to div {
+  display: inline;
+}
 
 .container {
 	margin-top: 60px;
