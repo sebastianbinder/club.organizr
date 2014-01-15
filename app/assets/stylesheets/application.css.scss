@@ -12,6 +12,17 @@
  *= require_tree .
  *= require_self
  */
+ 
+@import "bootstrap";
+@import "bootstrap/theme";
+
+.button_to {
+  display: inline;
+}
+
+.button_to div {
+  display: inline;
+}
 
 .container {
 	margin-top: 60px;
@@ -22,7 +33,9 @@
 	font-style: italic;
 }
 
-
+.mce-path-item, .mce-divider {
+	display: none !important;
+}
 
 
 .table>tbody>tr>th.button, .table>tbody>tr>td.button {

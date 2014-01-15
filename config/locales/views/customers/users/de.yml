@@ -27,6 +27,9 @@ de:
       email: E-Mail
       firstname: Vorname
       lastname: Nachname
+      to_all_members: alle Mitglieder
+      to_all_selected: ausgewählte Mitglieder
+      to_organizers: alle Organisatoren
     show:
       user: Mitglied
       firstname: Vorname
@@ -35,6 +38,7 @@ de:
       phone_number: Telefon
       address: Adresse
       edit: Details bearbeiten
+      to_this_member: an dieses Mitglied
     edit:
       header: 'Details bearbeiten'
     new:

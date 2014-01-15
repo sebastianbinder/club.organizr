@@ -29,7 +29,7 @@
 				<% unless @event.details.empty? %>
 					<tr>
 						<th><%= t(".details") %>:</th>
-						<td><%= @event.details %></td>
+						<td><%= @event.details.html_safe %></td>
 					</tr>
 				<% end %>
 					<tr>
@@ -40,7 +40,9 @@
 					<tr>
 						<th><%= t(".accepted") %>:</th>
 						<td>
-							<% if @event_users_accepted.empty? %>
+							<% 
+							mailto_coming = []
+							if @event_users_accepted.empty? %>
 								<i><%= t(".alerts.noone_accepted_so_far") %></i>
 							<% else %>
 								<% @event_users_accepted.each do |event_user| %>
@@ -48,7 +50,9 @@
 										<button type="button" class="btn btn-info btn-xs">
 											<span class="glyphicon glyphicon-user"></span>
 										</button><% end %>
-									<% event_user_details = User.find(event_user.user_id) %>
+									<% event_user_details = User.find(event_user.user_id) 
+									 mailto_coming << event_user_details.email
+									%>
 									<%= event_user_details.firstname %> <%= event_user_details.lastname %>
 									<% if can? :see_date, EventsUser %>
 										<i>(<%= l event_user.updated_at, format: :long %>)</i>
@@ -87,14 +91,15 @@
 	<div class="col-md-1">
 		<div class="btn-group-vertical">
 			<% if can? :update, Event %>
-							<td class="button">
-								<%= link_to(edit_customer_event_path(@customer, @event)) do %>
-									<button type="button" class="btn btn-warning">
+								<%= link_to(edit_customer_event_path(@customer, @event), :class => "btn btn-warning") do %>
 										<span class="glyphicon glyphicon-wrench"></span> <%= t(".edit") %>
-									</button>
 								<% end %>
-							</td>
 						<% end %>
+					<% if can? :send_message, CustomersUser %>
+				<%= button_to(new_conversation_path, :name => :receipient, :value => mailto_coming.join(', '), :class => "btn btn-success", :form_style => "inline") do %>
+					<span class="glyphicon glyphicon-envelope"></span> <%= t(".to_coming") %>
+				<% end %>
+			<% end %>		
 		</div>
 	</div>
 

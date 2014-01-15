@@ -72,7 +72,7 @@
 									<% else %>
 										<%= link_to(get_event_user_status_accept_link(event.id), :method => :put, data: {confirm: t(".alerts.do_you_want_to_attend")}) do %>
 											<button type="button" class="btn btn-success btn-sm left">
-												<span class="glyphicon glyphicon-ok-sign"></span>
+												<span class="glyphicon glyphicon-ok-circle"></span>
 											</button>
 										<% end %>
 										<%= link_to(get_event_user_status_deny_link(event.id), :method => :put, data: {confirm: t(".alerts.dont_you_want_to_attend")}) do %>

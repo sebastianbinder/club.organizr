@@ -3,22 +3,33 @@
 </div>
 
 <div class="row">
-	<div class="col-md-1 col-md-offset-8" align="right">
-		<% if can? :create, CustomersUser %>
-			<p><%= link_to(new_customer_customers_user_path(@customer, @customers_user)) do %>
-				<button type="button" class="btn btn-success btn-sm">
-					<span class="glyphicon glyphicon-plus"></span>
-				</button>
-			<% end %></p>
-		<% end %>
+	<div align="right" style="margin-bottom: 10px">
+			<% if can? :send_message, CustomersUser %>
+				<%= button_to(new_conversation_path, :name => :receipient, :value => all_email_addresses, :class => "btn btn-success btn-sm", :form_style => "inline") do %>
+					<span class="glyphicon glyphicon-envelope"></span> <%= t(".to_all_members") %>
+				<% end %>
+			<% end %>
+			<%= button_to(new_conversation_path, :name => :receipient, :value => organizers_email_addresses, :class => "btn btn-success btn-sm") do %>
+					<span class="glyphicon glyphicon-envelope"></span> <%= t(".to_organizers") %>
+				<% end %>
+			<% if can? :create, CustomersUser %>
+				<%= link_to(new_customer_customers_user_path(@customer)) do %>
+					<button type="button" class="btn btn-success btn-sm">
+						<span class="glyphicon glyphicon-plus"></span>
+					</button>
+				<% end %>
+			<% end %>
 	</div>
 </div>
-
+<%= form_tag new_conversation_path %>
 <div class="row">
-	<div class="col-md-9">
+	<div>
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-condensed">
 				<tr>
+					<% if can? :send_message, CustomersUser %>
+						<th style="text-align: center;"><span class="glyphicon glyphicon-envelope"></span></th>
+					<% end %>
 					<th><%= t(".email") %></th>
 					<th><%= t(".firstname") %></th>
 					<th><%= t(".lastname") %></th>
@@ -31,6 +42,9 @@
 				</tr>
 				<% @customers_users.each do |user| %>
 					<tr>
+						<% if can? :send_message, CustomersUser %>
+							<td align="center"><%= check_box_tag('mailto[]', user.user.email ) %>
+						<% end %>
 						<td><%= user.user.email %></td>
 						<td><%= user.user.firstname %></td>
 						<td><%= user.user.lastname %></td>
@@ -56,7 +70,11 @@
 				<% end %>
 			</table>
 		</div>
-
+		<% if can? :send_message, CustomersUser %>
+			<%= button_tag(:type => :submit, :class => "btn btn-success btn-sm") do %>
+				<span class="glyphicon glyphicon-envelope"></span> <%= t(".to_all_selected") %>
+			<% end %>
+		<% end %>
 		<div class="col-md-offset-4"></div>
 
 	</div>

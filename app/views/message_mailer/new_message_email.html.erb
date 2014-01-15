@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1><%= t(".you_have_a_new_message") %>:</h1>
+    <h3><%= @message.subject.html_safe? ? @message.subject : strip_tags(@message.subject) %></h3>
+    <blockquote>
+      <p>
+        <%= raw @message.body %>
+      </p>
+    </blockquote>
+    <p>
+      <%= t(".visit_and_go_to_your_inbox_for_more_info", link: root_url) %></p>
+  </body>
+</html>

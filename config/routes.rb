@@ -60,8 +60,8 @@ ClubOrganizr::Application.routes.draw do
 	  resources :customers
 		 scope path: "(:customer_id)", :as => "customer" do
 		  resources :events		  
-		  resources :customers_users, :path => "members", only: :index
-		  resources :customers_users, :path => "member", except: :index
+		  resources :customers_users, :path => "members", :only => [:index, :create]
+		  resources :customers_users, :path => "member", :except => [:index, :create]
 		  resources :events_users, :path => "availability"
 
 	  end
@@ -70,7 +70,14 @@ ClubOrganizr::Application.routes.draw do
 	  get "/index/imprint", :controller => "devise/indices", :action => "imprint"
 	  get "/index/privacy", :controller => "indices", :action => "privacy"
 	  get "/index/privacy", :controller => "devise/indices", :action => "privacy"
-
+	  match "/conversations/new" => "conversations#new", as: "new_conversation", via: [:post, :get]
+	  resources :conversations, only: [:index, :show, :create] do
+	    member do
+	      post :reply
+	      post :trash
+	      post :untrash
+	    end
+	end
   end
 
 get '/(:locale)' => "customers#index"

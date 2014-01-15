@@ -1,0 +1,5 @@
+<%= form_tag :action => :reply do%>
+<%= text_area_tag :message, nil, :class => "form-control editable" %>
+<p style="margin-top:20px"><%= submit_tag t(".reply"), :class => "btn btn-success right" %></p>
+<%#= submit_tag 'Send to all', :class => "btn btn-success", :name => "sendtoall" %>
+<% end %>

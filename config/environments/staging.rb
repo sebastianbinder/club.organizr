@@ -66,14 +66,16 @@ ClubOrganizr::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
   
   config.action_mailer.delivery_method = :sendmail
-  # Defaults to:
-  # config.action_mailer.sendmail_settings = {
-  #   location: '/usr/sbin/sendmail',
-  #   arguments: '-i -t'
-  # }
-  config.action_mailer.perform_deliveries = false
+# Defaults to:
+# config.action_mailer.sendmail_settings = {
+#   location: '/usr/sbin/sendmail',
+#   arguments: '-i -t'
+# }
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_options = {from: 'ClubOrganizr@sebastianbinder.com'}
+  config.action_mailer.default_options = {from: 'club.organizr <no-reply@club.organizr.org>'}
+  
+  config.action_mailer.default_url_options = { :host => 'http://stag.club.organizr.org' }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
