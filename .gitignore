@@ -21,7 +21,4 @@ config/deploy/production.rb
 config/deploy/staging.rb
 
 config/deploy.rb
-
-config/database.yml
-
 config/database.yml
