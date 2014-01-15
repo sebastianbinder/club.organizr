@@ -16,11 +16,3 @@
 //= require tinymce-jquery
 //= require bootstrap
 //= require_tree .
-
-  tinyMCE.init({
-    selector: 'textarea.editable',
-    inline: false,
-    plugins: ["link"],
-    toolbar: "undo redo | bold italic underline | bullist numlist | link",
-    menubar: false
-  });

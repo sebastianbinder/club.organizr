@@ -1,4 +1,13 @@
-  <% if @event.errors.any? %>
+<script type="text/javascript">
+  tinyMCE.init({
+    selector: 'textarea.editable',
+    inline: false,
+    plugins: ["link"],
+    toolbar: "undo redo | bold italic underline | bullist numlist | link",
+    menubar: false
+  });
+</script>
+<% if @event.errors.any? %>
 	<div class="alert alert-danger">
 		<strong><%= t('activerecord.errors.template.header', :count => @event.errors.size, :model => t(".event")) %></strong>
 		<ul>
