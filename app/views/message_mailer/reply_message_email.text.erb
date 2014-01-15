@@ -1,10 +1,8 @@
-You have a new reply: <%= @message.subject.html_safe? ? @message.subject : strip_tags(@message.subject) %>
+<%= t(".you_have_a_new_reply") %>: <%= @message.subject.html_safe? ? @message.subject : strip_tags(@message.subject) %>
 ===============================================
- 
-You have received a new reply:
 
 -----------------------------------------------
 <%= @message.body.html_safe? ? @message.body : strip_tags(@message.body) %>
 -----------------------------------------------
 
-Visit <%= root_url %> and go to your inbox for more info.
+ <%= t(".visit_and_go_to_your_inbox_for_more_info", link: root_url) %>

@@ -35,15 +35,19 @@
 	<div class="col-md-1">
 		<div class="btn-group-vertical">
 			<% if can? :update, CustomersUser %>
-							<td class="button">
-								<%= link_to(edit_customer_customers_user_path(@customer, @customers_user)) do %>
-									<button type="button" class="btn btn-warning">
+								<%= link_to(edit_customer_customers_user_path(@customer, @customers_user), :class => "btn btn-warning") do %>
 										<span class="glyphicon glyphicon-wrench"></span> <%= t(".edit") %>
-									</button>
 								<% end %>
-							</td>
 						<% end %>
+						<% if can? :send_message, CustomersUser %>
+				<%= button_to(new_conversation_path, :name => :receipient, :value => @customers_user.user.email, :class => "btn btn-success", :form_style => "inline") do %>
+					<span class="glyphicon glyphicon-envelope"></span> <%= t(".to_this_member") %>
+				<% end %>
+			<% end %>				
+						
 		</div>
+		
+		
 	</div>
 
 </div>

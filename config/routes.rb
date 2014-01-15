@@ -70,7 +70,8 @@ ClubOrganizr::Application.routes.draw do
 	  get "/index/imprint", :controller => "devise/indices", :action => "imprint"
 	  get "/index/privacy", :controller => "indices", :action => "privacy"
 	  get "/index/privacy", :controller => "devise/indices", :action => "privacy"
-	  resources :conversations, only: [:index, :show, :new, :create] do
+	  match "/conversations/new" => "conversations#new", as: "new_conversation", via: [:post, :get]
+	  resources :conversations, only: [:index, :show, :create] do
 	    member do
 	      post :reply
 	      post :trash

@@ -1,13 +1,3 @@
- <script type="text/javascript">
-  tinyMCE.init({
-    selector: 'textarea.editable',
-    language: 'de',
-    inline: false,
-    plugins: ["link"],
-    toolbar: "undo redo | bold italic underline | bullist numlist | link",
-    menubar: false
-  });
-  </script>
   <% if @conversation.errors.any? %>
 	<div class="alert alert-danger">
 		<strong><%= t('activerecord.errors.template.header', :count => @conversation.errors.size, :model => t(".event")) %></strong>
@@ -25,10 +15,11 @@
 				<table class="table table-bordered table-hover table-condensed">
 					<tr>
 						<th><%= label_tag :receipient, t(".receipient"), :class => "col-lg-2 control-label" %></th>
-						<td><% if can? :send_message, CustomersUser %>
-						<%= text_field_tag :receipient, nil, :class => "form-control", :value => params[:receipient] %>
+						<td>
+						<% if can? :send_message, CustomersUser %>
+						<%= text_field_tag :receipient, nil, :class => "form-control", :value => get_receipients %>
 						<% else %>
-						<%= text_field_tag :receipient, nil, :class => "form-control", :value => params[:receipient], :disabled => true %>
+						<%= text_field_tag :receipient, nil, :class => "form-control", :value => get_receipients, :disabled => true %>
 						<% end %>
 						</td>
 					</tr>

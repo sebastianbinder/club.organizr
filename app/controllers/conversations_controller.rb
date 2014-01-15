@@ -7,7 +7,11 @@ helper_method :mailbox, :conversation
 	end
 	
 	def new
-	@conversation ||= mailbox.conversations.new
+		@conversation ||= mailbox.conversations.new
+		unless params[:mailto].nil?
+			@mails = params[:mailto].join(', ')
+			logger.debug @mails
+	    end
 	end
 	
 	def create
