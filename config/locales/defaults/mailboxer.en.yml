@@ -1,12 +1,12 @@
-de:
+en:
   message_mailer:
     new_message_email:
-      you_have_a_new_message: Sie haben eine neue Nachricht bekommen
-      visit_and_go_to_your_inbox_for_more_info: Für weitere Informationen gehen Sie bitte auf %{link} und sehen Sie in Ihrem Posteingang nach.
+      you_have_a_new_message: You have a new message
+      visit_and_go_to_your_inbox_for_more_info: This message has been created automatically - please do not reply directly! For more information or if you want to reply to the sender, please have a look at your inbox on %{link}.
     reply_message_email:
-      you_have_a_new_reply: Es wurde eine neue Antwort geschrieben
-      visit_and_go_to_your_inbox_for_more_info: Für weitere Informationen gehen Sie bitte auf %{link} und sehen Sie in Ihrem Posteingang nach.
+      you_have_a_new_reply: You have a new reply
+      visit_and_go_to_your_inbox_for_more_info: For more information or if you want to reply to the sender, please have a look at your inbox on %{link}.
   mailboxer:
     message_mailer:
-      subject_reply: Sie haben eine neue Nachricht!
-      subject_new: Sie haben eine neue Nachricht!
+      subject_reply: You have a new message!
+      subject_new: You have a new message!

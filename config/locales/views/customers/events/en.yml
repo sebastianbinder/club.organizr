@@ -44,6 +44,7 @@ en:
       accepted: Accepted
       denied: Denied
       edit: Edit Details
+      to_coming: To All Accepted
       alerts:
         noone_accepted_so_far: Seems like there is noone coming yet...
         noone_denied_so_far: Seriously? No people excused so far?

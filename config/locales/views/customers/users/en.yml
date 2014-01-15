@@ -27,6 +27,9 @@ en:
       email: E-Mail
       firstname: Firstname
       lastname: Lastname
+      to_all_members: all members
+      to_all_selected: selected members
+      to_organizers: "groups' organizers"
     show:
       user: Member
       firstname: Firstname
@@ -35,6 +38,7 @@ en:
       phone_number: Phone Number
       address: Address
       edit: Edit Details
+      to_this_member: To This Member
     edit:
       header: Edit Details
     new:
