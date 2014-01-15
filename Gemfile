@@ -49,3 +49,7 @@ gem 'capistrano', group: :development
 gem 'cancan'
 gem 'devise'
 gem 'kaminari'
+gem 'tinymce-rails', :branch => "tinymce-4"
+gem 'tinymce-rails-langs', :branch => "tinymce-4"
+gem 'bootstrap-sass'
+gem 'mailboxer'
