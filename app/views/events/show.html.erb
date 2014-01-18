@@ -12,14 +12,8 @@
 				</tr>
 				<tr>
 					<th><%= t(".date") %>:</th>
-					<td><%= l @event.date, format: :default %></td>
+					<td><%= l @event.from, format: :long %></td>
 				</tr>
-				<% unless @event.time.nil? %>
-					<tr>
-						<th><%= t(".time") %>:</th>
-						<td><%= l @event.time, format: :time %></td>
-					</tr>
-				<% end %>
 				<% unless @event.location.empty? %>
 					<tr>
 						<th><%= t(".location") %>:</th>

@@ -1,8 +1,8 @@
 class EventsController < ApplicationController
-
+before_filter :authenticate_user_from_token!
 	before_filter :authenticate_user!
 	before_filter :find_customer
-	load_and_authorize_resource
+	load_and_authorize_resource :except => [:feed]
 	
 	def index
 		@events = @customer.events
@@ -50,12 +50,47 @@ class EventsController < ApplicationController
 			render 'edit'
 		end
 	end
+	
+	def feed
+		user = User.find_by_email(params[:email])
+		denied_events = EventsUser.where(:user_id => user.id, :status => 0)
+		logger.debug "DENIED EVENTS"
+		logger.debug denied_events.inspect
+		denied_events_id = []
+		denied_events.each do |denied_event|
+			denied_events_id << denied_event.event_id
+		end
+		logger.debug "DENIED EVENTS ID"
+		logger.debug denied_events_id.inspect
+		if denied_events_id.empty?
+			@events = @customer.events
+		else
+			@events = @customer.events.where(["id NOT IN (?)", denied_events_id])
+		end
+		
+		logger.debug "EVENTS"
+		logger.debug @events.inspect
+		logger.debug "######"
+		
+	end
 
 	private
 		def find_customer
 			@customer = Customer.find(params[:customer_id])
 		end
 		def event_params
-			params.require(:event).permit(:title, :date, :time, :location, :details, :customer_id, :should_respond, :status)
+			params.require(:event).permit(:title, :from, :to, :location, :details, :customer_id, :should_respond, :status)
 		end
+		
+		def authenticate_user_from_token!
+		    user_email = params[:email].presence
+		    user       = user_email && User.find_by_email(user_email)
+		 
+		    # Notice how we use Devise.secure_compare to compare the token
+		    # in the database with the token given in the params, mitigating
+		    # timing attacks.
+		    if user && Devise.secure_compare(user.authentication_token, params[:token])
+		      sign_in user, store: false
+		    end
+	    end
 end

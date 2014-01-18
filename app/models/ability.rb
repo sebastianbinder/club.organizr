@@ -39,6 +39,7 @@ class Ability
 			end	
 	    
 			if user.role? :member
+				can :ics, Event
 				can :update, EventsUser
 				can :read, CustomersUser
 			end	

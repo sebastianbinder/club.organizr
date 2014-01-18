@@ -30,12 +30,12 @@
 						<td><%= f.text_field :title, :class => "form-control" %></td>
 					</tr>
 					<tr>
-						<th> <%= f.label :date, t(".date") + "*", :class => "col-lg-6 control-label" %></th>
-						<td><%= f.date_field :date, :class => "form-control" %></td>
+						<th> <%= f.label :from, t(".begin") + "*", :class => "col-lg-6 control-label" %></th>
+						<td><%= f.datetime_select :from, :class => "form-control" %></td>
 					</tr>
 					<tr>
-						<th> <%= f.label :time, t(".time"), :class => "col-lg-6 control-label" %></th>
-						<td> <%= f.time_field :time, :class => "form-control" %></td>
+						<th> <%= f.label :to, t(".end"), :class => "col-lg-6 control-label" %></th>
+						<td> <%= f.datetime_select :to, :class => "form-control" %></td>
 					</tr>
 					<tr>
 						<th> <%= f.label :location, t(".location"), :class => "col-lg-6 control-label" %></th>

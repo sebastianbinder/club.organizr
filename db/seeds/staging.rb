@@ -88,8 +88,6 @@ CustomersUser.create(
 
 20.times do
   Event.create(
-    date: rand(1...90).days.from_now,
-    time: "19:00:00",
     title: "Event",
     location: "Everywhere",
     details: "",

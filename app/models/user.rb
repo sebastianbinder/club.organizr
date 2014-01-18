@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :recoverable,
          :rememberable, :trackable, :validatable
          
+  include Tokenable
+         
   has_many :customers_users
   has_many :customers, through: :customers_users
   

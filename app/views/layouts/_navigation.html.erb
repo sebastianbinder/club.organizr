@@ -1,30 +1,14 @@
 <ul class="nav navbar-nav">
 	<% if user_signed_in? %>
-			<% if params[:customer_id].nil? %>
-				<% $customers.each do |customer| %>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= customer.name %> <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><%= link_to(t('.events'), customer_events_path(customer.id)) %></li>
-							<li><%= link_to(t('.members'), customer_customers_users_path(customer.id)) %></li>
-						</ul>
-					</li>
-				<% end %>
-			<% else %>
-				<% $customers.each do |customer| %>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= customer.name %> <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><%= link_to(t('.events'), customer_events_path(customer.id)) %></li>
-							<li><%= link_to(t('.members'), customer_customers_users_path(customer.id)) %></li>
-						</ul>
-					</li>
-				<% end %>
-				
-			<% end %>
-			<li><%= link_to(t('.conversations'), conversations_path()) %></li>
+			<li <% if params[:controller] == "customers" %>class="active"<% end %>><%= link_to(t('.customers'), customers_path()) %></li>
+			<li <% if params[:controller] == "conversations" %>class="active"<% end %>><%= link_to(t('.conversations'), conversations_path()) %></li>
 			<% if can? :manage, User %>
-			<li><%= link_to(t('.users'), users_path) %></li>
+			<li <% if params[:controller] == "users" %>class="active"<% end %>><%= link_to(t('.users'), users_path) %></li>
+			<% end %>
+			<% unless params[:customer_id].nil? %>
+				<li class="hidden-xs"><%= link_to(">>", "#") %></li>
+				<li <% if params[:controller] == "events" %>class="active"<% end %>><%= link_to(t('.events'), customer_events_path(params[:customer_id])) %></li>
+				<li <% if params[:controller] == "customers_users" %>class="active"<% end %>><%= link_to(t('.members'), customer_customers_users_path(params[:customer_id])) %></li>
 			<% end %>
 	<% end %>
 </ul>
