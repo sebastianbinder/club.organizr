@@ -16,8 +16,12 @@ module EventsHelper
 			return customer_events_user_path(@customer, @event_user, :status => nil)
 	end
 	def get_event_ics_details(event_id)
+		require 'htmlentities'
+		coder = HTMLEntities.new
 		event = Event.find(event_id)
 		details = event.details
+		details = coder.decode(details)
+		logger.debug details
 		details = details.gsub(/\<a.*href\=['"](.*)['"].*\>(.*)\<\/a\>/) do    
 			$2 + " [" + $1 + "]"
 		end
