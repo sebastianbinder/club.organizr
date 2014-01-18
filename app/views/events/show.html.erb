@@ -11,8 +11,12 @@
 					<td><%= @event.title %></td>
 				</tr>
 				<tr>
-					<th><%= t(".date") %>:</th>
+					<th><%= t(".from") %>:</th>
 					<td><%= l @event.from, format: :long %></td>
+				</tr>
+				<tr>
+					<th><%= t(".to") %>:</th>
+					<td><%= l @event.to, format: :long %></td>
 				</tr>
 				<% unless @event.location.empty? %>
 					<tr>
@@ -44,7 +48,7 @@
 										<button type="button" class="btn btn-info btn-xs">
 											<span class="glyphicon glyphicon-user"></span>
 										</button><% end %>
-									<% event_user_details = User.find(event_user.user_id) 
+									<% event_user_details = User.find(event_user.user_id)
 									 mailto_coming << event_user_details.email
 									%>
 									<%= event_user_details.firstname %> <%= event_user_details.lastname %>
@@ -89,11 +93,13 @@
 										<span class="glyphicon glyphicon-wrench"></span> <%= t(".edit") %>
 								<% end %>
 						<% end %>
+						<% if @event.should_respond == true %>
 					<% if can? :send_message, CustomersUser %>
 				<%= button_to(new_conversation_path, :name => :receipient, :value => mailto_coming.join(', '), :class => "btn btn-success", :form_style => "inline") do %>
 					<span class="glyphicon glyphicon-envelope"></span> <%= t(".to_coming") %>
 				<% end %>
-			<% end %>		
+			<% end %>	
+			<% end %>	
 		</div>
 	</div>
 

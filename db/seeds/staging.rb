@@ -77,17 +77,24 @@ CustomersUser.create(
 CustomersUser.create(
   user_id: user3.id,
   customer_id: customer1.id,
-  role: "viewer"
+  role: "member"
 )
 
 CustomersUser.create(
   user_id: user2.id,
   customer_id: customer2.id,
-  role: "member"
+  role: "organizer"
+)
+
+CustomersUser.create(
+  user_id: user3.id,
+  customer_id: customer2.id,
+  role: "viewer"
 )
 
 20.times do
   Event.create(
+    from: rand(1...90).days.from_now,
     title: "Event",
     location: "Everywhere",
     details: "",

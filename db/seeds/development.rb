@@ -92,9 +92,11 @@ CustomersUser.create(
   role: "viewer"
 )
 
-20.times do
-  Event.create(
-    from: rand(1...90).days.from_now,
+20.times do |x|
+  date = rand(1...90).days.from_now
+  event_x = Event.create(
+    from: date,
+    to: date+1.hour,
     title: "Event",
     location: "Everywhere",
     details: "",

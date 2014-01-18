@@ -223,6 +223,7 @@ en:
       long: ! '%B %d, %Y %H:%M'
       short: ! '%d %b %H:%M'
       time: ! '%H:%M'
+      ics: ! '%Y%m%dT%H%M%S'
     pm: pm
   # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
   activemodel:

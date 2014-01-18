@@ -5,7 +5,7 @@ before_filter :authenticate_user_from_token!
 	load_and_authorize_resource :except => [:feed]
 	
 	def index
-		@events = @customer.events
+		@events = @customer.events.order(from: :asc)
 		
 	end
 	
@@ -29,8 +29,8 @@ before_filter :authenticate_user_from_token!
 		
 	def show
 		@event = @customer.events.find(params[:id])
-		@event_users_accepted = EventsUser.where(:event_id => params[:id], :status => 1)
-		@event_users_denied = EventsUser.where(:event_id => params[:id], :status => 0)
+		@event_users_accepted = @event.events_users.where(:status => 1)
+		@event_users_denied = @event.events_users.where(:status => 0)
 		
 	end
 		

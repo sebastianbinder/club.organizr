@@ -43,11 +43,11 @@
 				<% @customers_users.each do |user| %>
 					<tr>
 						<% if can? :send_message, CustomersUser %>
-							<td align="center"><%= check_box_tag('mailto[]', user.user.email ) %>
+							<td align="center"><%= check_box_tag('mailto[]', user.email ) %>
 						<% end %>
-						<td><%= user.user.email %></td>
-						<td><%= user.user.firstname %></td>
-						<td><%= user.user.lastname %></td>
+						<td><%= user.email %></td>
+						<td><%= user.firstname %></td>
+						<td><%= user.lastname %></td>
 						<% if can? :read, CustomersUser %>
 							<td class="button">
 								<%= link_to(customer_customers_user_path(@customer, user)) do %>
