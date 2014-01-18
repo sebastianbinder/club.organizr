@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
 	validates :title, :presence => true
 	validates :from, :presence => true
 	validate :event_end_cannot_be_in_the_past
-	validate :event_cannot_be_in_the_past
+	validate :event_cannot_be_in_the_past, :on => :update
 	
 	def event_end_cannot_be_in_the_past
 	    if to.present? && to < from
