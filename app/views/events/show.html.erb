@@ -19,27 +19,32 @@
 	<% if @event.should_respond == true %>
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-condensed">
-					<% unless @event_users_accepted.empty? %>
 					<tr>
-						<th width="33%">
+						<% unless @event_users_accepted.empty? %>
+						<th>
 							<button type="button" class="btn btn-success btn-sm disabled">
 								<span class="glyphicon glyphicon-ok-sign"></span>
 							</button>
 						</th>
-						<th width="33%">
+						<% end %>
+						<% unless @event_users_denied.empty? %>
+						<th>
 							<button type="button" class="btn btn-danger btn-sm disabled">
 								<span class="glyphicon glyphicon-remove-sign"></span>
 							</button>
 						</th>
-						<th width="33%">
+						<% end %>
+						<% unless @event_users_noreply.empty? %>
+						<th>
 							<button type="button" class="btn btn-warning btn-sm disabled">
 								<span class="glyphicon glyphicon-question-sign"></span>
 							</button>
 						</th>
-
+						<% end %>
 					</tr>
 					<tr>
-						<td>
+						<% unless @event_users_accepted.empty? %>
+						<td style="vertical-align: top;">
 							<% mailto_accepted = Array.new %>
 							<% @event_users_accepted.each do |event_user| %>
 								<% mailto_accepted << event_user.email %>
@@ -52,7 +57,9 @@
 								<% end %><br>
 							<% end %>
 						</td>
-						<td>
+						<% end %>
+						<% unless @event_users_denied.empty? %>
+						<td style="vertical-align: top;">
 							<% mailto_denied = Array.new %>
 							<% @event_users_denied.each do |event_user| %>
 								<% mailto_denied << event_user.email %>
@@ -65,7 +72,9 @@
 								<% end %><br>
 							<% end %>
 						</td>
-						<td>
+						<% end %>
+						<% unless @event_users_noreply.empty? %>
+						<td style="vertical-align: top;">
 							<% mailto_noreply = Array.new %>
 							<% @event_users_noreply.each do |event_user| %>
 								<% unless get_admin_users.include?(event_user.id) %>
@@ -77,8 +86,10 @@
 								<% end %>
 							<% end %>
 						</td>
+						<% end %>
 						</tr>
 						<tr>
+						<% unless @event_users_accepted.empty? %>
 						<td>
 							<% if can? :send_message, CustomersUser %>
 								<%= button_to(new_conversation_path, :name => :receipient, :value => mailto_accepted.join(', '), :class => "btn btn-success") do %>
@@ -86,8 +97,8 @@
 								<% end %>
 							<% end %>
 						</td>
-					
-						
+					<% end %>
+						<% unless @event_users_denied.empty? %>
 						<td>
 							<% if can? :send_message, CustomersUser %>
 								<%= button_to(new_conversation_path, :name => :receipient, :value => mailto_denied.join(', '), :class => "btn btn-success") do %>
@@ -95,6 +106,8 @@
 								<% end %>
 							<% end %>
 						</td>
+						<% end %>
+						<% unless @event_users_noreply.empty? %>
 						<td>
 							<% if can? :send_message, CustomersUser %>
 								<%= button_to(new_conversation_path, :name => :receipient, :value => mailto_noreply.join(', '), :class => "btn btn-success") do %>
@@ -102,17 +115,8 @@
 								<% end %>
 							<% end %>
 						</td>
+						<% end %>
 					</tr>
-					<% end %>
-					<% unless @event_users_denied.empty? %>
-					
-					<% end %>
-					<% unless @event_users_noreply.empty? %>
-					<tr>
-												
-						
-					</tr>
-					<% end %>
 			</table>
 		</div>
 	<% end %>
