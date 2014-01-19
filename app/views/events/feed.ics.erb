@@ -19,7 +19,9 @@ DTEND;TZID=Europe/Berlin:<%= l ending, format: :ics %>
 DTSTAMP:<%= l event.updated_at, format: :ics %>
 <% if event.should_respond == true %>
 <% get_event_participants(event.id).each do |event_user| %>
+<% unless get_admin_users.include?(event_user.user.id) && event_user.status != 1 && event_user.status != 0 %>
 ATTENDEE;CN="<%= event_user.user.firstname+" "+event_user.user.lastname %>";CUTYPE=INDIVIDUAL;EMAIL="<%= event_user.user.email %>";PARTSTAT=<% if event_user.status == 1 %>ACCEPTED<% elsif event_user.status == 0 %>DECLINED<% else %>NEEDS-ACTION<% end %>;ROLE=REQ-PARTICIPANT:mailto:<%= event_user.user.email %>
+<% end %>
 <% end %>
 <% end %>
 URL:http://<%= request.host_with_port %><%= customer_event_path(params[:customer_id], event.id) %>

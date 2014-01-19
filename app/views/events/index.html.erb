@@ -42,39 +42,39 @@
 						<% if can? :update, EventsUser %>
 							<td class="twobuttons">
 								<% if event.should_respond == true %>
-									<% if get_event_user_status(event.id) == 1 %>
-										<%= link_to(get_event_user_status_deny_link(event.id), :method => :put, data: {confirm: t(".alerts.dont_you_want_to_attend")}) do %>
+									<% if get_event_user(event.id).status == 1 %>
+										<%= link_to(get_event_user_status_link(event.id, 0), :method => :put, data: {confirm: t(".alerts.dont_you_want_to_attend")}) do %>
 											<button type="button" class="btn btn-success btn-sm left">
 												<span class="glyphicon glyphicon-ok-sign"></span>
 											</button>
 										<% end %>
 										<% if can? :manage, :all %>
-											<%= link_to(get_event_user_status_reset_link(event.id), :method => :put, data: {confirm: t(".alerts.do_you_want_to_remove")}) do %>
+											<%= link_to(get_event_user_status_link(event.id, nil), :method => :put, data: {confirm: t(".alerts.do_you_want_to_remove")}) do %>
 												<button type="button" class="btn btn-warning btn-sm right">
 													<span class="glyphicon glyphicon-remove-circle"></span>
 												</button>
 											<% end %>
 										<% end %>
-									<% elsif get_event_user_status(event.id) == 0 %>
+									<% elsif get_event_user(event.id).status == 0 %>
 										<% if can? :manage, :all %>
-											<%= link_to(get_event_user_status_reset_link(event.id), :method => :put, data: {confirm: t(".alerts.do_you_want_to_remove")}) do %>
+											<%= link_to(get_event_user_status_link(event.id, nil), :method => :put, data: {confirm: t(".alerts.do_you_want_to_remove")}) do %>
 												<button type="button" class="btn btn-warning btn-sm left">
 													<span class="glyphicon glyphicon-remove-circle"></span>
 												</button>
 											<% end %>
 										<% end %>
-										<%= link_to(get_event_user_status_accept_link(event.id), :method => :put, data: {confirm: t(".alerts.do_you_want_to_attend")}) do %>
+										<%= link_to(get_event_user_status_link(event.id, 1), :method => :put, data: {confirm: t(".alerts.do_you_want_to_attend")}) do %>
 											<button type="button" class="btn btn-danger btn-sm right">
 												<span class="glyphicon glyphicon-remove-sign"></span>
 											</button>
 										<% end %>
 									<% else %>
-										<%= link_to(get_event_user_status_accept_link(event.id), :method => :put, data: {confirm: t(".alerts.do_you_want_to_attend")}) do %>
+										<%= link_to(get_event_user_status_link(event.id, 1), :method => :put, data: {confirm: t(".alerts.do_you_want_to_attend")}) do %>
 											<button type="button" class="btn btn-success btn-sm left">
 												<span class="glyphicon glyphicon-ok-circle"></span>
 											</button>
 										<% end %>
-										<%= link_to(get_event_user_status_deny_link(event.id), :method => :put, data: {confirm: t(".alerts.dont_you_want_to_attend")}) do %>
+										<%= link_to(get_event_user_status_link(event.id, 0), :method => :put, data: {confirm: t(".alerts.dont_you_want_to_attend")}) do %>
 											<button type="button" class="btn btn-danger btn-sm right">
 												<span class="glyphicon glyphicon-remove-circle"></span>
 											</button>

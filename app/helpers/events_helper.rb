@@ -1,19 +1,11 @@
 module EventsHelper
-	def get_event_user_status(event_id)
+	def get_event_user(event_id)
 		@event_user = EventsUser.find_or_create_by(event_id: event_id, user_id: current_user.id)
-		return @event_user.status
+		return @event_user
 	end
-	def get_event_user_status_deny_link(event_id)
-		@event_user = EventsUser.find_or_create_by(event_id: event_id, user_id: current_user.id)
-			return customer_events_user_path(@customer, @event_user, :status => 0)
-	end
-	def get_event_user_status_accept_link(event_id)
-		@event_user = EventsUser.find_or_create_by(event_id: event_id, user_id: current_user.id)
-			return customer_events_user_path(@customer, @event_user, :status => 1)
-	end
-	def get_event_user_status_reset_link(event_id)
-		@event_user = EventsUser.find_or_create_by(event_id: event_id, user_id: current_user.id)
-			return customer_events_user_path(@customer, @event_user, :status => nil)
+	def get_event_user_status_link(event_id, status)
+		@event_user = get_event_user(event_id)
+		return customer_events_user_path(@customer, @event_user, :status => status)
 	end
 	def get_event_ics_details(event_id)
 		require 'htmlentities'
