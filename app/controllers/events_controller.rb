@@ -16,6 +16,9 @@ before_filter :authenticate_user_from_token!
 	def create
 		@event = @customer.events.new(event_params) 
 		if @event.save
+			@customer.customers_users.each do |customers_user|
+				EventsUser.find_or_create_by(event_id: @event.id, user_id: customers_user.id)
+			end
 			redirect_to customer_event_path(@customer, @event)
 		else
 			render 'new'
@@ -46,6 +49,9 @@ before_filter :authenticate_user_from_token!
 		@event = @customer.events.find(params[:id])
  
 		if @event.update(event_params)
+			@customer.customers_users.each do |customers_user|
+				EventsUser.find_or_create_by(event_id: @event.id, user_id: customers_user.id)
+			end
 			redirect_to customer_event_path(@customer, @event)
 		else
 			render 'edit'

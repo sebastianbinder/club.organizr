@@ -19,6 +19,7 @@
 	<% if @event.should_respond == true %>
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-condensed">
+					<% unless @event_users_accepted.empty? %>
 					<tr>
 						<th>
 							<button type="button" class="btn btn-success btn-sm disabled">
@@ -46,6 +47,8 @@
 							<% end %>
 						</td>
 					</tr>
+					<% end %>
+					<% unless @event_users_denied.empty? %>
 					<tr>
 						<th>
 							<button type="button" class="btn btn-danger btn-sm disabled">
@@ -73,6 +76,8 @@
 							<% end %>
 						</td>
 					</tr>
+					<% end %>
+					<% unless @event_users_noreply.empty? %>
 					<tr>
 						<th>
 							<button type="button" class="btn btn-warning btn-sm disabled">
@@ -99,6 +104,7 @@
 							<% end %>
 						</td>
 					</tr>
+					<% end %>
 			</table>
 		</div>
 	<% end %>
