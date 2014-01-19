@@ -29,8 +29,9 @@ before_filter :authenticate_user_from_token!
 		
 	def show
 		@event = @customer.events.find(params[:id])
-		@event_users_accepted = @event.events_users.where(:status => 1)
-		@event_users_denied = @event.events_users.where(:status => 0)
+		@event_users_accepted = User.joins(:events_users).where(:events_users => {:event_id => @event, :status => 1})
+		@event_users_denied = User.joins(:events_users).where(:events_users => {:event_id => @event, :status => 0})
+		@event_users_noreply = User.joins(:events_users).where(:events_users => {:event_id => @event, :status => nil})
 		
 	end
 		
@@ -54,23 +55,15 @@ before_filter :authenticate_user_from_token!
 	def feed
 		user = User.find_by_email(params[:email])
 		denied_events = EventsUser.where(:user_id => user.id, :status => 0)
-		logger.debug "DENIED EVENTS"
-		logger.debug denied_events.inspect
 		denied_events_id = []
 		denied_events.each do |denied_event|
 			denied_events_id << denied_event.event_id
 		end
-		logger.debug "DENIED EVENTS ID"
-		logger.debug denied_events_id.inspect
 		if denied_events_id.empty?
 			@events = @customer.events
 		else
 			@events = @customer.events.where(["id NOT IN (?)", denied_events_id])
 		end
-		
-		logger.debug "EVENTS"
-		logger.debug @events.inspect
-		logger.debug "######"
 		
 	end
 

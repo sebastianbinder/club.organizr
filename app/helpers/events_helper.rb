@@ -29,8 +29,12 @@ module EventsHelper
 		details = sanitize(details, tags: %w[])
 	end
 	def get_event_participants(event_id)
-		@event_users_accepted = EventsUser.where(:event_id => event_id)
+		return EventsUser.where(:event_id => event_id)
 	end
+	
+	def get_update_time(event_id, user_id)
+		EventsUser.where(:event_id => event_id, :user_id => user_id).take.updated_at
+	end	
 	def get_customers_user(user_id, customer_id)
 		user = User.where(id: user_id).take
 		customers_user = CustomersUser.where(customer_id: customer_id, user_id: user.id).take

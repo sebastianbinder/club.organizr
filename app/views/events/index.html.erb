@@ -35,10 +35,10 @@
 				<% @events.each do |event| %>
 					<tr>
 						<td>
-							<%= l event.from, format: :long %>
+							<%= l event.from, format: :short %>
 						</td>
-						<td><%= event.title %></td>
-						<td><%= event.location %></td>
+						<td><%= truncate(event.title) %></td>
+						<td><%= truncate(event.location) %></td>
 						<% if can? :update, EventsUser %>
 							<td class="twobuttons">
 								<% if event.should_respond == true %>
