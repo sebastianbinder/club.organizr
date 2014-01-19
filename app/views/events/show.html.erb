@@ -21,11 +21,24 @@
 			<table class="table table-bordered table-hover table-condensed">
 					<% unless @event_users_accepted.empty? %>
 					<tr>
-						<th>
+						<th width="33%">
 							<button type="button" class="btn btn-success btn-sm disabled">
 								<span class="glyphicon glyphicon-ok-sign"></span>
 							</button>
 						</th>
+						<th width="33%">
+							<button type="button" class="btn btn-danger btn-sm disabled">
+								<span class="glyphicon glyphicon-remove-sign"></span>
+							</button>
+						</th>
+						<th width="33%">
+							<button type="button" class="btn btn-warning btn-sm disabled">
+								<span class="glyphicon glyphicon-question-sign"></span>
+							</button>
+						</th>
+
+					</tr>
+					<tr>
 						<td>
 							<% mailto_accepted = Array.new %>
 							<% @event_users_accepted.each do |event_user| %>
@@ -33,28 +46,12 @@
 								<%= link_to(get_customers_user(event_user.id, params[:customer_id]), :class => "btn btn-info btn-xs") do %>
 										<span class="glyphicon glyphicon-user"></span>
 								<% end %>
-								<%= event_user.firstname %> <%= event_user.lastname %><% if can? :see_date, EventsUser %>
-									<small><i>(<%= l get_update_time(@event, event_user.id), format: :long %>)</i></small><br>
-								<% elsif event_user != @event_users_accepted.last && @event_users_accepted.count > 1 %>, 
-								<% end %>
+								<%= event_user.firstname %> <%= event_user.lastname %>
+								<% if can? :see_date, EventsUser %>
+									<small><i>(<%= l get_update_time(@event, event_user.id), format: :long %>)</i></small>
+								<% end %><br>
 							<% end %>
 						</td>
-						<td align="center">
-							<% if can? :send_message, CustomersUser %>
-								<%= button_to(new_conversation_path, :name => :receipient, :value => mailto_accepted.join(', '), :class => "btn btn-success") do %>
-									<span class="glyphicon glyphicon-envelope"></span>
-								<% end %>
-							<% end %>
-						</td>
-					</tr>
-					<% end %>
-					<% unless @event_users_denied.empty? %>
-					<tr>
-						<th>
-							<button type="button" class="btn btn-danger btn-sm disabled">
-								<span class="glyphicon glyphicon-remove-sign"></span>
-							</button>
-						</th>
 						<td>
 							<% mailto_denied = Array.new %>
 							<% @event_users_denied.each do |event_user| %>
@@ -62,29 +59,12 @@
 								<%= link_to(get_customers_user(event_user.id, params[:customer_id]), :class => "btn btn-info btn-xs") do %>
 										<span class="glyphicon glyphicon-user"></span>
 								<% end %>
-								<%= event_user.firstname %> <%= event_user.lastname %><% if can? :see_date, EventsUser %>
-									<small><i>(<%= l get_update_time(@event, event_user.id), format: :long %>)</i></small><br>
-								<% elsif event_user != @event_users_denied.last && @event_users_denied.count > 1 %>, 
-								<% end %>
-
+								<%= event_user.firstname %> <%= event_user.lastname %>
+								<% if can? :see_date, EventsUser %>
+									<small><i>(<%= l get_update_time(@event, event_user.id), format: :long %>)</i></small>
+								<% end %><br>
 							<% end %>
 						</td>
-						<td align="center">
-							<% if can? :send_message, CustomersUser %>
-								<%= button_to(new_conversation_path, :name => :receipient, :value => mailto_denied.join(', '), :class => "btn btn-success") do %>
-									<span class="glyphicon glyphicon-envelope"></span>
-								<% end %>
-							<% end %>
-						</td>
-					</tr>
-					<% end %>
-					<% unless @event_users_noreply.empty? %>
-					<tr>
-						<th>
-							<button type="button" class="btn btn-warning btn-sm disabled">
-								<span class="glyphicon glyphicon-question-sign"></span>
-							</button>
-						</th>
 						<td>
 							<% mailto_noreply = Array.new %>
 							<% @event_users_noreply.each do |event_user| %>
@@ -93,17 +73,44 @@
 									<%= link_to(get_customers_user(event_user.id, params[:customer_id]), :class => "btn btn-info btn-xs") do %>
 											<span class="glyphicon glyphicon-user"></span>
 									<% end %>
-									<%= event_user.firstname %> <%= event_user.lastname %><% if event_user != @event_users_noreply.last && (@event_users_noreply.count - get_admin_users.count) > 1 %>, <% end %>
+									<%= event_user.firstname %> <%= event_user.lastname %><br>
 								<% end %>
 							<% end %>
 						</td>
-						<td align="center">
+						</tr>
+						<tr>
+						<td>
+							<% if can? :send_message, CustomersUser %>
+								<%= button_to(new_conversation_path, :name => :receipient, :value => mailto_accepted.join(', '), :class => "btn btn-success") do %>
+									<span class="glyphicon glyphicon-envelope"></span>
+								<% end %>
+							<% end %>
+						</td>
+					
+						
+						<td>
+							<% if can? :send_message, CustomersUser %>
+								<%= button_to(new_conversation_path, :name => :receipient, :value => mailto_denied.join(', '), :class => "btn btn-success") do %>
+									<span class="glyphicon glyphicon-envelope"></span>
+								<% end %>
+							<% end %>
+						</td>
+						<td>
 							<% if can? :send_message, CustomersUser %>
 								<%= button_to(new_conversation_path, :name => :receipient, :value => mailto_noreply.join(', '), :class => "btn btn-success") do %>
 									<span class="glyphicon glyphicon-envelope"></span>
 								<% end %>
 							<% end %>
 						</td>
+					</tr>
+					<% end %>
+					<% unless @event_users_denied.empty? %>
+					
+					<% end %>
+					<% unless @event_users_noreply.empty? %>
+					<tr>
+												
+						
 					</tr>
 					<% end %>
 			</table>
