@@ -32,9 +32,9 @@ before_filter :authenticate_user_from_token!
 		
 	def show
 		@event = @customer.events.find(params[:id])
-		@event_users_accepted = User.joins(:events_users).where(:events_users => {:event_id => @event, :status => 1})
-		@event_users_denied = User.joins(:events_users).where(:events_users => {:event_id => @event, :status => 0})
-		@event_users_noreply = User.joins(:events_users).where(:events_users => {:event_id => @event, :status => nil})
+		@event_users_accepted = User.joins(:events_users).where(:events_users => {:event_id => @event, :status => 1}).order('lastname ASC')
+		@event_users_denied = User.joins(:events_users).where(:events_users => {:event_id => @event, :status => 0}).order('lastname ASC')
+		@event_users_noreply = User.joins(:events_users).where(:events_users => {:event_id => @event, :status => nil}).order('lastname ASC')
 		
 	end
 		

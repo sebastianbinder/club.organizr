@@ -33,10 +33,10 @@
 								<%= link_to(get_customers_user(event_user.id, params[:customer_id]), :class => "btn btn-info btn-xs") do %>
 										<span class="glyphicon glyphicon-user"></span>
 								<% end %>
-								<%= event_user.firstname %> <%= event_user.lastname %>
-								<% if can? :see_date, EventsUser %>
-									<small><i>(<%= l get_update_time(@event, event_user.id), format: :long %>)</i></small>
-								<% end %><br>
+								<%= event_user.firstname %> <%= event_user.lastname %><% if can? :see_date, EventsUser %>
+									<small><i>(<%= l get_update_time(@event, event_user.id), format: :long %>)</i></small><br>
+								<% elsif event_user != @event_users_accepted.last && @event_users_accepted.count > 1 %>, 
+								<% end %>
 							<% end %>
 						</td>
 						<td align="center">
@@ -62,10 +62,11 @@
 								<%= link_to(get_customers_user(event_user.id, params[:customer_id]), :class => "btn btn-info btn-xs") do %>
 										<span class="glyphicon glyphicon-user"></span>
 								<% end %>
-								<%= event_user.firstname %> <%= event_user.lastname %>
-								<% if can? :see_date, EventsUser %>
-									<small><i>(<%= l get_update_time(@event, event_user.id), format: :long %>)</i></small>
-								<% end %><br>
+								<%= event_user.firstname %> <%= event_user.lastname %><% if can? :see_date, EventsUser %>
+									<small><i>(<%= l get_update_time(@event, event_user.id), format: :long %>)</i></small><br>
+								<% elsif event_user != @event_users_denied.last && @event_users_denied.count > 1 %>, 
+								<% end %>
+
 							<% end %>
 						</td>
 						<td align="center">
@@ -92,7 +93,7 @@
 									<%= link_to(get_customers_user(event_user.id, params[:customer_id]), :class => "btn btn-info btn-xs") do %>
 											<span class="glyphicon glyphicon-user"></span>
 									<% end %>
-									<%= event_user.firstname %> <%= event_user.lastname %><br>
+									<%= event_user.firstname %> <%= event_user.lastname %><% if event_user != @event_users_noreply.last && (@event_users_noreply.count - get_admin_users.count) > 1 %>, <% end %>
 								<% end %>
 							<% end %>
 						</td>
