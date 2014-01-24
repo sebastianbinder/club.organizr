@@ -3,9 +3,7 @@
 one:
   user_id: 1
   customer_id: 1
-  roles_mask: 1
 
 two:
   user_id: 1
   customer_id: 1
-  roles_mask: 1

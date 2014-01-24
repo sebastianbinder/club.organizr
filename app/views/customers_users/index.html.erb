@@ -9,9 +9,11 @@
 					<span class="glyphicon glyphicon-envelope"></span> <%= t(".to_all_members") %>
 				<% end %>
 			<% end %>
+			<% if can? :manage, :all %>
 			<%= button_to(new_conversation_path, :name => :receipient, :value => organizers_email_addresses, :class => "btn btn-success btn-sm") do %>
 					<span class="glyphicon glyphicon-envelope"></span> <%= t(".to_organizers") %>
 				<% end %>
+			<% end %>
 			<% if can? :create, CustomersUser %>
 				<%= link_to(new_customer_customers_user_path(@customer)) do %>
 					<button type="button" class="btn btn-success btn-sm">
@@ -40,14 +42,19 @@
 						<th></th>
 					<% end %>
 				</tr>
-				<% @customers_users.each do |user| %>
+				<% @customers_users_self.each do |user| %>
 					<tr>
 						<% if can? :send_message, CustomersUser %>
-							<td align="center"><%= check_box_tag('mailto[]', user.email ) %>
+							<td align="center"><%= check_box_tag('mailto[]', user.user.email ) %>
+						<% else %>
+							<td align="center">
+								<% if user.role == "admin" || user.role == "customer" || user.role == "organizer" %>
+									<%= check_box_tag('mailto[]', user.user.email ) %>
+								<% end %>
 						<% end %>
-						<td><%= user.email %></td>
-						<td><%= user.firstname %></td>
-						<td><%= user.lastname %></td>
+						<td><%= user.user.email %></td>
+						<td><%= user.user.firstname %></td>
+						<td><%= user.user.lastname %></td>
 						<% if can? :read, CustomersUser %>
 							<td class="button">
 								<%= link_to(customer_customers_user_path(@customer, user)) do %>
@@ -70,11 +77,9 @@
 				<% end %>
 			</table>
 		</div>
-		<% if can? :send_message, CustomersUser %>
 			<%= button_tag(:type => :submit, :class => "btn btn-success btn-sm") do %>
 				<span class="glyphicon glyphicon-envelope"></span> <%= t(".to_all_selected") %>
 			<% end %>
-		<% end %>
 		<div class="col-md-offset-4"></div>
 
 	</div>
