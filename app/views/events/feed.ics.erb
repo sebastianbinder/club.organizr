@@ -9,7 +9,7 @@ METHOD:PUBLISH
 <% @events.each do |event| %>
 BEGIN:VEVENT
 UID:<%= event.id %>@club.organizr.org
-LOCATION:<%= event.location %>
+LOCATION:<%= event.location.gsub(",", '\,') %>
 SUMMARY:<%= event.title %>
 DESCRIPTION:<%= get_event_ics_details(event.id) %>
 CLASS:PUBLIC
