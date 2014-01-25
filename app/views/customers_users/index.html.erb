@@ -29,9 +29,7 @@
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-condensed">
 				<tr>
-					<% if can? :send_message, CustomersUser %>
-						<th style="text-align: center;"><span class="glyphicon glyphicon-envelope"></span></th>
-					<% end %>
+					<th style="text-align: center;"><span class="glyphicon glyphicon-envelope"></span></th>
 					<th><%= t(".email") %></th>
 					<th><%= t(".firstname") %></th>
 					<th><%= t(".lastname") %></th>
@@ -46,14 +44,14 @@
 					<tr>
 						<% if can? :send_message, CustomersUser %>
 							<td align="center">
-							<% if get_users_role(user.id) == "admin" || get_users_role(user.id) == "customer" || get_users_role(user.id) == "organizer" %>
-									<%= check_box_tag('mailto[]', user.email ) %>
-								<% end %>
+								<%= check_box_tag('mailto[]', user.email ) %>
+							</td>
 						<% else %>
 							<td align="center">
 								<% if get_users_role(user.id) == "admin" || get_users_role(user.id) == "customer" || get_users_role(user.id) == "organizer" %>
 									<%= check_box_tag('mailto[]', user.email ) %>
 								<% end %>
+							</td>
 						<% end %>
 						<td><%= user.email %></td>
 						<td><%= user.firstname %></td>
