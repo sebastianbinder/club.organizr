@@ -5,7 +5,7 @@ before_filter :authenticate_user_from_token!
 	load_and_authorize_resource :except => [:feed]
 	
 	def index
-		@events = @customer.events.where('"events"."to" > ?', 5.days.ago).order(from: :asc)
+		@events = @customer.events.where('"from" > ?', 5.days.ago).order(from: :asc)
 		
 	end
 	
