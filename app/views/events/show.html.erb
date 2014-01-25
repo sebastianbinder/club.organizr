@@ -88,35 +88,31 @@
 						</td>
 						<% end %>
 						</tr>
+						<% if can? :send_message, CustomersUser %>
 						<tr>
 						<% unless @event_users_accepted.empty? %>
 						<td>
-							<% if can? :send_message, CustomersUser %>
 								<%= button_to(new_conversation_path, :name => :receipient, :value => mailto_accepted.join(', '), :class => "btn btn-success") do %>
 									<span class="glyphicon glyphicon-envelope"></span>
-								<% end %>
-							<% end %>
+								<% end %>						
 						</td>
 					<% end %>
 						<% unless @event_users_denied.empty? %>
-						<td>
-							<% if can? :send_message, CustomersUser %>
+						<td>					
 								<%= button_to(new_conversation_path, :name => :receipient, :value => mailto_denied.join(', '), :class => "btn btn-success") do %>
 									<span class="glyphicon glyphicon-envelope"></span>
 								<% end %>
-							<% end %>
 						</td>
 						<% end %>
 						<% unless @event_users_noreply.empty? %>
 						<td>
-							<% if can? :send_message, CustomersUser %>
 								<%= button_to(new_conversation_path, :name => :receipient, :value => mailto_noreply.join(', '), :class => "btn btn-success") do %>
 									<span class="glyphicon glyphicon-envelope"></span>
 								<% end %>
-							<% end %>
 						</td>
 						<% end %>
 					</tr>
+				<% end %>
 			</table>
 		</div>
 	<% end %>
