@@ -42,19 +42,22 @@
 						<th></th>
 					<% end %>
 				</tr>
-				<% @customers_users_self.each do |user| %>
+				<% @customers_users.each do |user| %>
 					<tr>
 						<% if can? :send_message, CustomersUser %>
-							<td align="center"><%= check_box_tag('mailto[]', user.user.email ) %>
+							<td align="center">
+							<% if get_users_role(user.id) == "admin" || get_users_role(user.id) == "customer" || get_users_role(user.id) == "organizer" %>
+									<%= check_box_tag('mailto[]', user.email ) %>
+								<% end %>
 						<% else %>
 							<td align="center">
-								<% if user.role == "admin" || user.role == "customer" || user.role == "organizer" %>
-									<%= check_box_tag('mailto[]', user.user.email ) %>
+								<% if get_users_role(user.id) == "admin" || get_users_role(user.id) == "customer" || get_users_role(user.id) == "organizer" %>
+									<%= check_box_tag('mailto[]', user.email ) %>
 								<% end %>
 						<% end %>
-						<td><%= user.user.email %></td>
-						<td><%= user.user.firstname %></td>
-						<td><%= user.user.lastname %></td>
+						<td><%= user.email %></td>
+						<td><%= user.firstname %></td>
+						<td><%= user.lastname %></td>
 						<% if can? :read, CustomersUser %>
 							<td class="button">
 								<%= link_to(customer_customers_user_path(@customer, user)) do %>

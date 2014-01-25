@@ -23,4 +23,9 @@ module CustomersUsersHelper
 		end
 		return emails.join(', ')
 	end
+	
+	def get_users_role(user_id)
+		user = @customer.customers_users.where(:user_id => user_id).take
+		return user.role
+	end
 end
