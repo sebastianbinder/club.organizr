@@ -23,12 +23,6 @@
 							</div>
 						</td>
 					</tr>
-
-					<tr>
-						<th> <%= f.label :password, t(".password"), :class => "col-lg-2 control-label" %></th>
-						<td><%= f.password_field :password, :class => "form-control" %><%= f.password_field :password_confirmation, :class => "form-control" %></td>
-					</tr>
-
 					<tr>
 						<th> <%= f.label :firstname, t(".firstname"), :class => "col-lg-2 control-label" %></th>
 						<td><%= f.text_field :firstname, :class => "form-control" %></td>
@@ -60,6 +54,10 @@
 					<tr>
 						<th> <%= f.label :country, t(".country"), :class => "col-lg-2 control-label" %></th>
 						<td> <%= f.text_field :country, :class => "form-control" %></td>
+					</tr>
+					<tr>
+						<th> <%= f.label :password, t(".password"), :class => "col-lg-2 control-label" %></th>
+						<td><%= f.password_field :password, :class => "form-control" %><%= f.password_field :password_confirmation, :class => "form-control" %></td>
 					</tr>
 					<tr>
 						<td colspan="2">
