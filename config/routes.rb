@@ -67,6 +67,7 @@ ClubOrganizr::Application.routes.draw do
 
 	  end
 	  resources :users
+	  resources :manuals
 	  get "/index/imprint", :controller => "indices", :action => "imprint"
 	  get "/index/imprint", :controller => "devise/indices", :action => "imprint"
 	  get "/index/privacy", :controller => "indices", :action => "privacy"
