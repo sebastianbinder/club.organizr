@@ -28,4 +28,9 @@ module CustomersUsersHelper
 		user = @customer.customers_users.where(:user_id => user_id).take
 		return user.role
 	end
+	
+	def get_customers_users_id(user_id)
+		user = @customer.customers_users.where(:user_id => user_id).take
+		return user.id
+	end
 end

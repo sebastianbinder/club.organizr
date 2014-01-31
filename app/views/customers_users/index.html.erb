@@ -58,7 +58,7 @@
 						<td><%= user.lastname %></td>
 						<% if can? :read, CustomersUser %>
 							<td class="button">
-								<%= link_to(customer_customers_user_path(@customer, user)) do %>
+								<%= link_to(customer_customers_user_path(@customer, get_customers_users_id(user.id))) do %>
 									<button type="button" class="btn btn-info btn-sm">
 										<span class="glyphicon glyphicon-info-sign"></span>
 									</button>
@@ -67,7 +67,7 @@
 						<% end %>
 						<% if can? :update, CustomersUser %>
 							<td class="button">
-								<%= link_to(edit_customer_customers_user_path(@customer, user)) do %>
+								<%= link_to(edit_customer_customers_user_path(@customer, get_customers_users_id(user.id))) do %>
 									<button type="button" class="btn btn-warning btn-sm">
 										<span class="glyphicon glyphicon-wrench"></span>
 									</button>
