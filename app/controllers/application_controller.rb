@@ -28,8 +28,8 @@ def default_url_options(options={})
  rescue_from CanCan::AccessDenied do |exception|
    redirect_to :back, :alert => exception.message
  end
- logger.debug "######"
- logger.debug @current_ability
+ 
+
 
 private
   

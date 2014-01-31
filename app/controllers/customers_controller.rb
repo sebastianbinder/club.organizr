@@ -13,6 +13,10 @@ class CustomersController < ApplicationController
 	  			customer_ids << customer_user.customer_id
 	  		end
 	  		@customers = Customer.find(customer_ids).sort_by &:name
+	  		if @customers.count == 1
+		  		redirect_to customer_events_path(@customers)
+ 	  		end
+	  		
 	  	end
 	end
 	
