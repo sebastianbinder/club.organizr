@@ -62,10 +62,15 @@
 						<div class="btn-group">
 							
 							<%= f.submit t(".save"), :class => "btn btn-success" %>
+							<% if params[:action] == ("new" || "create") %>
+								<%= f.submit "Speichern und Neu", :class => "btn btn-success", :name => "saveandnew" %>
+							<% end %>
+
 							<% if params[:action] == "new" %>
 								<%= link_to t(".cancel"), customer_events_path(@customer), data: { confirm: t(".alerts.cancel_new") }, :class => "btn btn-danger" %>
 								</div>
 							<% end %>
+														
 							<% if params[:action] == "edit" %>
 								<%= link_to t(".cancel"), customer_event_path(@customer, @event), data: { confirm: t(".alerts.cancel_edit") }, :class => "btn btn-danger" %>
 								</div>

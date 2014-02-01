@@ -10,7 +10,12 @@ before_filter :authenticate_user_from_token!
 	end
 	
 	def new
-		@event = @customer.events.new(:customer_id => params[:customer_id])
+		if params[:event].present?
+			@event = @customer.events.new :title => params[:event][:title], :location => params[:event][:location], :should_respond => params[:event][:should_respond], :status => params[:event][:status]
+		else
+			@event = @customer.events.new(:customer_id => params[:customer_id])
+		end
+		
 	end
 	
 	def create
@@ -19,7 +24,12 @@ before_filter :authenticate_user_from_token!
 			@customer.customers_users.each do |customers_user|
 				EventsUser.find_or_create_by(event_id: @event.id, user_id: customers_user.id)
 			end
-			redirect_to customer_event_path(@customer, @event)
+		
+			if params[:saveandnew]
+				redirect_to :controller => "events", :action => "new", :customer_id => params[:customer_id], :event => params[:event], notice: "Gespeichert"
+			else
+				redirect_to customer_event_path(@customer, @event)
+			end
 		else
 			render 'new'
 		end
