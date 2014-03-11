@@ -59,6 +59,7 @@ de:
       to: Ende
       location: Ort
       details: Details
+      public: Öffentlich?
       should_respond: Rückmeldung erwünscht?
       save: Termin speichern!
       cancel: Abbrechen

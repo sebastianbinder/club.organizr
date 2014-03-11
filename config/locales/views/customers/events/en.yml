@@ -59,6 +59,7 @@ en:
       to: Until
       location: Location
       details: Details
+      public: Public?
       should_respond: "Get Members' Feedback"
       save: Save this event!
       cancel: Cancel

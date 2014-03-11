@@ -51,6 +51,10 @@
 						<td> <%= f.check_box :should_respond %></td>
 					</tr>
 					<tr>
+						<th> <%= f.label :public, t(".public"), :class => "col-lg-6 control-label" %></th>
+						<td> <%= f.check_box :public %></td>
+					</tr>
+					<tr>
 						<th> <%= f.label :status, t(".status"), :class => "col-lg-6 control-label" %></th>
 						<td> <%= f.select :status, Event::STATUS.collect {|d| [t(".#{d}"), d]} %></td>
 					</tr>

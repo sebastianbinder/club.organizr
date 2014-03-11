@@ -44,8 +44,10 @@ en:
       email: E-Mail
       password: Password
       firstname: Firstname
+      dob: Date of Birth
       lastname: Lastname
       phone_number: Phone Number
+      mobile: Mobile Number
       street: Street
       street_number: Street Number
       zipcode: Zipcode

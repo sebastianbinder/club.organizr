@@ -1,8 +1,8 @@
 class EventsController < ApplicationController
 before_filter :authenticate_user_from_token!
-	before_filter :authenticate_user!
+	before_filter :authenticate_user!, :except => [:publicfeed]
 	before_filter :find_customer
-	load_and_authorize_resource :except => [:feed]
+	load_and_authorize_resource :except => [:feed, :publicfeed]
 	
 	def index
 		@events = @customer.events.where('`events`.`to` > ?', 5.days.ago).order(from: :asc)
@@ -82,13 +82,19 @@ before_filter :authenticate_user_from_token!
 		end
 		
 	end
+	
+	
+	def publicfeed
+		@events = @customer.events.where(["public = (?)", true])
+	end
+	
 
 	private
 		def find_customer
 			@customer = Customer.find(params[:customer_id])
 		end
 		def event_params
-			params.require(:event).permit(:title, :from, :to, :location, :details, :customer_id, :should_respond, :status)
+			params.require(:event).permit(:title, :from, :to, :location, :details, :customer_id, :should_respond, :status, :public)
 		end
 		
 		def authenticate_user_from_token!

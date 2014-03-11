@@ -45,7 +45,9 @@ de:
       password: Passwort
       firstname: Vorname
       lastname: Nachname
+      dob: Geburtsdatum
       phone_number: Telefon
+      mobile: Handy
       street: Straße
       street_number: Hausnummer
       zipcode: Postleitzahl
