@@ -32,7 +32,9 @@ de:
       firstname: Vorname
       lastname: Nachname
       email: E-Mail
+      dob: Geburtsdatum
       phone_number: Telefon
+      mobile: Handy
       address: Adresse
       edit: Details bearbeiten
     edit:
@@ -45,7 +47,9 @@ de:
       password: Passwort
       firstname: Vorname
       lastname: Nachname
+      dob: Geburtsdatum
       phone_number: Telefon
+      mobile: Handy
       street: Straße
       street_number: Hausnummer
       zipcode: Postleitzahl

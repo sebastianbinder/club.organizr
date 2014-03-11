@@ -9,7 +9,9 @@ class CustomersUsersController < ApplicationController
 	
 	
 	def index
-		@customers_users = @customer.customers_users
+		@customers_users = @customer.users
+		logger.debug @customers_users.inspect
+		@customers_users_self = @customer.customers_users
 	end
 	
 	

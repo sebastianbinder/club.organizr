@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140112130134) do
+ActiveRecord::Schema.define(version: 20140311123253) do
 
   create_table "conversations", force: true do |t|
     t.string   "subject",    default: ""
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 20140112130134) do
 
   create_table "events", force: true do |t|
     t.string   "title"
-    t.date     "date"
-    t.time     "time"
+    t.datetime "from"
+    t.datetime "to"
     t.string   "location"
     t.text     "details"
     t.datetime "created_at"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20140112130134) do
     t.integer  "customer_id"
     t.boolean  "should_respond", default: false
     t.string   "status"
+    t.boolean  "public"
   end
 
   create_table "events_users", force: true do |t|
@@ -78,7 +79,7 @@ ActiveRecord::Schema.define(version: 20140112130134) do
     t.datetime "expires"
   end
 
-  add_index "notifications", ["conversation_id"], name: "index_notifications_on_conversation_id", using: :btree
+  add_index "notifications", ["conversation_id"], name: "index_notifications_on_conversation_id"
 
   create_table "receipts", force: true do |t|
     t.integer  "receiver_id"
@@ -92,7 +93,7 @@ ActiveRecord::Schema.define(version: 20140112130134) do
     t.datetime "updated_at",                                 null: false
   end
 
-  add_index "receipts", ["notification_id"], name: "index_receipts_on_notification_id", using: :btree
+  add_index "receipts", ["notification_id"], name: "index_receipts_on_notification_id"
 
   create_table "users", force: true do |t|
     t.string   "login"
@@ -117,13 +118,13 @@ ActiveRecord::Schema.define(version: 20140112130134) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.integer  "roles_mask"
+    t.string   "authentication_token"
+    t.string   "dob"
+    t.string   "mobile"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
-  add_foreign_key "notifications", "conversations", name: "notifications_on_conversation_id"
-
-  add_foreign_key "receipts", "notifications", name: "receipts_on_notification_id"
+  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

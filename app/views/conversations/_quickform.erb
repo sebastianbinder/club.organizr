@@ -4,7 +4,8 @@
     inline: false,
     plugins: ["link"],
     toolbar: "undo redo | bold italic underline | bullist numlist | link",
-    menubar: false
+    menubar: false,
+    content_css: '<%= asset_path 'application.css' %>'
   });
 </script>
 <%= form_tag :action => :reply do%>

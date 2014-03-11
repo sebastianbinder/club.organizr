@@ -9,9 +9,11 @@
 					<span class="glyphicon glyphicon-envelope"></span> <%= t(".to_all_members") %>
 				<% end %>
 			<% end %>
+			<% if can? :manage, :all %>
 			<%= button_to(new_conversation_path, :name => :receipient, :value => organizers_email_addresses, :class => "btn btn-success btn-sm") do %>
 					<span class="glyphicon glyphicon-envelope"></span> <%= t(".to_organizers") %>
 				<% end %>
+			<% end %>
 			<% if can? :create, CustomersUser %>
 				<%= link_to(new_customer_customers_user_path(@customer)) do %>
 					<button type="button" class="btn btn-success btn-sm">
@@ -27,9 +29,7 @@
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-condensed">
 				<tr>
-					<% if can? :send_message, CustomersUser %>
-						<th style="text-align: center;"><span class="glyphicon glyphicon-envelope"></span></th>
-					<% end %>
+					<th style="text-align: center;"><span class="glyphicon glyphicon-envelope"></span></th>
 					<th><%= t(".email") %></th>
 					<th><%= t(".firstname") %></th>
 					<th><%= t(".lastname") %></th>
@@ -43,14 +43,22 @@
 				<% @customers_users.each do |user| %>
 					<tr>
 						<% if can? :send_message, CustomersUser %>
-							<td align="center"><%= check_box_tag('mailto[]', user.user.email ) %>
+							<td align="center">
+								<%= check_box_tag('mailto[]', user.email ) %>
+							</td>
+						<% else %>
+							<td align="center">
+								<% if get_users_role(user.id) == "admin" || get_users_role(user.id) == "customer" || get_users_role(user.id) == "organizer" %>
+									<%= check_box_tag('mailto[]', user.email ) %>
+								<% end %>
+							</td>
 						<% end %>
-						<td><%= user.user.email %></td>
-						<td><%= user.user.firstname %></td>
-						<td><%= user.user.lastname %></td>
+						<td><%= user.email %></td>
+						<td><%= user.firstname %></td>
+						<td><%= user.lastname %></td>
 						<% if can? :read, CustomersUser %>
 							<td class="button">
-								<%= link_to(customer_customers_user_path(@customer, user)) do %>
+								<%= link_to(customer_customers_user_path(@customer, get_customers_users_id(user.id))) do %>
 									<button type="button" class="btn btn-info btn-sm">
 										<span class="glyphicon glyphicon-info-sign"></span>
 									</button>
@@ -59,7 +67,7 @@
 						<% end %>
 						<% if can? :update, CustomersUser %>
 							<td class="button">
-								<%= link_to(edit_customer_customers_user_path(@customer, user)) do %>
+								<%= link_to(edit_customer_customers_user_path(@customer, get_customers_users_id(user.id))) do %>
 									<button type="button" class="btn btn-warning btn-sm">
 										<span class="glyphicon glyphicon-wrench"></span>
 									</button>
@@ -70,11 +78,9 @@
 				<% end %>
 			</table>
 		</div>
-		<% if can? :send_message, CustomersUser %>
 			<%= button_tag(:type => :submit, :class => "btn btn-success btn-sm") do %>
 				<span class="glyphicon glyphicon-envelope"></span> <%= t(".to_all_selected") %>
 			<% end %>
-		<% end %>
 		<div class="col-md-offset-4"></div>
 
 	</div>

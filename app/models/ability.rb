@@ -8,6 +8,8 @@ class Ability
 		if user.nil?
 			user = CustomersUser.new
 			can :index, Customer
+			can :show, User, :id => current_user.id
+			can :update, User, :id => current_user.id
 		end
 				
 		if user.role? :admin
@@ -34,11 +36,12 @@ class Ability
 			if user.role? :viewer
 				can :index, Customer
 				can :read, Event
-	    		can :show, User, :id => current_user.id
+				can :show, User, :id => current_user.id
 				can :update, User, :id => current_user.id
 			end	
 	    
 			if user.role? :member
+				can :ics, Event
 				can :update, EventsUser
 				can :read, CustomersUser
 			end	

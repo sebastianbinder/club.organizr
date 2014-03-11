@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
   
 	def index
 		if can? :manage, :all
-	  		$customers = Customer.all.sort_by &:name
+	  		@customers = Customer.all.sort_by &:name
 	  	else
 	  		customer_user = CustomersUser.where(:user_id => current_user.id)
 
@@ -12,7 +12,11 @@ class CustomersController < ApplicationController
 	  		customer_user.each do |customer_user|
 	  			customer_ids << customer_user.customer_id
 	  		end
-	  		$customers = Customer.find(customer_ids).sort_by &:name
+	  		@customers = Customer.find(customer_ids).sort_by &:name
+	  		if @customers.count == 1
+		  		redirect_to customer_events_path(@customers)
+ 	  		end
+	  		
 	  	end
 	end
 	

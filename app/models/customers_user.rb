@@ -1,5 +1,5 @@
 class CustomersUser < ActiveRecord::Base
-	belongs_to :user
+	belongs_to :user, -> { order(:lastname) }
 	belongs_to :customer
 	
 	validates :user_id, :presence => true

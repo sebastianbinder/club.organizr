@@ -4,13 +4,15 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :recoverable,
          :rememberable, :trackable, :validatable
          
+  include Tokenable
+         
   has_many :customers_users
   has_many :customers, through: :customers_users
   
   has_many :events_users
   has_many :events, through: :events_users
   
-
+  validates_uniqueness_of :email
   validates :firstname, :presence => true
   
   validates :lastname, :presence => true

@@ -1,0 +1,188 @@
+<div class="page-header">
+	<h1>Hilfe</h1>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+	
+	
+	
+		<div class="well" data-toggle="modal" data-target="#zusage">Wie sage ich zu einem Termin zu?</div>
+		<div class="modal fade" id="zusage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		 	<div class="modal-dialog">
+			 	<div class="modal-content">
+				 	<div class="modal-header">
+					 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					 	<h4 class="modal-title" id="myModalLabel">Wie sage ich zu einem Termin zu?</h4>
+					 </div>
+					 <div class="modal-body">
+					 <p>
+					 	Sie sollten auf der Seite Termine folgende Buttons sehen:</p>
+					 	<p><button type="button" class="btn btn-success btn-sm left">
+							<span class="glyphicon glyphicon-ok-circle"></span>
+						</button>
+						<button type="button" class="btn btn-danger btn-sm left">
+							<span class="glyphicon glyphicon-remove-circle"></span>
+						</button>&nbsp;<br>&nbsp;</p>
+						
+					 <p>
+						Klicken Sie nun auf den grünen Button, um für diesen Termin zuzusagen. Als Bestätigung Ihrer aktuellen Auswahl verschwindet der rote Button.
+					 </p>
+					 </div>
+					 <div class="modal-footer">
+						 <button type="button" class="btn btn-default" data-dismiss="modal">Schlie&szlig;en</button>
+					 </div>
+			 	</div>
+		 	</div>
+		</div>
+		
+		
+		
+		<div class="well" data-toggle="modal" data-target="#absage">Wie sage ich zu einem Termin ab?</div>
+		<div class="modal fade" id="absage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		 	<div class="modal-dialog">
+			 	<div class="modal-content">
+				 	<div class="modal-header">
+					 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					 	<h4 class="modal-title" id="myModalLabel">Wie sage ich zu einem Termin ab?</h4>
+					 </div>
+					 <div class="modal-body">
+					 <p>
+					 	Sie sollten auf der Seite Termine folgende Buttons sehen:</p>
+					 	<p><button type="button" class="btn btn-success btn-sm left">
+							<span class="glyphicon glyphicon-ok-circle"></span>
+						</button>
+						<button type="button" class="btn btn-danger btn-sm left">
+							<span class="glyphicon glyphicon-remove-circle"></span>
+						</button>&nbsp;<br>&nbsp;</p>
+						
+					 <p>
+						Klicken Sie nun auf den roten Button, um für diesen Termin abzusagen. Als Bestätigung Ihrer aktuellen Auswahl verschwindet der grüne Button.
+					 </p>
+					 </div>
+					 <div class="modal-footer">
+						 <button type="button" class="btn btn-default" data-dismiss="modal">Schlie&szlig;en</button>
+					 </div>
+			 	</div>
+		 	</div>
+		</div>
+		
+		<div class="well" data-toggle="modal" data-target="#change">Wie ändere ich meine Zusage zu einer Absage und umgekehrt?</div>
+		<div class="modal fade" id="change" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		 	<div class="modal-dialog">
+			 	<div class="modal-content">
+				 	<div class="modal-header">
+					 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					 	<h4 class="modal-title" id="myModalLabel">Wie ändere ich meine Zusage zu einer Absage und umgekehrt?</h4>
+					 </div>
+					 <div class="modal-body">
+					 <p>
+					 	Sollten Sie bereits für einen Termin zu- oder abgesagt haben, können Sie Ihre Auswahl ändern, indem Sie auf den verbleibenden grünen oder roten Button klicken. Er ändert nun die Farbe und zeigt Ihre aktuelle Auswahl.
+					 </p>
+					 </div>
+					 <div class="modal-footer">
+						 <button type="button" class="btn btn-default" data-dismiss="modal">Schlie&szlig;en</button>
+					 </div>
+			 	</div>
+		 	</div>
+		</div>
+		
+		
+		<div class="well" data-toggle="modal" data-target="#icsfeed">Wie kann ich die Termine auf meinem Handy oder Tablet abonnieren?</div>
+		<div class="modal fade" id="icsfeed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		 	<div class="modal-dialog">
+			 	<div class="modal-content">
+				 	<div class="modal-header">
+					 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					 	<h4 class="modal-title" id="myModalLabel">Wie kann ich die Termine auf meinem Handy oder Tablet abonnieren?</h4>
+					 </div>
+					 <div class="modal-body">
+					 <p>
+					 	Auf der Seite "Termine" sehen Sie folgenden Button: <button type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-calendar"></span></button><br>
+					 	Klicken Sie auf diesen, um die URL des Kalender-Feeds anzuzeigen. Diese können Sie nun auf Ihrem Handy, Tablet oder Computer abonnieren.
+					 </p>
+					 <p>
+					 Passende Anleitungen, z.B
+					 <ul>
+					 	<li><%= link_to("Apple iOS", "http://www.ehow.de/icalender-deinem-iphone-hinzufugst-wie_8353/", target: "_blank") %></li>
+					 	<li><%= link_to("Google Android", "https://support.google.com/calendar/answer/37100?hl=de", target: "_blank") %></li>
+					 	<li><%= link_to("Microsoft Outlook", "http://office.microsoft.com/de-de/outlook-help/anzeigen-und-abonnieren-von-internetkalendern-HA102534443.aspx#_Toc285199656", target: "_blank") %></li>
+					 </ul>
+					 </p>
+					 </div>
+					 <div class="modal-footer">
+						 <button type="button" class="btn btn-default" data-dismiss="modal">Schlie&szlig;en</button>
+					 </div>
+			 	</div>
+		 	</div>
+		</div>
+		
+		
+		<div class="well" data-toggle="modal" data-target="#logout">Wie kann ich meine persönlichen Daten oder mein Passwort ändern?</div>
+		<div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		 	<div class="modal-dialog">
+			 	<div class="modal-content">
+				 	<div class="modal-header">
+					 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					 	<h4 class="modal-title" id="myModalLabel">Wie kann ich meine persönlichen Daten oder mein Passwort ändern?</h4>
+					 </div>
+					 <div class="modal-body">
+					 <p>
+					 	Klicken Sie oben rechts auf Ihren Namen. Dann öffnet sich ein weiteres Menü mit dem Link "Mein Profil". Auf der folgenden Seite sehen Sie rechts den gelben Button "Details bearbeiten". Nach einem Klick auf diesen gelangen Sie auf das Formular um Ihre persönlichen Daten zu ändern. Sie müssen das Feld Passwort am Ende nur dann ausfüllen, wenn Sie dieses ändern wollen. Haben Sie nur Ihre persönlichen Daten abgeändert, kann es leer bleiben. Vergessen Sie nicht, die Änderungen zu speichern!
+					 </p>
+					 </div>
+					 <div class="modal-footer">
+						 <button type="button" class="btn btn-default" data-dismiss="modal">Schlie&szlig;en</button>
+					 </div>
+			 	</div>
+		 	</div>
+		</div>
+		
+		<div class="well" data-toggle="modal" data-target="#logout">Wie kann ich mich abmelden?</div>
+		<div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		 	<div class="modal-dialog">
+			 	<div class="modal-content">
+				 	<div class="modal-header">
+					 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					 	<h4 class="modal-title" id="myModalLabel">Wie kann ich mich abmelden?</h4>
+					 </div>
+					 <div class="modal-body">
+					 <p>
+					 	Klicken Sie oben rechts auf Ihren Namen. Dann öffnet sich ein weiteres Menü mit dem Link "Logout".
+					 </p>
+					 </div>
+					 <div class="modal-footer">
+						 <button type="button" class="btn btn-default" data-dismiss="modal">Schlie&szlig;en</button>
+					 </div>
+			 	</div>
+		 	</div>
+		</div>
+		
+		
+		<div class="well" data-toggle="modal" data-target="#messages">Wie funktioniert dieses Nachrichtensystem?</div>
+		<div class="modal fade" id="messages" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		 	<div class="modal-dialog">
+			 	<div class="modal-content">
+				 	<div class="modal-header">
+					 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					 	<h4 class="modal-title" id="myModalLabel">Wie funktioniert dieses Nachrichtensystem?</h4>
+					 </div>
+					 <div class="modal-body">
+					 <p>
+					 	Sobald Ihnen jemand eine Nachricht schickt, bekommen Sie eine Benachrichtigung per E-Mail und können die Nachricht in club.organizr einsehen. Um auf die Nachricht zu beantworten, muss diese Aktion über das Portal erfolgen. Eine Antwort innerhalb Ihres Mailprogramms wird erfolglos sein - die Nachricht kommt als unzustellbar zurück.</p>
+					 	<p>Sofern Sie eine Nachricht an beispielsweise die Leitung Ihrer Gruppe schicken wollen, gehen Sie auf den Menüpunkt "Mitglieder" (innerhalb Ihrer Gruppe). Wählen Sie dann in der ersten Spalte die Personen aus, die Ihre Nachricht empfangen sollen und klicken Sie am Ende der Seite auf den grünen Button "Nachricht an ausgewählte Mitglieder". Dann können Sie die Nachricht verfassen und abschicken. Sie können innerhalb des Portals jedoch nur Nachrichten an die Gruppenleiter oder Gruppenorganisatoren schreiben - für alle anderen Mitglieder benutzen Sie bitte weiterhin das Mailprogramm Ihrer Wahl.
+					 </p>
+					 </div>
+					 <div class="modal-footer">
+						 <button type="button" class="btn btn-default" data-dismiss="modal">Schlie&szlig;en</button>
+					 </div>
+			 	</div>
+		 	</div>
+		</div>
+
+		
+		
+		
+		
+	</div>
+</div>

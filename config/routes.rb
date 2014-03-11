@@ -55,17 +55,20 @@ ClubOrganizr::Application.routes.draw do
   #   end
   
   scope "(:locale)", :locale => /en|de/ do
-	  devise_for :users
+	  devise_for :users, :token_authentication_key => 'authentication_key'
 	  root :to => "customers#index"
 	  resources :customers
 		 scope path: "(:customer_id)", :as => "customer" do
-		  resources :events		  
+		  get "eventfeed", :controller => "events", :action => "feed"
+		  get "public-events", :controller => "events", :action => "publicfeed"
+		  resources :events
 		  resources :customers_users, :path => "members", :only => [:index, :create]
 		  resources :customers_users, :path => "member", :except => [:index, :create]
 		  resources :events_users, :path => "availability"
 
 	  end
 	  resources :users
+	  resources :manuals
 	  get "/index/imprint", :controller => "indices", :action => "imprint"
 	  get "/index/imprint", :controller => "devise/indices", :action => "imprint"
 	  get "/index/privacy", :controller => "indices", :action => "privacy"

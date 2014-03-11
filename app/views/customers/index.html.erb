@@ -3,7 +3,7 @@
 </div>
 
 <div class="row">
-	<div class="col-md-1 col-md-offset-8" align="right">
+	<div class="col-md-1 col-md-offset-11" align="right">
 		<% if can? :create, Customer %>
 			<p><%= link_to(new_customer_path) do %>
 				<button type="button" class="btn btn-success btn-sm">
@@ -15,11 +15,12 @@
 </div>
 
 <div class="row">
-	<div class="col-md-9">
+	<div class="col-md-12">
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-condensed">
 				<tr>
 					<th><%= t(".name") %></th> 
+					<th></th>
 					<th></th>
 					<% if can? :show, Customer %>
 					<th></th>
@@ -28,13 +29,20 @@
 					<th></th>
 					<% end %>
 				</tr>
-				<% $customers.each do |customer| %>		
+				<% @customers.each do |customer| %>		
 					<tr>
 						<td><%= customer.name %></td>
 						<td class="button">
 							<%= link_to(customer_events_path(customer)) do %>
 								<button type="button" class="btn btn-info btn-sm">
-									<span class="glyphicon glyphicon-arrow-right"></span>
+									<span class="glyphicon glyphicon-calendar"></span>
+								</button>
+							<% end %>
+						</td>
+						<td class="button">
+							<%= link_to(customer_customers_users_path(customer)) do %>
+								<button type="button" class="btn btn-info btn-sm">
+									<span class="glyphicon glyphicon-user"></span>
 								</button>
 							<% end %>
 						</td>
