@@ -30,6 +30,8 @@ en:
       header: New Message
     quickform:
       reply: Reply
+    show:
+      sender: Receipients
     form:
       receipient: Receipient
       subject: Subject

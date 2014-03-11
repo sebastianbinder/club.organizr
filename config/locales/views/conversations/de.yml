@@ -28,6 +28,8 @@ de:
       subject: Betreff
     new:
       header: Neue Nachricht
+    show:
+      sender: Beteiligte
     quickform:
       reply: Antworten
     form:
