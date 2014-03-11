@@ -60,6 +60,7 @@ ClubOrganizr::Application.routes.draw do
 	  resources :customers
 		 scope path: "(:customer_id)", :as => "customer" do
 		  get "eventfeed", :controller => "events", :action => "feed"
+		  get "public-events", :controller => "events", :action => "publicfeed"
 		  resources :events
 		  resources :customers_users, :path => "members", :only => [:index, :create]
 		  resources :customers_users, :path => "member", :except => [:index, :create]

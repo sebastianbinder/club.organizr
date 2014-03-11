@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140117174742) do
+ActiveRecord::Schema.define(version: 20140311123253) do
 
   create_table "conversations", force: true do |t|
     t.string   "subject",    default: ""
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20140117174742) do
     t.integer  "customer_id"
     t.boolean  "should_respond", default: false
     t.string   "status"
+    t.boolean  "public"
   end
 
   create_table "events_users", force: true do |t|
@@ -118,6 +119,8 @@ ActiveRecord::Schema.define(version: 20140117174742) do
     t.string   "last_sign_in_ip"
     t.integer  "roles_mask"
     t.string   "authentication_token"
+    t.string   "dob"
+    t.string   "mobile"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true
