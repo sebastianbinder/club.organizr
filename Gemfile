@@ -54,3 +54,10 @@ gem 'tinymce-rails-langs', :branch => "tinymce-4"
 gem 'bootstrap-sass'
 gem 'mailboxer'
 gem 'htmlentities'
+
+
+gem 'puma', :group => [:development, :test]
+gem 'quiet_assets', :group => [:development, :test]
+gem 'better_errors', :group => [:development, :test]
+gem 'binding_of_caller', :group => [:development, :test]
+gem 'awesome_print', :group => [:development, :test]
