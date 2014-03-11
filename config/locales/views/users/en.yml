@@ -32,7 +32,9 @@ en:
       firstname: Firstname
       lastname: Lastname
       email: E-Mail
+      dob: Date of Birth
       phone_number: Phone Number
+      mobile: Mobile Number
       address: Address
       edit: Edit Details
     edit:
