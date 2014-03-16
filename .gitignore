@@ -15,8 +15,8 @@
 /log/*.log
 /tmp
 
-config/deploy/production.rb
+/config/deploy/production.rb
+/config/deploy/staging.rb
+/config/deploy.rb
 
-config/deploy/staging.rb
-
-config/deploy.rb
+/public/assets/*
