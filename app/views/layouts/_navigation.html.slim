@@ -1,0 +1,11 @@
+ul.nav.navbar-nav
+  - if user_signed_in?
+    - if params[:customer_id].nil?
+      li = link_to(t('.customers'), customers_path())
+    - else
+      li = link_to(get_customer(params[:customer_id]).name, customers_path())
+      li = link_to(t('.events'), customer_events_path(params[:customer_id]))
+      li = link_to(t('.members'), customer_customers_users_path(params[:customer_id]))
+    li = link_to(t('.conversations'), conversations_path())
+    - if can? :manage, User
+      li = link_to(t('.users'), users_path)

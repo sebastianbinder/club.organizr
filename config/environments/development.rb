@@ -31,4 +31,6 @@ ClubOrganizr::Application.configure do
   ActionMailer::Base.delivery_method = :file
 	config.action_mailer.raise_delivery_errors = true
 	config.action_mailer.default :charset => "utf-8"
+	
+	Slim::Engine.default_options[:pretty] = false
 end

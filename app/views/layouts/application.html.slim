@@ -1,0 +1,30 @@
+doctype 5
+html
+  head
+    title club.organizr - manage your club the organizr way!
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+    meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  body
+    nav.navbar.navbar-default.navbar-fixed-top role="navigation"
+      .navbar-header
+        button.navbar-toggle type="button" data-toggle="collapse" data-target=".navbar-collapse"
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        = link_to "club.organizr", root_path, class: "navbar-brand"
+      .navbar-collapse.collapse
+        = render "layouts/navigation"
+        = render "layouts/usercontrol"
+    .container id="#{get_controller}-#{get_action}"
+      - unless notice.nil?
+        .alert.alert-success
+          = notice
+      - unless alert.nil? 
+        .alert.alert-danger
+          = alert
+      = yield
+    footer.modal-footer role="contentinfo"
+      .container
+        = render "layouts/footer"

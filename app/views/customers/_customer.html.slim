@@ -1,0 +1,15 @@
+tr
+  td
+    = customer.name
+  td.button
+    = link_to(customer_events_path(customer)) do
+      button.btn.btn-info.btn-sm type="button"
+        span.glyphicon.glyphicon-calendar
+  td.button
+    = link_to(customer_customers_users_path(customer)) do 
+      button.btn.btn-info.btn-sm type="button"
+        span.glyphicon.glyphicon-user
+  td.button
+    = link_to_show(:customer, customer.id)
+  td.button
+    = link_to_edit(:customer, customer.id)
