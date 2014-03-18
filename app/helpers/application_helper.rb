@@ -2,6 +2,11 @@ module ApplicationHelper
 	def get_customer(id)
 		customer = Customer.find(id)
 	end
+	
+	def get_options_from_args(args)
+	  args.extract_options!
+	end
+	
 	def get_admin_users
 		admins = Array.new
 		CustomersUser.where(:role => "admin").each do |admin|
@@ -10,32 +15,35 @@ module ApplicationHelper
 		return admins
 	end
 	
-  def bootstrap_button(type, size, icon)
-    button_tag(type: 'button', class: "btn btn-#{type} btn-#{size}") do
+  def bootstrap_button(type, icon, *args)
+    options = get_options_from_args(args)
+    size = options[:size] || 'sm'
+    disabled = options[:disabled] || ''
+    button_tag(type: 'button', class: "btn btn-#{type} btn-#{size} #{disabled}") do
       content_tag(:span, '', class: "glyphicon glyphicon-#{icon}")
     end
   end
   
-  def link_to_new(object)
+  def button_to_new(object)
     if can? :create, object
       link_to(('new_' + object.to_s).to_sym) do
-        bootstrap_button('success', 'sm', 'plus')
+        bootstrap_button('success', 'plus', size: 'sm')
       end
     end
   end
   
-  def link_to_show(object, id)
+  def button_to_show(object, id)
     if can? :show, object
       link_to(controller: object.to_s.pluralize, action: 'show', id: id) do
-        bootstrap_button('info', 'sm', 'info-sign')
+        bootstrap_button('info', 'info-sign', size: 'sm')
       end
     end
   end
   
-  def link_to_edit(object, id)
+  def button_to_edit(object, id)
     if can? :update, object
       link_to(controller: object.to_s.pluralize, action: 'edit', id: id) do
-        bootstrap_button('warning', 'sm', 'wrench')
+        bootstrap_button('warning', 'wrench', size: 'sm')
       end
     end
   end

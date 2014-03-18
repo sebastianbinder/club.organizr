@@ -26,7 +26,8 @@ en:
       events: Events
       date: Date
       title: Title
-      location: Location      
+      location: Location    
+    index_tr:
       alerts:
         dont_you_want_to_attend: Do you really want to be excused for this event?
         do_you_want_to_attend: Do you really want to indicate that you are coming to this event?

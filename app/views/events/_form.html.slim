@@ -1,0 +1,67 @@
+script[type="text/javascript"]
+  |  tinyMCE.init({ selector: 'textarea.editable', inline: false, plugins: ["link"], toolbar: "undo redo | bold italic underline | bullist numlist | link", menubar: false, content_css: '<ruby code="= asset_path 'application.css'"></ruby>' }); 
+- if @event.errors.any?
+  .alert.alert-danger
+    strong
+      = t('activerecord.errors.template.header', :count => @event.errors.size, :model => t(".event"))
+    ul
+      - @event.errors.full_messages.each do |msg|
+        li
+          = msg
+= form_for [@customer, @event] do |f|
+  .row
+    .col-md-9
+      .table-responsive
+        table.table.table-bordered.table-hover.table-condensed
+          tr
+            th
+              = f.label :title, t(".title") + "*", :class => "col-lg-6 control-label"
+            td
+              = f.text_field :title, :class => "form-control"
+          tr
+            th
+              = f.label :from, t(".from") + "*", :class => "col-lg-6 control-label"
+            td
+              = f.datetime_select :from, :class => "form-control"
+          tr
+            th
+              = f.label :to, t(".to"), :class => "col-lg-6 control-label"
+            td
+              = f.datetime_select :to, :class => "form-control"
+          tr
+            th
+              = f.label :location, t(".location"), :class => "col-lg-6 control-label"
+            td
+              = f.text_field :location, :class => "form-control"
+          tr
+            th
+              = f.label :details, t(".details"), :class => "col-lg-6 control-label"
+            td
+              = f.text_area :details, :class => "form-control editable"
+          tr
+            th
+              = f.label :should_respond, t(".should_respond"), :class => "col-lg-6 control-label"
+            td
+              = f.check_box :should_respond
+          tr
+            th
+              = f.label :public, t(".public"), :class => "col-lg-6 control-label"
+            td
+              = f.check_box :public
+          tr
+            th
+              = f.label :status, t(".status"), :class => "col-lg-6 control-label"
+            td
+              = f.select :status, Event::STATUS.collect {|d| [t(".#{d}"), d]}
+          tr
+            td[colspan="2"]
+              = f.hidden_field :customer_id, :class => "form-control"
+              .btn-group
+                = f.submit t(".save"), :class => "btn btn-success"
+                - if params[:action] == ("new" || "create")
+                  = f.submit "Speichern und Neu", :class => "btn btn-success", :name => "saveandnew"
+                - if params[:action] == "new"
+                  = link_to t(".cancel"), customer_events_path(@customer), data: { confirm: t(".alerts.cancel_new") }, :class => "btn btn-danger"
+                - if params[:action] == "edit"
+                  = link_to t(".cancel"), customer_event_path(@customer, @event), data: { confirm: t(".alerts.cancel_edit") }, :class => "btn btn-danger"
+                  = link_to t(".destroy"), customer_event_path(@customer, @event), method: :delete, data: { confirm: t(".alerts.destroy") }, :class => "btn btn-danger text-right"

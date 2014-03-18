@@ -1,0 +1,63 @@
+.page-header
+  - if can? :update, Event
+    = button_to_edit(:event, @event)
+    
+  h1
+    = @event.title
+  .visible-xs
+    p
+      = l @event.from, format: :short
+      |  - 
+      = l @event.to, format: :short
+  .hidden-xs
+    p
+      = l @event.from, format: :long
+      |  - 
+      = l @event.to, format: :long
+  - if @event.location
+    p
+      = @event.location
+      p
+        small
+          = t(".#{@event.status}")
+.row
+  .col-md-12
+    - if @event.details
+      = @event.details.html_safe
+    - if @event.should_respond
+      .table-responsive
+        table.table.table-bordered.table-hover.table-condensed
+          tr
+            - unless @event_users_accepted.empty?
+              th[width="33%"]
+                = bootstrap_button('success', 'ok-sign', size: 'sm', :disabled => :disabled)
+            - unless @event_users_denied.empty?
+              th[width="33%"]
+                = bootstrap_button('danger', 'remove-sign', size: 'sm', :disabled => :disabled)
+            - unless @event_users_noreply.empty?
+              th[width="33%"]
+                = bootstrap_button('warning', 'question-sign', size: 'sm', :disabled => :disabled)
+          tr
+            - unless @event_users_accepted.empty?
+              td[style="vertical-align: top;"]
+                = render partial: 'users/list', collection: @event_users_accepted, as: 'user'
+            - unless @event_users_denied.empty?
+              td[style="vertical-align: top;"]
+                = render partial: 'users/list', collection: @event_users_denied, as: 'user'
+            - unless @event_users_noreply.empty?
+              td[style="vertical-align: top;"]
+                = render partial: 'users/list', collection: @event_users_noreply, as: 'user'
+          - if can? :send_message, CustomersUser
+            tr
+              - unless @event_users_accepted.empty?
+                td
+                  = button_to(new_conversation_path, :name => :receipient, :value => get_user_emails(@event_users_accepted).join(', '), :class => "btn btn-success btn-sm") do
+                    span.glyphicon.glyphicon-envelope
+              - unless @event_users_denied.empty?
+                td
+                  = button_to(new_conversation_path, :name => :receipient, :value => get_user_emails(@event_users_denied).join(', '), :class => "btn btn-success btn-sm") do
+                    span.glyphicon.glyphicon-envelope
+              - unless @event_users_noreply.empty?
+                td
+                  = button_to(new_conversation_path, :name => :receipient, :value => get_user_emails(@event_users_noreply).join(', '), :class => "btn btn-success btn-sm") do
+                    span.glyphicon.glyphicon-envelope

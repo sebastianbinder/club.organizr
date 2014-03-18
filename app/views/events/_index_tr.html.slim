@@ -1,0 +1,20 @@
+tr
+  td
+    = l event.from, format: :short
+  td
+    = truncate(event.title)
+  td
+    = truncate(event.location)
+  - if can? :update, EventsUser
+    td.twobuttons
+      - if event.should_respond == true
+        = get_respond_buttons(event.id)
+  td.button
+    = link_to customer_event_path(:id => event.id) do
+      button.btn.btn-info.btn-sm[type="button"]
+        span.glyphicon.glyphicon-info-sign
+  - if can? :update, Event
+    td.button
+      = link_to(edit_customer_event_path(:id => event.id)) do
+        button.btn.btn-warning.btn-sm[type="button"]
+          span.glyphicon.glyphicon-wrench

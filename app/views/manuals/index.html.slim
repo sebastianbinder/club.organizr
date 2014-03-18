@@ -1,0 +1,152 @@
+.page-header
+  h1
+    | Hilfe
+.row
+  .col-md-12
+    .well[data-toggle="modal" data-target="#zusage"]
+      | Wie sage ich zu einem Termin zu?
+    #zusage.modal.fade[tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"]
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close[type="button" data-dismiss="modal" aria-hidden="true"]
+              | ×
+            h4#myModalLabel.modal-title
+              | Wie sage ich zu einem Termin zu?
+          .modal-body
+            p
+              |  Sie sollten auf der Seite Termine folgende Buttons sehen:
+            p
+              button.btn.btn-success.btn-sm.left[type="button"]
+                span.glyphicon.glyphicon-ok-circle
+              button.btn.btn-danger.btn-sm.left[type="button"]
+                span.glyphicon.glyphicon-remove-circle
+              |  
+              br
+              |  
+            p
+              |  Klicken Sie nun auf den grünen Button, um für diesen Termin zuzusagen. Als Bestätigung Ihrer aktuellen Auswahl verschwindet der rote Button. 
+          .modal-footer
+            button.btn.btn-default[type="button" data-dismiss="modal"]
+              | Schließen
+    .well[data-toggle="modal" data-target="#absage"]
+      | Wie sage ich zu einem Termin ab?
+    #absage.modal.fade[tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"]
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close[type="button" data-dismiss="modal" aria-hidden="true"]
+              | ×
+            h4#myModalLabel.modal-title
+              | Wie sage ich zu einem Termin ab?
+          .modal-body
+            p
+              |  Sie sollten auf der Seite Termine folgende Buttons sehen:
+            p
+              button.btn.btn-success.btn-sm.left[type="button"]
+                span.glyphicon.glyphicon-ok-circle
+              button.btn.btn-danger.btn-sm.left[type="button"]
+                span.glyphicon.glyphicon-remove-circle
+              |  
+              br
+              |  
+            p
+              |  Klicken Sie nun auf den roten Button, um für diesen Termin abzusagen. Als Bestätigung Ihrer aktuellen Auswahl verschwindet der grüne Button. 
+          .modal-footer
+            button.btn.btn-default[type="button" data-dismiss="modal"]
+              | Schließen
+    .well[data-toggle="modal" data-target="#change"]
+      | Wie ändere ich meine Zusage zu einer Absage und umgekehrt?
+    #change.modal.fade[tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"]
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close[type="button" data-dismiss="modal" aria-hidden="true"]
+              | ×
+            h4#myModalLabel.modal-title
+              | Wie ändere ich meine Zusage zu einer Absage und umgekehrt?
+          .modal-body
+            p
+              |  Sollten Sie bereits für einen Termin zu- oder abgesagt haben, können Sie Ihre Auswahl ändern, indem Sie auf den verbleibenden grünen oder roten Button klicken. Er ändert nun die Farbe und zeigt Ihre aktuelle Auswahl. 
+          .modal-footer
+            button.btn.btn-default[type="button" data-dismiss="modal"]
+              | Schließen
+    .well[data-toggle="modal" data-target="#icsfeed"]
+      | Wie kann ich die Termine auf meinem Handy oder Tablet abonnieren?
+    #icsfeed.modal.fade[tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"]
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close[type="button" data-dismiss="modal" aria-hidden="true"]
+              | ×
+            h4#myModalLabel.modal-title
+              | Wie kann ich die Termine auf meinem Handy oder Tablet abonnieren?
+          .modal-body
+            p
+              |  Auf der Seite "Termine" sehen Sie folgenden Button: 
+              button.btn.btn-success.btn-sm[type="button"]
+                span.glyphicon.glyphicon-calendar
+              br
+              |  Klicken Sie auf diesen, um die URL des Kalender-Feeds anzuzeigen. Diese können Sie nun auf Ihrem Handy, Tablet oder Computer abonnieren. 
+            p
+              |  Passende Anleitungen, z.B 
+            ul
+              li
+                = link_to("Apple iOS", "http://www.ehow.de/icalender-deinem-iphone-hinzufugst-wie_8353/", target: "_blank")
+              li
+                = link_to("Google Android", "https://support.google.com/calendar/answer/37100?hl=de", target: "_blank")
+              li
+                = link_to("Microsoft Outlook", "http://office.microsoft.com/de-de/outlook-help/anzeigen-und-abonnieren-von-internetkalendern-HA102534443.aspx#_Toc285199656", target: "_blank")
+          .modal-footer
+            button.btn.btn-default[type="button" data-dismiss="modal"]
+              | Schließen
+    .well[data-toggle="modal" data-target="#logout"]
+      | Wie kann ich meine persönlichen Daten oder mein Passwort ändern?
+    #logout.modal.fade[tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"]
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close[type="button" data-dismiss="modal" aria-hidden="true"]
+              | ×
+            h4#myModalLabel.modal-title
+              | Wie kann ich meine persönlichen Daten oder mein Passwort ändern?
+          .modal-body
+            p
+              |  Klicken Sie oben rechts auf Ihren Namen. Dann öffnet sich ein weiteres Menü mit dem Link "Mein Profil". Auf der folgenden Seite sehen Sie rechts den gelben Button "Details bearbeiten". Nach einem Klick auf diesen gelangen Sie auf das Formular um Ihre persönlichen Daten zu ändern. Sie müssen das Feld Passwort am Ende nur dann ausfüllen, wenn Sie dieses ändern wollen. Haben Sie nur Ihre persönlichen Daten abgeändert, kann es leer bleiben. Vergessen Sie nicht, die Änderungen zu speichern! 
+          .modal-footer
+            button.btn.btn-default[type="button" data-dismiss="modal"]
+              | Schließen
+    .well[data-toggle="modal" data-target="#logout"]
+      | Wie kann ich mich abmelden?
+    #logout.modal.fade[tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"]
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close[type="button" data-dismiss="modal" aria-hidden="true"]
+              | ×
+            h4#myModalLabel.modal-title
+              | Wie kann ich mich abmelden?
+          .modal-body
+            p
+              |  Klicken Sie oben rechts auf Ihren Namen. Dann öffnet sich ein weiteres Menü mit dem Link "Logout". 
+          .modal-footer
+            button.btn.btn-default[type="button" data-dismiss="modal"]
+              | Schließen
+    .well[data-toggle="modal" data-target="#messages"]
+      | Wie funktioniert dieses Nachrichtensystem?
+    #messages.modal.fade[tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"]
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close[type="button" data-dismiss="modal" aria-hidden="true"]
+              | ×
+            h4#myModalLabel.modal-title
+              | Wie funktioniert dieses Nachrichtensystem?
+          .modal-body
+            p
+              |  Sobald Ihnen jemand eine Nachricht schickt, bekommen Sie eine Benachrichtigung per E-Mail und können die Nachricht in club.organizr einsehen. Um auf die Nachricht zu beantworten, muss diese Aktion über das Portal erfolgen. Eine Antwort innerhalb Ihres Mailprogramms wird erfolglos sein - die Nachricht kommt als unzustellbar zurück.
+            p
+              | Sofern Sie eine Nachricht an beispielsweise die Leitung Ihrer Gruppe schicken wollen, gehen Sie auf den Menüpunkt "Mitglieder" (innerhalb Ihrer Gruppe). Wählen Sie dann in der ersten Spalte die Personen aus, die Ihre Nachricht empfangen sollen und klicken Sie am Ende der Seite auf den grünen Button "Nachricht an ausgewählte Mitglieder". Dann können Sie die Nachricht verfassen und abschicken. Sie können innerhalb des Portals jedoch nur Nachrichten an die Gruppenleiter oder Gruppenorganisatoren schreiben - für alle anderen Mitglieder benutzen Sie bitte weiterhin das Mailprogramm Ihrer Wahl. 
+          .modal-footer
+            button.btn.btn-default[type="button" data-dismiss="modal"]
+              | Schließen
