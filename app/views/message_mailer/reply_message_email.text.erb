@@ -1,8 +1,0 @@
-<%= t(".you_have_a_new_reply") %>: <%= @message.subject.html_safe? ? @message.subject : strip_tags(@message.subject) %>
-===============================================
-
------------------------------------------------
-<%= @message.body.html_safe? ? @message.body : strip_tags(@message.body) %>
------------------------------------------------
-
- <%= t(".visit_and_go_to_your_inbox_for_more_info", link: root_url) %>
